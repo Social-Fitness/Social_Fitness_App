@@ -1,0 +1,4 @@
+#Sat Oct 24 19:27:59 CEST 2020
+base.0=/Users/salvatore/Desktop/Social_Fitness_App/build/app/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex
