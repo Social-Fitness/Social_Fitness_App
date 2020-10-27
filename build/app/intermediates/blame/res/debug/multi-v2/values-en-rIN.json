@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/salvatore/Desktop/Social_Fitness_App/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rIN/values-en-rIN.xml",
+            "outputFile": "C:\\Users\\Alice Vidoni\\Desktop\\Social_Fitness_App\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rIN\\values-en-rIN.xml",
             "map": [
                 {
-                    "source": "/Users/salvatore/.gradle/caches/transforms-1/files-1.1/core-1.1.0.aar/009611eae30a9ce9a0384d949fc35987/res/values-en-rIN/values-en-rIN.xml",
+                    "source": "C:\\Users\\Alice Vidoni\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.1.0.aar\\55ecc8a35a0b1c4b00178fe85c942b6d\\res\\values-en-rIN\\values-en-rIN.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

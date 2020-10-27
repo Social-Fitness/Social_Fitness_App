@@ -1,8 +1,11 @@
 import 'package:Social_Fitness_App/Animations/FadeAnimation.dart';
+import 'package:Social_Fitness_App/MapPage.dart';
 import 'package:Social_Fitness_App/LoginPage.dart';
+import 'package:Social_Fitness_App/Mappa.dart';
 import 'package:Social_Fitness_App/SignUpPage.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+
 
 void main() => runApp(
   MaterialApp(
@@ -89,7 +92,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
       end: 32.0
     ).animate(_scale2Controller)..addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: SignUpPage()));
+        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Mappa()));
       }
     });
   }
