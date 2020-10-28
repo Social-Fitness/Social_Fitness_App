@@ -1,4 +1,4 @@
-#Tue Oct 27 11:55:53 CET 2020
-base.0=/Users/salvatore/Desktop/social_fitness_app/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+#Wed Oct 28 12:47:39 CET 2020
+base.0=C\:\\Users\\Alice Vidoni\\Desktop\\Social_Fitness_App\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
