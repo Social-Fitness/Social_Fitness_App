@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/MapPage.dart';
 
 import 'clipper.dart';
 const _PATH = "assets/image";
@@ -120,7 +121,7 @@ class _HomeState extends State<Home> {
 
     //button widget
     Widget _button(String text, Color splashColor, Color highlightColor,
-        Color fillColor, Color textColor, void function()) {
+        Color fillColor, Color textColor, void function()) {     //Modificata a dovere possiamo usare sempre questo widget per i bottini, bisogna passare il context per cambiare pagina
       return RaisedButton(
         highlightElevation: 0.0,
         splashColor: splashColor,
@@ -139,6 +140,7 @@ class _HomeState extends State<Home> {
         },
       );
     }
+
 
     //funzioni di login e registrazione
 
@@ -243,16 +245,31 @@ class _HomeState extends State<Home> {
                           height: 20,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                              left: 20,
-                              right: 20,
-                              bottom: MediaQuery.of(context).viewInsets.bottom),
                           child: Container(
-                            child: _button("LOGIN", Colors.white, primary,
-                                primary, Colors.white, _loginUser),
+                            child: RaisedButton(
+                              highlightElevation: 0.0,
+                              splashColor: Colors.white,
+                              highlightColor: Theme.of(context).primaryColor,
+                              color: Theme.of(context).primaryColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(30.0),
+                              ),
+                              child: Text(
+                                "LOGIN",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize: 20),
+                              ),
+                              onPressed: () {
+                                Route route = MaterialPageRoute(
+                                    builder: (context) => MapPage());
+                                Navigator.push(context, route);
+                              },
+                            ),
                             height: 50,
-                            width: MediaQuery.of(context).size.width,
                           ),
+                          padding: EdgeInsets.only(top: 10, left: 20, right: 20),
                         ),
                         SizedBox(
                           height: 20,
@@ -414,17 +431,52 @@ class _HomeState extends State<Home> {
                         child: _input(Icon(Icons.lock), "CONFERMA PASSWORD",//Creare funzione di controllo
                             _passwordController, true),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: 20,
-                            right: 20,
-                            bottom: MediaQuery.of(context).viewInsets.bottom),
-                        child: Container(
-                          child: _button("REGISTRAZIONE", Colors.white, primary,
-                              primary, Colors.white, _registerUser),
-                          height: 50,
-                          width: MediaQuery.of(context).size.width,
+                      ListTile(
+                        title: Text(
+                            "PERSONAL TRAINER",
+                            style: TextStyle(fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF0288D1),
+                            ),),
+                        leading: Radio( //qui settare i radiobotton
                         ),
+                      ),
+                      ListTile(
+                        title: const Text(
+                          "SPORT LOVER",
+                          style: TextStyle(fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF0288D1),
+                          ),),
+                        leading: Radio(  //qui settare i radiobotton
+                        ),
+                      ),
+                      Padding(
+                        child: Container(
+                          child: RaisedButton(
+                            highlightElevation: 0.0,
+                            splashColor: Colors.white,
+                            highlightColor: Theme.of(context).primaryColor,
+                            color: Theme.of(context).primaryColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0),
+                            ),
+                            child: Text(
+                              "REGISTRAZIONE",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontSize: 20),
+                            ),
+                            onPressed: () {
+                              Route route = MaterialPageRoute(
+                                  builder: (context) => MapPage());
+                              Navigator.push(context, route);
+                            },
+                          ),
+                          height: 50,
+                        ),
+                        padding: EdgeInsets.only(top: 10, left: 20, right: 20),
                       ),
                       SizedBox(
                         height: 20,
