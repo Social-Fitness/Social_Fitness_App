@@ -1,4 +1,7 @@
-#Thu Nov 05 17:24:06 CET 2020
-base.0=/Users/salvatore/Desktop/Social_Fitness_App/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+#Thu Nov 19 18:26:44 CET 2020
+base.0=/Users/salvatore/Desktop/EnterpriseMobile/Social_Fitness_App/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+path.1=classes.dex
+renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
+base.1=/Users/salvatore/Desktop/Social_Fitness_App/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex

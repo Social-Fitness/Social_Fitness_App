@@ -5,7 +5,7 @@ import 'package:social_fitness_app/utils/custom_clipper.dart';
 
 import 'top_bar.dart';
 const _PATH = "assets/image";
-const _PIC01 = "$_PATH/Salvatore.jpeg";
+const _PIC01 = "$_PATH/profile.png";
 const _PIC02 = "$_PATH/Runner.jpg";
 
 class StackContainer extends StatelessWidget {
@@ -48,7 +48,7 @@ class StackContainer extends StatelessWidget {
                       ),*/
                 SizedBox(height: 20.0),
                 Text(
-                  "Atleta",
+                  "Atleta / Personal Trainer", //prendere il nome dal database
                   style: TextStyle(
                     fontSize: 22.0,
                     color: Colors.white,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:social_fitness_app/MapPage.dart';
-import 'package:social_fitness_app/home.dart';
+import 'package:social_fitness_app/HomePageMenu.dart';
+import 'package:social_fitness_app/filterPage.dart';
+import 'package:social_fitness_app/Login_Reg.dart';
 import 'package:social_fitness_app/pianifica_att_pt.dart';
 import 'package:social_fitness_app/pianifica_att_utente.dart';
 import 'package:social_fitness_app/userProfile.dart';
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
           hintColor: Color(0xFF0288D1),
           primaryColor: Color(0xFF01579B),
           canvasColor: Colors.transparent),
-      home: Home(),
+      home: Login_Reg(),
     );
   }
 }

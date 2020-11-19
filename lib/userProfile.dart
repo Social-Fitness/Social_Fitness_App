@@ -35,26 +35,6 @@ class _HomeViewState extends State<userProfile> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profilo',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.watch),
-            label: 'Pianifica attività',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Color(0xFF0288D1),
-        onTap: _onItemTapped,
-      ),
     );
   }
 }
