@@ -351,7 +351,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          firestoreInstance.collection("users")..add(
+          firestoreInstance.collection("users").add(
               {
                 "Categoria" : "Sportivo",
                 "Nome" : _nomeController.text,

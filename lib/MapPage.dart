@@ -27,7 +27,7 @@ class MapPageState extends State<MapPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   int selectedPage = 0;
-  final _pageOptions = [MapPage(),  userProfile(), Activity_Host(), Activity_pt()];
+  final _pageOptions = [MapPage(),  userProfile(), PianificaAttivitaUtScreen(), PianificaAttivitaPTScreen()];
 
   List<String> countList = [
     "Corsa",

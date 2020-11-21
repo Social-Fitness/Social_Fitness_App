@@ -1,206 +1,366 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
+import 'package:flutter/services.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:social_fitness_app/HomePageMenu.dart';
+import 'package:social_fitness_app/utils/constants.dart';
 
-
-class Activity_pt extends StatefulWidget {
+class PianificaAttivitaPTScreen extends StatefulWidget {
   @override
-  _Activity_pt createState() => _Activity_pt();
+  PianificaAttivitaPTScreenState createState() => PianificaAttivitaPTScreenState();
 }
 
-class _Activity_pt extends State<Activity_pt> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  int _selectedIndex=2;
-  TextEditingController _nameController = new TextEditingController();
+class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
+  final firestoreInstance = FirebaseFirestore.instance;
+  TextEditingController _nomeController = new TextEditingController();
+  TextEditingController _dataController = new TextEditingController();
+  TextEditingController _orainizioController = new TextEditingController();
+  TextEditingController _orafineController = new TextEditingController();
+  TextEditingController _cittaController = new TextEditingController();
+  TextEditingController _indirizzoController = new TextEditingController();
+
+
+  Widget _buildNomeTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Nome Attività',
+          style: kLabelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            controller: _nomeController,
+            keyboardType: TextInputType.name,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.directions_run,
+                color: Colors.white,
+              ),
+              hintText: 'Inserisci il Nome dell\'attività',
+              hintStyle: kHintTextStyle,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDataTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Data (GG-MM-AAAAA)',
+          style: kLabelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            controller: _dataController,
+            keyboardType: TextInputType.name,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.calendar_today,
+                color: Colors.white,
+              ),
+              hintText: 'Inserisci la Data',
+              hintStyle: kHintTextStyle,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildOraInizioTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Ora di inizio (HH:mm)',
+          style: kLabelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            controller: _orainizioController,
+            keyboardType: TextInputType.name,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.watch_later_outlined,
+                color: Colors.white,
+              ),
+              hintText: 'Inserisci l\'Ora di inizio',
+              hintStyle: kHintTextStyle,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildOraFineTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Ora di fine (HH:mm)',
+          style: kLabelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            controller: _orafineController,
+            keyboardType: TextInputType.name,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.watch_later,
+                color: Colors.white,
+              ),
+              hintText: 'Inserisci l\'Ora di fine',
+              hintStyle: kHintTextStyle,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCittaTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Città',
+          style: kLabelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            controller: _cittaController,
+            keyboardType: TextInputType.name,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.location_city,
+                color: Colors.white,
+              ),
+              hintText: 'Inserisci la Città',
+              hintStyle: kHintTextStyle,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildIndirizzoTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Indirizzo (via, CAP)',
+          style: kLabelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            controller: _indirizzoController,
+            keyboardType: TextInputType.number,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.add_location_alt,
+                color: Colors.white,
+              ),
+              hintText: 'Inserisci l\'indirizzo',
+              hintStyle: kHintTextStyle,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+
+  Widget _buildCreaBtn() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 25.0),
+      width: double.infinity,
+      child: RaisedButton(
+        elevation: 5.0,
+        onPressed: () {
+          firestoreInstance.collection("activity_pt").add(
+              {
+                "Nome": _nomeController.text,
+                "Data": _dataController.text,
+                "Ora_inizio ": _orainizioController.text,
+                "Ora_fine ": _orafineController.text,
+                "Città": _cittaController.text,
+                "Indirizzo": _indirizzoController.text,
+
+              }).then((value) {
+            print(value.id);
+          });
+          _buildPopupTF(context);
+        },
+        padding: EdgeInsets.all(15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        color: Colors.white,
+        child: Text(
+          'Crea',
+          style: TextStyle(
+            color: Color(0xFF527DAA),
+            letterSpacing: 1.5,
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OpenSans',
+          ),
+        ),
+      ),
+    );
+  }
+
+ _buildPopupTF(context) {
+    return Alert(
+        context: context,
+        title: "NUOVA ATTIVITÀ CREATA!",
+        content:
+          DialogButton(
+            onPressed: () {
+              Route route = MaterialPageRoute(
+                  builder: (context) => homePage());
+              Navigator.push(context, route);
+            },
+            child: Text(
+              "OK!",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          )
+        ).show();
+  }
 
 
   @override
   Widget build(BuildContext context) {
-    Color primary = Theme.of(context).primaryColor;
-    void initState() {
-      super.initState();
-    }
-    void _onItemTapped(int index) {
-      setState(() {
-        _selectedIndex = index;
-      });
-    }
-    //funzioni di login e registrazione
-
-
-
-    //input widget
-    Widget _input(Icon icon, String hint, TextEditingController controller,
-        bool obsecure) {
-      return Container(
-        padding: EdgeInsets.only(left: 20, right: 20),
-        child: TextField(
-          controller: controller,
-          obscureText: obsecure,
-          style: TextStyle(
-            fontSize: 20,
-          ),
-          decoration: InputDecoration(
-              hintStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              hintText: hint,
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-                borderSide: BorderSide(
-                  color: Theme.of(context).primaryColor,
-                  width: 2,
-                ),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-                borderSide: BorderSide(
-                  color: Theme.of(context).primaryColor,
-                  width: 3,
-                ),
-              ),
-              prefixIcon: Padding(
-                child: IconTheme(
-                  data: IconThemeData(color: Theme.of(context).primaryColor),
-                  child: icon,
-                ),
-                padding: EdgeInsets.only(left: 30, right: 10),
-              )),
-        ),
-      );
-    }
-
-    //button widget
-    Widget _button(String text, Color splashColor, Color highlightColor,
-        Color fillColor, Color textColor, void function()) {
-      return RaisedButton(
-        highlightElevation: 0.0,
-        splashColor: splashColor,
-        highlightColor: highlightColor,
-        elevation: 0.0,
-        color: fillColor,
-        shape: RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(30.0)),
-        child: Text(
-          text,
-          style: TextStyle(
-              fontWeight: FontWeight.bold, color: textColor, fontSize: 20),
-        ),
-        onPressed: () {
-          function();
-        },
-      );
-    }
-
-    void _crea() {
-      //crea nuova attività
-    }
-
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      key: _scaffoldKey,
-      backgroundColor: Theme.of(context).primaryColor,
-      body: DecoratedBox(
-        decoration: BoxDecoration(color: Theme.of(context).canvasColor),
-        child: ClipRRect(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40.0),
-              topRight: Radius.circular(40.0)),
-          child: Container(
-            child: ListView(
-              children: <Widget>[
-
-                SingleChildScrollView(
-                  child: Column(children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 210,
-                      child: Stack(
-                        children: <Widget>[
-
-                          Positioned(
-                            child: Container(
-                              padding: EdgeInsets.only(bottom: 10, right: 70, left: 80),
-                              alignment: Alignment.center,
-                              child: Text(
-                                  "PIANIFICA UNA NUOVA ATTIVITA'",
-                                  style: TextStyle(
-                                    fontSize: 40,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xFF0288D1),
-
-                                  )
-                              ),
-                            ),
-                          ),
-
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        bottom: 20,
-                        top: 10,
-                      ),
-                      child: _input(Icon(Icons.accessibility),
-                          "NOME ATTIVITA'", _nameController, false),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        bottom: 20,
-                      ),
-                      child: _input(Icon(Icons.calendar_today),
-                          "DATA", _nameController, false), //Creare funzione di controllo
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        bottom: 20,
-                      ),
-                      child: _input(Icon(Icons.watch_later_outlined),
-                          "ORA DI INIZIO", _nameController, false),//Creare funzione di controllo
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        bottom: 20,
-                      ),
-                      child: _input(Icon(Icons.watch_later_outlined),
-                          "ORA DI FINE", _nameController, false),//Creare funzione di controllo
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        bottom: 20,
-                      ),
-                      child: _input(Icon(Icons.location_city),
-                          "CITTA", _nameController, false),//Creare funzione di controllo
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        bottom: 20,
-                      ),
-                      child: _input(Icon(Icons.add_location_alt),
-                          "INDIRIZZO", _nameController, false),//Creare funzione di controllo
-                    ),
-
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: 20,
-                          right: 20,
-                          bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: Container(
-                        child: _button("CREA", Colors.white, primary,
-                            primary, Colors.white, _crea),
-                        height: 50,
-                        width: MediaQuery.of(context).size.width,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                  ]),
+      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.light,
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Stack(
+            children: <Widget>[
+              Container(
+                height: double.infinity,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color(0xFF73AEF5),
+                      Color(0xFF61A4F1),
+                      Color(0xFF478DE0),
+                      Color(0xFF01579B),
+                    ],
+                    stops: [0.1, 0.4, 0.7, 0.9],
+                  ),
                 ),
-              ],
-            ),
-            height: MediaQuery.of(context).size.height / 0.0,
-            width: MediaQuery.of(context).size.width,
-            color: Colors.white,
+              ),
+              Container(
+                height: double.infinity,
+                child: SingleChildScrollView(
+                  physics: AlwaysScrollableScrollPhysics(),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 40.0,
+                    vertical: 80.0,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'PIANIFICA UNA NUOVA ATTIVITÀ',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "Montserrat",
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 30.0),
+                      _buildNomeTF(),
+                      SizedBox(height: 10.0),
+                      _buildDataTF(),
+                      SizedBox(height: 10.0),
+                      _buildOraInizioTF(),
+                      SizedBox(height: 10.0),
+                      _buildOraFineTF(),
+                      SizedBox(height: 10.0,),
+                      _buildCittaTF(),
+                      SizedBox(height: 10.0),
+                      _buildIndirizzoTF(),
+                      _buildCreaBtn()
+                    ],
+                  ),
+                ),
+              )
+            ],
           ),
         ),
       ),

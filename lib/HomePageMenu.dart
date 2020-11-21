@@ -1,8 +1,9 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/pianifica_att_pt.dart';
+import 'package:social_fitness_app/pianifica_att_utente.dart';
 import 'userProfile.dart';
-import 'pianifica_att_pt.dart';
-import 'pianifica_att_utente.dart';
+
 import 'MapPage.dart';
 
 
@@ -14,7 +15,7 @@ class homePage extends StatefulWidget {
 }
 class homePageState extends State<homePage> {
   int selectedPage = 1;
-  final _pageOptions = [Activity_Host(),MapPage(),userProfile()];
+  final _pageOptions = [PianificaAttivitaUtScreen(),MapPage(),userProfile()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
