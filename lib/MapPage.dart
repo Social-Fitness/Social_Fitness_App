@@ -1,13 +1,11 @@
 import 'dart:async';
 import 'package:filter_list/filter_list.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
 import 'package:social_fitness_app/pianifica_att_pt.dart';
 import 'package:social_fitness_app/pianifica_att_utente.dart';
 import 'package:social_fitness_app/userProfile.dart';
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 
 //la barra di sopra deve ricercare i luoghi all'interno della mappa
 

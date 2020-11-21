@@ -102,6 +102,14 @@
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
+    <string name="default_web_client_id" translatable="false">271841038751-mh6tudqh3abpthumlrd8q944ebfii292.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://social-fitness-f186f.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">271841038751</string>
+    <string name="google_api_key" translatable="false">AIzaSyBNTBdovoMbT13WIPs1b_ye7kGOVkeTii8</string>
+    <string name="google_app_id" translatable="false">1:271841038751:android:08339162f9c5558676edaa</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBNTBdovoMbT13WIPs1b_ye7kGOVkeTii8</string>
+    <string name="google_storage_bucket" translatable="false">social-fitness-f186f.appspot.com</string>
+    <string name="project_id" translatable="false">social-fitness-f186f</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <!-- Show a splash screen on the activity. Automatically removed when

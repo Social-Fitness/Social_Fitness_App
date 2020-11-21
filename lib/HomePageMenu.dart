@@ -13,19 +13,19 @@ class homePage extends StatefulWidget {
   homePageState createState() => homePageState();
 }
 class homePageState extends State<homePage> {
-  int selectedPage = 0;
-  final _pageOptions = [MapPage(),Activity_Host(),userProfile()];
+  int selectedPage = 1;
+  final _pageOptions = [Activity_Host(),MapPage(),userProfile()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pageOptions[selectedPage],
       bottomNavigationBar: ConvexAppBar(
         items: [
-          TabItem(icon: Icons.add_location, title: 'Mappa'),
           TabItem(icon: Icons.watch, title: 'Pianifica Attività'),
+          TabItem(icon: Icons.add_location, title: 'Mappa'),
           TabItem(icon: Icons.person, title: 'Profilo'),
         ],
-        initialActiveIndex: 0,//optional, default as 0
+        initialActiveIndex: 1,//optional, default as 0
         onTap: (int i ){
           setState(() {
             selectedPage = i;
