@@ -24,7 +24,16 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
   TextEditingController _confermapasswordController = new TextEditingController();
-  bool _validate = false;
+  bool _validateNome = false;
+  bool _validateCognome = false;
+  bool _validateDataNascita = false;
+  bool _validateCitta = false;
+  bool _validateCap = false;
+  bool _validateEmail = false;
+  bool _validatePw = false;
+  bool _validateConfermaPw = false;
+
+
 
   Widget _buildNomeTF() {
     return Column(
@@ -54,7 +63,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
                 color: Colors.white,
               ),
               hintText: 'Inserisci il tuo Nome',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateNome ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -91,7 +100,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
                 color: Colors.white,
               ),
               hintText: 'Inserisci il tuo Cognome',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateCognome ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -128,7 +137,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
                 color: Colors.white,
               ),
               hintText: 'Inserisci la tua Data Di Nascita',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateDataNascita ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -165,7 +174,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
                 color: Colors.white,
               ),
               hintText: 'Inserisci la tua Città',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateCitta ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -202,7 +211,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
                 color: Colors.white,
               ),
               hintText: 'Inserisci il CAP della tua città',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateCap ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -239,7 +248,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
                 color: Colors.white,
               ),
               hintText: 'Inserisci la tua Email',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateEmail ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -290,7 +299,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
                 color: Colors.white,
               ),
               hintText: 'Inserisci la tua Password',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validatePw ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
               suffixIcon: SizedBox(
                 width: 50.0,
@@ -334,7 +343,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
                 color: Colors.white,
               ),
               hintText: 'Conferma la tua Password',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateConfermaPw ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
               suffixIcon: SizedBox(
                 width: 50.0,
@@ -363,60 +372,52 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
           setState(() {
             int i=0;
             if(_nomeController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateNome=true;
+            else
               i++;
-            }
+
 
             if(_cognomeController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateCognome=true;
+            else
               i++;
-            }
+
 
             if(_dataNascitaController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateDataNascita=true;
+            else
               i++;
-            }
+
 
             if(_emailController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateEmail=true;
+            else
               i++;
-            }
+
 
             if(_passwordController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validatePw=true;
+            else
               i++;
-            }
+
 
             if(_confermapasswordController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateConfermaPw=true;
+            else
               i++;
-            }
+
 
             if(_cittaController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateCitta=true;
+            else
               i++;
-            }
+
 
             if(_capController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateCap=true;
+            else
               i++;
-            }
+
 
             if(i==8) {
               _insertToDb();

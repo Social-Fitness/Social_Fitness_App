@@ -18,8 +18,8 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
   bool _rememberMe = false;
-  bool _validate=false;
-
+  bool _validateEmail=false;
+  bool _validatePw=false;
 
   Widget _buildEmailTF() {
     return Column(
@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci la tua Email',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateEmail ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
 
@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci la tua Password',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validatePw ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
               suffixIcon: SizedBox(
                 width: 50.0,
@@ -163,18 +163,15 @@ class _LoginScreenState extends State<LoginScreen> {
           setState(() {
             int i = 0;
             if (_emailController.text.isEmpty)
-              _validate = true;
-            else {
-              _validate = false;
+              _validateEmail = true;
+            else
               i++;
-            }
+
 
             if (_passwordController.text.isEmpty)
-              _validate = true;
-            else {
-              _validate = false;
+              _validatePw = true;
+            else
               i++;
-            }
 
             if (i == 2) {
               Route route = MaterialPageRoute(

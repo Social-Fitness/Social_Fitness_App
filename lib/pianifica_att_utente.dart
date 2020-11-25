@@ -17,7 +17,12 @@ class PianificaAttivitaUtScreenState extends State<PianificaAttivitaUtScreen> {
   TextEditingController _oraController = new TextEditingController();
   TextEditingController _cittaController = new TextEditingController();
   TextEditingController _indirizzoController = new TextEditingController();
-  bool _validate=false;
+  bool _validateNome = false;
+  bool _validateData = false;
+  bool _validateCitta = false;
+  bool _validateIndirizzo = false;
+  bool _validateOra = false;
+
 
   Widget _buildNomeTF() {
     return Column(
@@ -47,7 +52,7 @@ class PianificaAttivitaUtScreenState extends State<PianificaAttivitaUtScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci il Nome dell\'attività',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateNome ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -84,7 +89,7 @@ class PianificaAttivitaUtScreenState extends State<PianificaAttivitaUtScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci la Data',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateData ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -121,7 +126,7 @@ class PianificaAttivitaUtScreenState extends State<PianificaAttivitaUtScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci l\'Ora',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateOra ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -158,7 +163,7 @@ class PianificaAttivitaUtScreenState extends State<PianificaAttivitaUtScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci la Città',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateCitta ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -195,7 +200,7 @@ class PianificaAttivitaUtScreenState extends State<PianificaAttivitaUtScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci l\'indirizzo',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateIndirizzo ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -215,39 +220,33 @@ class PianificaAttivitaUtScreenState extends State<PianificaAttivitaUtScreen> {
           setState(() {
             int i=0;
             if(_nomeController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateNome=true;
+            else
               i++;
-            }
+
 
             if(_dataController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateData=true;
+            else
               i++;
-            }
+
 
             if(_oraController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateOra=true;
+            else
               i++;
-            }
 
             if(_cittaController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateCitta=true;
+            else
               i++;
-            }
+
 
             if(_indirizzoController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateIndirizzo=true;
+            else
               i++;
-            }
+
 
             if(i==5)
               _buildPopupTF(context);

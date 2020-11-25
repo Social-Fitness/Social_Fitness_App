@@ -18,8 +18,12 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
   TextEditingController _orafineController = new TextEditingController();
   TextEditingController _cittaController = new TextEditingController();
   TextEditingController _indirizzoController = new TextEditingController();
-  bool _validate=false;
-
+  bool _validateNome = false;
+  bool _validateData = false;
+  bool _validateCitta = false;
+  bool _validateIndirizzo = false;
+  bool _validateOraInizio = false;
+  bool _validateOraFine=false;
 
   Widget _buildNomeTF() {
     return Column(
@@ -49,7 +53,7 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci il Nome dell\'attività',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateNome ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -86,7 +90,7 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci la Data',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateData ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -123,7 +127,7 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci l\'Ora di inizio',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateOraInizio ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -160,7 +164,7 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci l\'Ora di fine',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateOraFine ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -197,7 +201,7 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci la Città',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateCitta ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -234,7 +238,7 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci l\'indirizzo',
-              errorText: _validate ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateIndirizzo ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -254,46 +258,34 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
           setState(() {
             int i=0;
             if(_nomeController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateNome=true;
+            else
               i++;
-            }
 
             if(_dataController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateData=true;
+            else
               i++;
-            }
 
             if(_orainizioController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateOraInizio=true;
+            else
               i++;
-            }
 
             if(_orafineController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateOraFine=true;
+            else
               i++;
-            }
 
             if(_cittaController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateCitta=true;
+            else
               i++;
-            }
 
             if(_indirizzoController.text.isEmpty)
-              _validate=true;
-            else {
-              _validate = false;
+              _validateIndirizzo=true;
+            else
               i++;
-            }
 
             if(i==6)
               _buildPopupTF(context);
