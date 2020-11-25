@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -18,7 +19,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
   final firestoreInstance = FirebaseFirestore.instance;
   TextEditingController _nomeController = new TextEditingController();
   TextEditingController _cognomeController = new TextEditingController();
-  TextEditingController _dataNascitaController = new TextEditingController();
+  String _dataNascitaController;
   TextEditingController _cittaController = new TextEditingController();
   TextEditingController _capController = new TextEditingController();
   TextEditingController _emailController = new TextEditingController();
@@ -114,15 +115,23 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Data Di Nascita (GG-MM-AAAA)',
+          'Data Di Nascita',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
         Container(
+          height: 80,
+          child: CupertinoDatePicker(
+            mode: CupertinoDatePickerMode.date,
+            initialDateTime: DateTime(2000, 1, 1),
+            onDateTimeChanged: (DateTime newDateTime) {
+              _dataNascitaController = newDateTime.day.toString() + "-" + newDateTime.month.toString() + "-" + newDateTime.year.toString();
+              // Do something
+            },
+          ),
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
+          /*child: TextField(
             controller: _dataNascitaController,
             keyboardType: TextInputType.name,
             style: TextStyle(
@@ -141,6 +150,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               hintStyle: kHintTextStyle,
             ),
           ),
+        ),*/
         ),
       ],
     );
@@ -371,6 +381,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
         onPressed: () {
           setState(() {
             int i=0;
+            print(_dataNascitaController);
             if(_nomeController.text.isEmpty)
               _validateNome=true;
             else
@@ -379,12 +390,6 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
 
             if(_cognomeController.text.isEmpty)
               _validateCognome=true;
-            else
-              i++;
-
-
-            if(_dataNascitaController.text.isEmpty)
-              _validateDataNascita=true;
             else
               i++;
 
@@ -419,7 +424,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               i++;
 
 
-            if(i==8) {
+            if(i==7) {
               _insertToDb();
               Route route = MaterialPageRoute(
                   builder: (context) => homePage());
@@ -449,12 +454,12 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
   }
 
   _insertToDb() {
-    firestoreInstance.collection("activity_host").add(
+    firestoreInstance.collection("users").add(
         {
           "Categoria": "Sportivo",
           "Nome": _nomeController.text,
           "Cognome": _cognomeController.text,
-          "Data_Di_Nascita ": _dataNascitaController.text,
+          "Data_Di_Nascita ": _dataNascitaController,
           "Email": _emailController.text,
           "Password": _passwordController.text,
           "Indirizzo": {

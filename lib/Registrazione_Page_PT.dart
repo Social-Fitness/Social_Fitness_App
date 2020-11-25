@@ -446,7 +446,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
   }
 
   _insertToDb() {
-    firestoreInstance.collection("activity_host").add(
+    firestoreInstance.collection("users").add(
         {
           "Categoria": "Sportivo",
           "Nome": _nomeController.text,

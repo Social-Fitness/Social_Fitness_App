@@ -332,7 +332,7 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
   }
 
   _insertToDb() {
-    firestoreInstance.collection("activity_host").add(
+    firestoreInstance.collection("activity_pt").add(
         {
           "Nome" : _nomeController.text,
           "Data" : _dataController.text,
