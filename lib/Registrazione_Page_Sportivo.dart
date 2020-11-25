@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_fitness_app/HomePageMenu.dart';
 import 'package:social_fitness_app/utils/constants.dart';
 
@@ -24,6 +25,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
   TextEditingController _passwordController = new TextEditingController();
   TextEditingController _confermapasswordController = new TextEditingController();
   bool _rememberMe = false;
+  bool _validate = false;
 
   Widget _buildNomeTF() {
     return Column(
@@ -54,6 +56,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               ),
               hintText: 'Inserisci il tuo Nome',
               hintStyle: kHintTextStyle,
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
             ),
           ),
         ),
@@ -90,6 +93,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               ),
               hintText: 'Inserisci il tuo Cognome',
               hintStyle: kHintTextStyle,
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
             ),
           ),
         ),
@@ -126,6 +130,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               ),
               hintText: 'Inserisci la tua Data Di Nascita',
               hintStyle: kHintTextStyle,
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
             ),
           ),
         ),
@@ -162,6 +167,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               ),
               hintText: 'Inserisci la tua Città',
               hintStyle: kHintTextStyle,
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
             ),
           ),
         ),
@@ -198,6 +204,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               ),
               hintText: 'Inserisci il CAP della tua città',
               hintStyle: kHintTextStyle,
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
             ),
           ),
         ),
@@ -234,6 +241,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               ),
               hintText: 'Inserisci la tua Email',
               hintStyle: kHintTextStyle,
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
             ),
           ),
         ),
@@ -284,6 +292,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               ),
               hintText: 'Inserisci la tua Password',
               hintStyle: kHintTextStyle,
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
               suffixIcon: SizedBox(
                 width: 50.0,
                 height: 50.0,
@@ -327,6 +336,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               ),
               hintText: 'Conferma la tua Password',
               hintStyle: kHintTextStyle,
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
               suffixIcon: SizedBox(
                 width: 50.0,
                 height: 50.0,
@@ -365,6 +375,15 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
                 }
               }).then((value){
             print(value.id);
+          });
+          setState(() {
+            _nomeController.text.isEmpty ? _validate = true : _validate = false;
+            _cognomeController.text.isEmpty ? _validate = true : _validate = false;
+            _dataNascitaController.text.isEmpty ? _validate = true : _validate = false;
+            _cittaController.text.isEmpty ? _validate = true : _validate = false;
+            _capController.text.isEmpty ? _validate = true : _validate = false;
+            _emailController.text.isEmpty ? _validate = true : _validate = false;
+            _passwordController.text.isEmpty ? _validate = true : _validate = false;
           });
           Route route = MaterialPageRoute(
               builder: (context) => homePage());

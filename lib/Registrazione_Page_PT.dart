@@ -11,6 +11,7 @@ class RegistrazionePersonalTrainerScreen extends StatefulWidget {
 }
 
 class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersonalTrainerScreen> {
+  final formKey= new GlobalKey<FormState>();
   final firestoreInstance = FirebaseFirestore.instance;
   TextEditingController _nomeController = new TextEditingController();
   TextEditingController _cognomeController = new TextEditingController();
@@ -21,6 +22,9 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
   TextEditingController _passwordController = new TextEditingController();
   TextEditingController _confermapasswordController = new TextEditingController();
   bool _rememberMe = false;
+  bool _validate = false;
+
+
 
   Widget _buildNomeTF() {
     return Column(
@@ -50,12 +54,13 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
                 color: Colors.white,
               ),
               hintText: 'Inserisci il tuo Nome',
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
         ),
       ],
-    );
+      );
   }
 
   Widget _buildCognomeTF() {
@@ -87,6 +92,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
               ),
               hintText: 'Inserisci il tuo Cognome',
               hintStyle: kHintTextStyle,
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
             ),
           ),
         ),
@@ -123,6 +129,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
               ),
               hintText: 'Inserisci la tua Data Di Nascita',
               hintStyle: kHintTextStyle,
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
             ),
           ),
         ),
@@ -159,6 +166,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
               ),
               hintText: 'Inserisci la tua Città',
               hintStyle: kHintTextStyle,
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
             ),
           ),
         ),
@@ -195,6 +203,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
               ),
               hintText: 'Inserisci il CAP della tua città',
               hintStyle: kHintTextStyle,
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
             ),
           ),
         ),
@@ -231,6 +240,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
               ),
               hintText: 'Inserisci la tua Email',
               hintStyle: kHintTextStyle,
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
             ),
           ),
         ),
@@ -280,6 +290,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
               ),
               hintText: 'Inserisci la tua Password',
               hintStyle: kHintTextStyle,
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
               suffixIcon: SizedBox(
                   width: 50.0,
                   height: 50.0,
@@ -294,6 +305,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
       ],
     );
   }
+
   Widget _buildConfermaPasswordTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -323,6 +335,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
               ),
               hintText: 'Conferma la tua Password',
               hintStyle: kHintTextStyle,
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
               suffixIcon: SizedBox(
                 width: 50.0,
                 height: 50.0,
@@ -334,7 +347,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
             ),
           ),
         ),
-      ],
+      ]
     );
   }
 
@@ -361,6 +374,15 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
                 }
               }).then((value){
             print(value.id);
+          });
+          setState(() {
+            _nomeController.text.isEmpty ? _validate = true : _validate = false;
+            _cognomeController.text.isEmpty ? _validate = true : _validate = false;
+            _dataNascitaController.text.isEmpty ? _validate = true : _validate = false;
+            _cittaController.text.isEmpty ? _validate = true : _validate = false;
+            _capController.text.isEmpty ? _validate = true : _validate = false;
+            _emailController.text.isEmpty ? _validate = true : _validate = false;
+            _passwordController.text.isEmpty ? _validate = true : _validate = false;
           });
           Route route = MaterialPageRoute(
               builder: (context) => homePage());
