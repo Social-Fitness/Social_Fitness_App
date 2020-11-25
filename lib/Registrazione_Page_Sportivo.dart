@@ -27,7 +27,6 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
   TextEditingController _confermapasswordController = new TextEditingController();
   bool _validateNome = false;
   bool _validateCognome = false;
-  bool _validateDataNascita = false;
   bool _validateCitta = false;
   bool _validateCap = false;
   bool _validateEmail = false;
@@ -131,26 +130,6 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
           ),
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
-          /*child: TextField(
-            controller: _dataNascitaController,
-            keyboardType: TextInputType.name,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.cake,
-                color: Colors.white,
-              ),
-              hintText: 'Inserisci la tua Data Di Nascita',
-              errorText: _validateDataNascita ? 'Il campo non può essere vuoto' : null,
-              hintStyle: kHintTextStyle,
-            ),
-          ),
-        ),*/
         ),
       ],
     );
@@ -381,7 +360,6 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
         onPressed: () {
           setState(() {
             int i=0;
-            print(_dataNascitaController);
             if(_nomeController.text.isEmpty)
               _validateNome=true;
             else

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:social_fitness_app/HomePageMenu.dart';
@@ -15,7 +16,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
   final firestoreInstance = FirebaseFirestore.instance;
   TextEditingController _nomeController = new TextEditingController();
   TextEditingController _cognomeController = new TextEditingController();
-  TextEditingController _dataNascitaController = new TextEditingController();
+  String _dataNascitaController;
   TextEditingController _cittaController = new TextEditingController();
   TextEditingController _capController = new TextEditingController();
   TextEditingController _emailController = new TextEditingController();
@@ -23,7 +24,6 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
   TextEditingController _confermapasswordController = new TextEditingController();
   bool _validateNome = false;
   bool _validateCognome = false;
-  bool _validateDataNascita = false;
   bool _validateCitta = false;
   bool _validateCap = false;
   bool _validateEmail = false;
@@ -111,33 +111,22 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Data Di Nascita (GG-MM-AAAA)',
+          'Data Di Nascita',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
         Container(
+          height: 80,
+          child: CupertinoDatePicker(
+            mode: CupertinoDatePickerMode.date,
+            initialDateTime: DateTime(2000, 1, 1),
+            onDateTimeChanged: (DateTime newDateTime) {
+              _dataNascitaController = newDateTime.day.toString() + "-" + newDateTime.month.toString() + "-" + newDateTime.year.toString();
+              // Do something
+            },
+          ),
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            controller: _dataNascitaController,
-            keyboardType: TextInputType.name,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.cake,
-                color: Colors.white,
-              ),
-              hintText: 'Inserisci la tua Data Di Nascita',
-              hintStyle: kHintTextStyle,
-              errorText: _validateDataNascita ? 'Il campo non può essere vuoto' : null,
-            ),
-          ),
         ),
       ],
     );
@@ -380,12 +369,6 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
               i++;
 
 
-            if(_dataNascitaController.text.isEmpty)
-              _validateDataNascita=true;
-            else
-              i++;
-
-
             if(_emailController.text.isEmpty)
               _validateEmail=true;
             else
@@ -451,7 +434,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
           "Categoria": "Sportivo",
           "Nome": _nomeController.text,
           "Cognome": _cognomeController.text,
-          "Data_Di_Nascita ": _dataNascitaController.text,
+          "Data_Di_Nascita ": _dataNascitaController,
           "Email": _emailController.text,
           "Password": _passwordController.text,
           "Indirizzo": {

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -13,13 +14,12 @@ class PianificaAttivitaPTScreen extends StatefulWidget {
 class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
   final firestoreInstance = FirebaseFirestore.instance;
   TextEditingController _nomeController = new TextEditingController();
-  TextEditingController _dataController = new TextEditingController();
+  String _dataController;
   TextEditingController _orainizioController = new TextEditingController();
   TextEditingController _orafineController = new TextEditingController();
   TextEditingController _cittaController = new TextEditingController();
   TextEditingController _indirizzoController = new TextEditingController();
   bool _validateNome = false;
-  bool _validateData = false;
   bool _validateCitta = false;
   bool _validateIndirizzo = false;
   bool _validateOraInizio = false;
@@ -67,33 +67,22 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Data (GG-MM-AAAAA)',
+          'Data',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
         Container(
+          height: 80,
+          child: CupertinoDatePicker(
+            mode: CupertinoDatePickerMode.date,
+            initialDateTime: DateTime(2000, 1, 1),
+            onDateTimeChanged: (DateTime newDateTime) {
+              _dataController = newDateTime.day.toString() + "-" + newDateTime.month.toString() + "-" + newDateTime.year.toString();
+              // Do something
+            },
+          ),
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            controller: _dataController,
-            keyboardType: TextInputType.name,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.calendar_today,
-                color: Colors.white,
-              ),
-              hintText: 'Inserisci la Data',
-              errorText: _validateData ? 'Il campo non può essere vuoto' : null,
-              hintStyle: kHintTextStyle,
-            ),
-          ),
         ),
       ],
     );
@@ -262,11 +251,6 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
             else
               i++;
 
-            if(_dataController.text.isEmpty)
-              _validateData=true;
-            else
-              i++;
-
             if(_orainizioController.text.isEmpty)
               _validateOraInizio=true;
             else
@@ -335,7 +319,7 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
     firestoreInstance.collection("activity_pt").add(
         {
           "Nome" : _nomeController.text,
-          "Data" : _dataController.text,
+          "Data" : _dataController,
           "Ora_inizio": _orainizioController.text,
           "Ora_fine": _orafineController.text,
           "Città" : _cittaController.text,

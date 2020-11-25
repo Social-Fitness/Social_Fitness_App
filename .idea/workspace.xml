@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba857104-65df-4650-a4cc-dec240ab4271" name="Default Changelist" comment="PIANIFICA ATTIVITA'host e pt">
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Login_Page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Login_Page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Registrazione_Page_PT.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Registrazione_Page_PT.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Registrazione_Page_Sportivo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Registrazione_Page_Sportivo.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pianifica_att_pt.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pianifica_att_pt.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pianifica_att_utente.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pianifica_att_utente.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +53,17 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
       <method v="2" />
@@ -74,6 +89,7 @@
       <workItem from="1606238637626" duration="541000" />
       <workItem from="1606299921233" duration="4834000" />
       <workItem from="1606312807232" duration="795000" />
+      <workItem from="1606319238612" duration="492000" />
     </task>
     <task id="LOCAL-00001" summary="PIANIFICA ATTIVITA'host e pt">
       <created>1603885750998</created>
