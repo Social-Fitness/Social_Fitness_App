@@ -21,7 +21,6 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
   TextEditingController _confermapasswordController = new TextEditingController();
-  bool _rememberMe = false;
   bool _validate = false;
 
 
@@ -360,33 +359,73 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          firestoreInstance.collection("users").add(
-              {
-                "Categoria" : "Personal Trainer",
-                "Nome" : _nomeController.text,
-                "Cognome" : _cognomeController.text,
-                "Data_Di_Nascita ": _dataNascitaController.text,
-                "Email" : _emailController.text,
-                "Password": _passwordController.text,
-                "Indirizzo" : {
-                  "Città" : _cittaController.text,
-                  "CAP" : _capController.text,
-                }
-              }).then((value){
-            print(value.id);
-          });
           setState(() {
-            _nomeController.text.isEmpty ? _validate = true : _validate = false;
-            _cognomeController.text.isEmpty ? _validate = true : _validate = false;
-            _dataNascitaController.text.isEmpty ? _validate = true : _validate = false;
-            _cittaController.text.isEmpty ? _validate = true : _validate = false;
-            _capController.text.isEmpty ? _validate = true : _validate = false;
-            _emailController.text.isEmpty ? _validate = true : _validate = false;
-            _passwordController.text.isEmpty ? _validate = true : _validate = false;
+            int i=0;
+            if(_nomeController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
+
+            if(_cognomeController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
+
+            if(_dataNascitaController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
+
+            if(_emailController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
+
+            if(_passwordController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
+
+            if(_confermapasswordController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
+
+            if(_cittaController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
+
+            if(_capController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
+
+            if(i==8) {
+              _insertToDb();
+              Route route = MaterialPageRoute(
+                  builder: (context) => homePage());
+              Navigator.push(context, route);
+            }
+
           });
-          Route route = MaterialPageRoute(
-              builder: (context) => homePage());
-          Navigator.push(context, route);
+
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -407,7 +446,23 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
     );
   }
 
-
+  _insertToDb() {
+    firestoreInstance.collection("activity_host").add(
+        {
+          "Categoria": "Sportivo",
+          "Nome": _nomeController.text,
+          "Cognome": _cognomeController.text,
+          "Data_Di_Nascita ": _dataNascitaController.text,
+          "Email": _emailController.text,
+          "Password": _passwordController.text,
+          "Indirizzo": {
+            "Città": _cittaController.text,
+            "CAP": _capController.text,
+          }
+        }).then((value){
+      print(value.id);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

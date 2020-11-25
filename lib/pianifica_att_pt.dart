@@ -18,6 +18,7 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
   TextEditingController _orafineController = new TextEditingController();
   TextEditingController _cittaController = new TextEditingController();
   TextEditingController _indirizzoController = new TextEditingController();
+  bool _validate=false;
 
 
   Widget _buildNomeTF() {
@@ -48,6 +49,7 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci il Nome dell\'attività',
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -84,6 +86,7 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci la Data',
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -120,6 +123,7 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci l\'Ora di inizio',
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -156,6 +160,7 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci l\'Ora di fine',
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -192,6 +197,7 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci la Città',
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -228,6 +234,7 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci l\'indirizzo',
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -244,19 +251,54 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          firestoreInstance.collection("activity_pt").add(
-              {
-                "Nome": _nomeController.text,
-                "Data": _dataController.text,
-                "Ora_inizio ": _orainizioController.text,
-                "Ora_fine ": _orafineController.text,
-                "Città": _cittaController.text,
-                "Indirizzo": _indirizzoController.text,
+          setState(() {
+            int i=0;
+            if(_nomeController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
 
-              }).then((value) {
-            print(value.id);
+            if(_dataController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
+
+            if(_orainizioController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
+
+            if(_orafineController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
+
+            if(_cittaController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
+
+            if(_indirizzoController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
+
+            if(i==6)
+              _buildPopupTF(context);
+
           });
-          _buildPopupTF(context);
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -284,6 +326,7 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
         content:
           DialogButton(
             onPressed: () {
+              _insertToDb();
               Route route = MaterialPageRoute(
                   builder: (context) => homePage());
               Navigator.push(context, route);
@@ -296,6 +339,20 @@ class PianificaAttivitaPTScreenState extends State<PianificaAttivitaPTScreen> {
         ).show();
   }
 
+  _insertToDb() {
+    firestoreInstance.collection("activity_host").add(
+        {
+          "Nome" : _nomeController.text,
+          "Data" : _dataController.text,
+          "Ora_inizio": _orainizioController.text,
+          "Ora_fine": _orafineController.text,
+          "Città" : _cittaController.text,
+          "Indirizzo" : _indirizzoController.text,
+
+        }).then((value){
+      print(value.id);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

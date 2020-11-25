@@ -17,7 +17,7 @@ class PianificaAttivitaUtScreenState extends State<PianificaAttivitaUtScreen> {
   TextEditingController _oraController = new TextEditingController();
   TextEditingController _cittaController = new TextEditingController();
   TextEditingController _indirizzoController = new TextEditingController();
-
+  bool _validate=false;
 
   Widget _buildNomeTF() {
     return Column(
@@ -47,6 +47,7 @@ class PianificaAttivitaUtScreenState extends State<PianificaAttivitaUtScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci il Nome dell\'attività',
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -83,6 +84,7 @@ class PianificaAttivitaUtScreenState extends State<PianificaAttivitaUtScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci la Data',
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -119,6 +121,7 @@ class PianificaAttivitaUtScreenState extends State<PianificaAttivitaUtScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci l\'Ora',
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -155,6 +158,7 @@ class PianificaAttivitaUtScreenState extends State<PianificaAttivitaUtScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci la Città',
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -191,6 +195,7 @@ class PianificaAttivitaUtScreenState extends State<PianificaAttivitaUtScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci l\'indirizzo',
+              errorText: _validate ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -207,19 +212,48 @@ class PianificaAttivitaUtScreenState extends State<PianificaAttivitaUtScreen> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          firestoreInstance.collection("activity_host").add(
-              {
-                "Nome" : _nomeController.text,
-                "Data" : _dataController.text,
-                "Ora ": _oraController.text,
-                "Città" : _cittaController.text,
-                "Indirizzo" : _indirizzoController.text,
+          setState(() {
+            int i=0;
+            if(_nomeController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
 
-              }).then((value){
-            print(value.id);
+            if(_dataController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
+
+            if(_oraController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
+
+            if(_cittaController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
+
+            if(_indirizzoController.text.isEmpty)
+              _validate=true;
+            else {
+              _validate = false;
+              i++;
+            }
+
+            if(i==5)
+              _buildPopupTF(context);
+
           });
-          _buildPopupTF(context);
-        },
+  },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -246,6 +280,7 @@ class PianificaAttivitaUtScreenState extends State<PianificaAttivitaUtScreen> {
         content:
         DialogButton(
           onPressed: () {
+            _insertToDb();
             Route route = MaterialPageRoute(
                 builder: (context) => homePage());
             Navigator.push(context, route);
@@ -256,6 +291,20 @@ class PianificaAttivitaUtScreenState extends State<PianificaAttivitaUtScreen> {
           ),
         )
     ).show();
+  }
+
+  _insertToDb() {
+    firestoreInstance.collection("activity_host").add(
+        {
+          "Nome" : _nomeController.text,
+          "Data" : _dataController.text,
+          "Ora ": _oraController.text,
+          "Città" : _cittaController.text,
+          "Indirizzo" : _indirizzoController.text,
+
+        }).then((value){
+      print(value.id);
+    });
   }
 
 
