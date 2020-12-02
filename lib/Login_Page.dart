@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:social_fitness_app/HomePageMenu.dart';
 import 'package:social_fitness_app/utils/constants.dart';
+import 'package:social_fitness_app/Back-End/Login_Control.dart';
 
 import 'SelezionePToSpo_page.dart';
 
@@ -15,6 +17,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final firestoreInstance = FirebaseFirestore.instance;
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
   bool _rememberMe = false;
@@ -127,6 +130,52 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  Future<void> _showMyDialog() async {  // Questo apre un pop up di avviso, quando email o password sbagliati
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title:  Text(
+            "ERROR",
+            style: TextStyle(
+              color: Colors.red,
+              letterSpacing: 1.5,
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'OpenSans',
+            ),
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                  "Email o Password errati!",
+                  style: TextStyle(
+                    color: Colors.black,
+                    letterSpacing: 1.5,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'OpenSans',
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
   Widget _buildRememberMeCheckbox() {
     return Container(
       height: 20.0,
@@ -187,9 +236,17 @@ class _LoginScreenState extends State<LoginScreen> {
             }
 
             if (i == 2) {
-              Route route = MaterialPageRoute(
-                  builder: (context) => homePage());
-              Navigator.push(context, route);
+              Controll_Services()
+                  .getLatestReview(_emailController.text,_passwordController.text)
+                  .then((QuerySnapshot docs) {
+                if (docs.documents.isNotEmpty) {
+                  Route route = MaterialPageRoute(
+                      builder: (context) => homePage());
+                  Navigator.push(context, route);
+                }else {
+                  _showMyDialog();
+                }
+              });
             }
           });
         },
