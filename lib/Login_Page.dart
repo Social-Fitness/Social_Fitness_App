@@ -20,6 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _rememberMe = false;
   bool _validateEmail=false;
   bool _validatePw=false;
+  String _errorEmail=null;
 
   Widget _buildEmailTF() {
     return Column(
@@ -50,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Colors.white,
               ),
               hintText: 'Inserisci la tua Email',
-              errorText: _validateEmail ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateEmail ? 'Il campo non può essere vuoto' : _errorEmail,
               hintStyle: kHintTextStyle,
             ),
 
@@ -162,16 +163,28 @@ class _LoginScreenState extends State<LoginScreen> {
         onPressed: () {
           setState(() {
             int i = 0;
+            Pattern pattern=r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+            RegExp regex= new RegExp(pattern);
+
             if (_emailController.text.isEmpty)
               _validateEmail = true;
-            else
-              i++;
+             else
+               _validateEmail=false;
+              if(regex.hasMatch(_emailController.text)) {
+                i++;
+                _errorEmail = null;
+              }
+              else
+                _errorEmail="Email non valida!";
+
 
 
             if (_passwordController.text.isEmpty)
               _validatePw = true;
-            else
+            else {
+              _validatePw = false;
               i++;
+            }
 
             if (i == 2) {
               Route route = MaterialPageRoute(

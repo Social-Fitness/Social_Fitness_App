@@ -29,6 +29,8 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
   bool _validateEmail = false;
   bool _validatePw = false;
   bool _validateConfermaPw = false;
+  String _errorEmail=null;
+  String _passwordError=null;
 
 
 
@@ -235,7 +237,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
               ),
               hintText: 'Inserisci la tua Email',
               hintStyle: kHintTextStyle,
-              errorText: _validateEmail ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateEmail ? 'Il campo non può essere vuoto' : _errorEmail,
             ),
           ),
         ),
@@ -330,7 +332,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
               ),
               hintText: 'Conferma la tua Password',
               hintStyle: kHintTextStyle,
-              errorText: _validateConfermaPw ? 'Il campo non può essere vuoto' : null,
+              errorText: _validateConfermaPw ? 'Il campo non può essere vuoto' : _passwordError,
               suffixIcon: SizedBox(
                 width: 50.0,
                 height: 50.0,
@@ -359,47 +361,75 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
             int i=0;
             if(_nomeController.text.isEmpty)
               _validateNome=true;
-            else
+            else {
+              _validatePw = false;
               i++;
+            }
 
 
             if(_cognomeController.text.isEmpty)
               _validateCognome=true;
-            else
+            else {
+              _validatePw = false;
               i++;
+            }
 
 
-            if(_emailController.text.isEmpty)
-              _validateEmail=true;
+            Pattern pattern=r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+            RegExp regex= new RegExp(pattern);
+
+            if (_emailController.text.isEmpty)
+              _validateEmail = true;
             else
+              _validateEmail=false;
+            if(regex.hasMatch(_emailController.text)) {
               i++;
+              _errorEmail = null;
+            }
+            else
+              _errorEmail="Email non valida!";
 
 
             if(_passwordController.text.isEmpty)
               _validatePw=true;
-            else
+            else {
+              _validatePw = false;
               i++;
+            }
+
 
 
             if(_confermapasswordController.text.isEmpty)
               _validateConfermaPw=true;
-            else
-              i++;
+            else {
+              _validateConfermaPw=false;
+              if((_confermapasswordController.text).compareTo(_passwordController.text)==0) {
+                i++;
+                _passwordError = null;
+              }
+              else
+                _passwordError="Le due password non corrispondono";
+
+            }
 
 
             if(_cittaController.text.isEmpty)
               _validateCitta=true;
-            else
-              i++;
+            else {
+            _validatePw = false;
+            i++;
+            }
 
 
             if(_capController.text.isEmpty)
               _validateCap=true;
-            else
+            else {
+              _validatePw = false;
               i++;
+            }
 
 
-            if(i==8) {
+            if(i==7) {
               _insertToDb();
               Route route = MaterialPageRoute(
                   builder: (context) => homePage());
