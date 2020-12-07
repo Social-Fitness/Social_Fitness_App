@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:social_fitness_app/HomePageMenu.dart';
 import 'package:social_fitness_app/utils/constants.dart';
 
+import 'Back-End/Crypt_Password.dart';
+
 
 class RegistrazionePersonalTrainerScreen extends StatefulWidget {
   @override
@@ -362,7 +364,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
             if(_nomeController.text.isEmpty)
               _validateNome=true;
             else {
-              _validatePw = false;
+              _validateNome = false;
               i++;
             }
 
@@ -370,7 +372,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
             if(_cognomeController.text.isEmpty)
               _validateCognome=true;
             else {
-              _validatePw = false;
+              _validateCognome = false;
               i++;
             }
 
@@ -416,7 +418,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
             if(_cittaController.text.isEmpty)
               _validateCitta=true;
             else {
-            _validatePw = false;
+            _validateCitta = false;
             i++;
             }
 
@@ -424,7 +426,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
             if(_capController.text.isEmpty)
               _validateCap=true;
             else {
-              _validatePw = false;
+              _validateCap = false;
               i++;
             }
 
@@ -459,6 +461,8 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
   }
 
   _insertToDb() {
+    var encrypted=encryptAESCryptoJS(_passwordController.text, "password");
+
     firestoreInstance.collection("users").add(
         {
           "Categoria": "Sportivo",
@@ -466,7 +470,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
           "Cognome": _cognomeController.text,
           "Data_Di_Nascita ": _dataNascitaController,
           "Email": _emailController.text,
-          "Password": _passwordController.text,
+          "Password": encrypted,
           "Indirizzo": {
             "Città": _cittaController.text,
             "CAP": _capController.text,

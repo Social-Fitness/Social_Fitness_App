@@ -2,13 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:social_fitness_app/HomePageMenu.dart';
 import 'package:social_fitness_app/utils/constants.dart';
 
-const _PATH = "assets/image";
-const _PIC01 = "$_PATH/facebook.jpg";
-const _PIC02 = "$_PATH/google_logo.png";
+import 'Back-End/Crypt_Password.dart';
+
 
 class RegistrazioneSportivoScreen extends StatefulWidget {
   @override
@@ -365,7 +363,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
             if(_nomeController.text.isEmpty)
               _validateNome=true;
             else {
-              _validatePw = false;
+              _validateNome = false;
               i++;
             }
 
@@ -373,7 +371,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
             if(_cognomeController.text.isEmpty)
               _validateCognome=true;
             else {
-              _validatePw = false;
+              _validateCognome = false;
               i++;
             }
 
@@ -412,14 +410,13 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               }
               else
                 _passwordError="Le due password non corrispondono";
-
             }
 
 
             if(_cittaController.text.isEmpty)
               _validateCitta=true;
             else {
-              _validatePw = false;
+              _validateCitta = false;
               i++;
             }
 
@@ -427,7 +424,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
             if(_capController.text.isEmpty)
               _validateCap=true;
             else {
-              _validatePw = false;
+              _validateCap = false;
               i++;
             }
 
@@ -461,6 +458,8 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
   }
 
   _insertToDb() {
+  var encrypted=encryptAESCryptoJS(_passwordController.text, "password");
+  var decrypted=decryptAESCryptoJS(encrypted, "password");
     firestoreInstance.collection("users").add(
         {
           "Categoria": "Sportivo",
@@ -468,7 +467,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
           "Cognome": _cognomeController.text,
           "Data_Di_Nascita ": _dataNascitaController,
           "Email": _emailController.text,
-          "Password": _passwordController.text,
+          "Password": encrypted,
           "Indirizzo": {
             "Città": _cittaController.text,
             "CAP": _capController.text,
@@ -477,6 +476,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
       print(value.id);
     });
   }
+
 
   @override
   Widget build(BuildContext context) {

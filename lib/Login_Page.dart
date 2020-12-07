@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:social_fitness_app/HomePageMenu.dart';
 import 'package:social_fitness_app/utils/constants.dart';
-import 'package:social_fitness_app/Back-End/Login_Control.dart';
 
+import 'Back-End/Crypt_Password.dart';
 import 'SelezionePToSpo_page.dart';
 
 const _PATH = "assets/image";
@@ -236,20 +236,33 @@ class _LoginScreenState extends State<LoginScreen> {
             }
 
             if (i == 2) {
-              Controll_Services()
-                  .getLatestReview(_emailController.text,_passwordController.text)
-                  .then((QuerySnapshot docs) {
-                if (docs.documents.isNotEmpty) {
+              print("I PARAMETRI SONO 2");
+              FirebaseFirestore.instance
+                  .collection("users")
+                  .where("Email", isEqualTo: _emailController)
+                  .getDocuments().then((QuerySnapshot docu) {
+                String pw=docu.documents[0].get("Password");
+                print("PW "+pw);
+
+                String decrypted=decryptAESCryptoJS(pw, "password");
+
+                if(decrypted.compareTo(_passwordController.text)==0) {
+
                   Route route = MaterialPageRoute(
                       builder: (context) => homePage());
                   Navigator.push(context, route);
-                }else {
-                  _showMyDialog();
                 }
+                else {
+                  _showMyDialog();
+
+                  }
               });
-            }
+
+
+              };
           });
         },
+
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
