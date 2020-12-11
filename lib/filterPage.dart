@@ -37,10 +37,10 @@ class FilterPage extends StatefulWidget {
 class FilterPageState extends State<FilterPage> {
 
   List<String> countList = [
-    "Corsa",
+    "Corsa/Camminata",
     "Ciclismo",
-    "Alpinismo",
-    "Arrampicata Sportiva",
+    "Yoga/Pilates",
+    "Corpo Libero",
     "Personal Trainer",
     "06:00 - 09:00",
     "09:00 - 12:00",
