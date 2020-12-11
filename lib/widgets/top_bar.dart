@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:social_fitness_app/Back-End/read_DataUsers.dart';
 import 'package:social_fitness_app/modifica_Profilo.dart';
+
+enum WhyFarther { harder, smarter, selfStarter, tradingCharter }
+
 
 class TopBar extends StatelessWidget {
   const TopBar({
@@ -16,29 +18,41 @@ class TopBar extends StatelessWidget {
           actions: <Widget>[
         IconButton(
         icon: const Icon(Icons.menu),
-        onPressed: () async {
-
-          /*Future _getInfo(String emai)  async {
-            var x = Read_Data_Services();
-            var docs = await x.getDataUsers(emai);
-            var nome = docs.documents[0].get("Nome");
-            var cognome = docs.documents[0].get("Cognome");
-            var data = docs.documents[0].get("Data_Di_Nascita");
-            var cat = docs.documents[0].get("Categoria");
-            var cap = docs.documents[0].get("CAP");
-            var city = docs.documents[0].get("Città");
-            var email = docs.documents[0].get("Email");
-            return InformazioniPersonali(nome, cognome, data, cat, cap, city, email);
-          }
-
-          InformazioniPersonali ip = await _getInfo("salvatore.amideo97@gmail.com");*/
-          Route route = MaterialPageRoute(
+        onPressed: ()  {
+          buildMenu();
+          /*Route route = MaterialPageRoute(
               builder: (context) => ModificaProfiloView());
-          Navigator.push(context, route);
+          Navigator.push(context, route); */
       },
     )
     ]
     ),
+    );
+  }
+
+  Widget buildMenu()  {
+    return Container(
+        child: PopupMenuButton<WhyFarther>(
+      onSelected: (WhyFarther result) { /*setState(() { var _selection = result; }); */},
+      itemBuilder: (BuildContext context) => <PopupMenuEntry<WhyFarther>>[
+        const PopupMenuItem<WhyFarther>(
+          value: WhyFarther.harder,
+          child: Text('Working a lot harder'),
+        ),
+        const PopupMenuItem<WhyFarther>(
+          value: WhyFarther.smarter,
+          child: Text('Being a lot smarter'),
+        ),
+        const PopupMenuItem<WhyFarther>(
+          value: WhyFarther.selfStarter,
+          child: Text('Being a self-starter'),
+        ),
+        const PopupMenuItem<WhyFarther>(
+          value: WhyFarther.tradingCharter,
+          child: Text('Placed in charge of trading charter'),
+        ),
+      ],
+    )
     );
   }
 }

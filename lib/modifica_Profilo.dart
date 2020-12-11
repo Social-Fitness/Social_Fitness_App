@@ -528,7 +528,7 @@ class ModificaProfiloStateView extends State<ModificaProfiloView> {
 
   _insertToDb() {
     var encrypted = encryptAESCryptoJS(_passwordController.text, "password");
-    var decrypted = decryptAESCryptoJS(encrypted, "password");
+    //var decrypted = decryptAESCryptoJS(encrypted, "password");
     firestoreInstance.collection("users").add(
         {
           "Categoria": "Sportivo",
