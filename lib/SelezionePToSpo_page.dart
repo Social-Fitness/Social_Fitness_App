@@ -61,7 +61,7 @@ class SelezioneScreenState extends State<SelezioneScreen> {
         child: Stack(
           children: <Widget>[
          Text(
-          'SPORTIVO',
+          'RUNNER/CICLISTA',
           style: TextStyle(
             color: Color(0xFF527DAA),
             letterSpacing: 1.5,
@@ -128,7 +128,7 @@ class SelezioneScreenState extends State<SelezioneScreen> {
                 SizedBox(height: 30.0),
                 Image(
                   image: AssetImage(
-                    'assets/image/atleta_scelta.png',
+                    'assets/image/runecic.png',
                   ),
                   height: 200.0,
                   width: 200.0,

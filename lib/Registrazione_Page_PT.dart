@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:social_fitness_app/HomePageMenu.dart';
+import 'package:social_fitness_app/HomePageMenuPT.dart';
 import 'package:social_fitness_app/utils/constants.dart';
 
 import 'Back-End/Crypt_Password.dart';
@@ -19,21 +19,18 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
   TextEditingController _nomeController = new TextEditingController();
   TextEditingController _cognomeController = new TextEditingController();
   String _dataNascitaController;
-  TextEditingController _cittaController = new TextEditingController();
-  TextEditingController _capController = new TextEditingController();
+  TextEditingController _paeseController = new TextEditingController();
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
   TextEditingController _confermapasswordController = new TextEditingController();
   bool _validateNome = false;
   bool _validateCognome = false;
-  bool _validateCitta = false;
-  bool _validateCap = false;
+  bool _validatePaese = false;
   bool _validateEmail = false;
   bool _validatePw = false;
   bool _validateConfermaPw = false;
   String _errorEmail=null;
   String _passwordError=null;
-
 
 
   Widget _buildNomeTF() {
@@ -136,12 +133,12 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
     );
   }
 
-  Widget _buildCittaTF() {
+  Widget _buildPaeseTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Città',
+          'Paese',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
@@ -150,7 +147,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            controller: _cittaController,
+            controller: _paeseController,
             keyboardType: TextInputType.name,
             style: TextStyle(
               color: Colors.white,
@@ -163,46 +160,9 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
                 Icons.location_city,
                 color: Colors.white,
               ),
-              hintText: 'Inserisci la tua Città',
+              hintText: 'Inserisci il tuo Paese',
               hintStyle: kHintTextStyle,
-              errorText: _validateCitta ? 'Il campo non può essere vuoto' : null,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildCAPTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'CAP',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            controller: _capController,
-            keyboardType: TextInputType.number,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.location_city,
-                color: Colors.white,
-              ),
-              hintText: 'Inserisci il CAP della tua città',
-              hintStyle: kHintTextStyle,
-              errorText: _validateCap ? 'Il campo non può essere vuoto' : null,
+              errorText: _validatePaese ? 'Il campo non può essere vuoto' : null,
             ),
           ),
         ),
@@ -415,23 +375,15 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
             }
 
 
-            if(_cittaController.text.isEmpty)
-              _validateCitta=true;
+            if(_paeseController.text.isEmpty)
+              _validatePaese=true;
             else {
-            _validateCitta = false;
+            _validatePaese = false;
             i++;
             }
 
 
-            if(_capController.text.isEmpty)
-              _validateCap=true;
-            else {
-              _validateCap = false;
-              i++;
-            }
-
-
-            if(i==7) {
+            if(i==6) {
               _insertToDb();
               Route route = MaterialPageRoute(
                   builder: (context) => homePage());
@@ -471,10 +423,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
           "Data_Di_Nascita ": _dataNascitaController,
           "Email": _emailController.text,
           "Password": encrypted,
-          "Indirizzo": {
-            "Città": _cittaController.text,
-            "CAP": _capController.text,
-          }
+          "Paese": _paeseController.text
         }).then((value){
       print(value.id);
     });
@@ -533,9 +482,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
                       SizedBox(height: 10.0),
                       _buildDatadiNascitaTF(),
                       SizedBox(height: 10.0,),
-                      _buildCittaTF(),
-                      SizedBox(height: 10.0),
-                      _buildCAPTF(),
+                      _buildPaeseTF(),
                       SizedBox(height: 10.0),
                       _buildEmailTF(),
                       SizedBox(height: 10.0),

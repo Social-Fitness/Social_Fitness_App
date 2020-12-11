@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:social_fitness_app/HomePageMenu.dart';
+import 'package:social_fitness_app/HomePageMenuPT.dart';
 import 'package:social_fitness_app/utils/constants.dart';
 
 import 'Back-End/Crypt_Password.dart';
@@ -14,25 +14,23 @@ class RegistrazioneSportivoScreen extends StatefulWidget {
 }
 
 class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen> {
+  final formKey= new GlobalKey<FormState>();
   final firestoreInstance = FirebaseFirestore.instance;
   TextEditingController _nomeController = new TextEditingController();
   TextEditingController _cognomeController = new TextEditingController();
   String _dataNascitaController;
-  TextEditingController _cittaController = new TextEditingController();
-  TextEditingController _capController = new TextEditingController();
+  TextEditingController _paeseController = new TextEditingController();
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
   TextEditingController _confermapasswordController = new TextEditingController();
   bool _validateNome = false;
   bool _validateCognome = false;
-  bool _validateCitta = false;
-  bool _validateCap = false;
+  bool _validatePaese = false;
   bool _validateEmail = false;
   bool _validatePw = false;
   bool _validateConfermaPw = false;
   String _errorEmail=null;
   String _passwordError=null;
-
 
 
   Widget _buildNomeTF() {
@@ -100,8 +98,8 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
                 color: Colors.white,
               ),
               hintText: 'Inserisci il tuo Cognome',
-              errorText: _validateCognome ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
+              errorText: _validateCognome ? 'Il campo non può essere vuoto' : null,
             ),
           ),
         ),
@@ -135,12 +133,12 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
     );
   }
 
-  Widget _buildCittaTF() {
+  Widget _buildPaeseTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Città',
+          'Paese',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
@@ -149,7 +147,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            controller: _cittaController,
+            controller: _paeseController,
             keyboardType: TextInputType.name,
             style: TextStyle(
               color: Colors.white,
@@ -162,46 +160,9 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
                 Icons.location_city,
                 color: Colors.white,
               ),
-              hintText: 'Inserisci la tua Città',
-              errorText: _validateCitta ? 'Il campo non può essere vuoto' : null,
+              hintText: 'Inserisci il tuo Paese',
               hintStyle: kHintTextStyle,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildCAPTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'CAP',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            controller: _capController,
-            keyboardType: TextInputType.number,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.location_city,
-                color: Colors.white,
-              ),
-              hintText: 'Inserisci il CAP della tua città',
-              errorText: _validateCap ? 'Il campo non può essere vuoto' : null,
-              hintStyle: kHintTextStyle,
+              errorText: _validatePaese ? 'Il campo non può essere vuoto' : null,
             ),
           ),
         ),
@@ -237,15 +198,14 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
                 color: Colors.white,
               ),
               hintText: 'Inserisci la tua Email',
-              errorText: _validateEmail ? 'Il campo non può essere vuoto' : _errorEmail,
               hintStyle: kHintTextStyle,
+              errorText: _validateEmail ? 'Il campo non può essere vuoto' : _errorEmail,
             ),
           ),
         ),
       ],
     );
   }
-
   bool _obscureText = true;
   bool _obscureConfermaText = true;
 
@@ -288,8 +248,8 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
                 color: Colors.white,
               ),
               hintText: 'Inserisci la tua Password',
-              errorText: _validatePw ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
+              errorText: _validatePw ? 'Il campo non può essere vuoto' : null,
               suffixIcon: SizedBox(
                 width: 50.0,
                 height: 50.0,
@@ -304,48 +264,49 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
       ],
     );
   }
+
   Widget _buildConfermaPasswordTF() {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Conferma Password',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            controller: _confermapasswordController,
-            obscureText: _obscureConfermaText,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.lock,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            'Conferma Password',
+            style: kLabelStyle,
+          ),
+          SizedBox(height: 10.0),
+          Container(
+            alignment: Alignment.centerLeft,
+            decoration: kBoxDecorationStyle,
+            height: 60.0,
+            child: TextField(
+              controller: _confermapasswordController,
+              obscureText: _obscureConfermaText,
+              style: TextStyle(
                 color: Colors.white,
+                fontFamily: 'OpenSans',
               ),
-              hintText: 'Conferma la tua Password',
-              errorText: _validateConfermaPw ? 'Il campo non può essere vuoto' : _passwordError,
-              hintStyle: kHintTextStyle,
-              suffixIcon: SizedBox(
-                width: 50.0,
-                height: 50.0,
-                child: new FlatButton(
-                    onPressed: _toggleConferma,
-                    child: new Icon(_obscureConfermaText ? Icons.remove_red_eye:Icons.remove_red_eye_outlined,color: Colors.white,)
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.only(top: 14.0),
+                prefixIcon: Icon(
+                  Icons.lock,
+                  color: Colors.white,
+                ),
+                hintText: 'Conferma la tua Password',
+                hintStyle: kHintTextStyle,
+                errorText: _validateConfermaPw ? 'Il campo non può essere vuoto' : _passwordError,
+                suffixIcon: SizedBox(
+                  width: 50.0,
+                  height: 50.0,
+                  child: new FlatButton(
+                      onPressed: _toggleConferma,
+                      child: new Icon(_obscureConfermaText ? Icons.remove_red_eye:Icons.remove_red_eye_outlined,color: Colors.white,)
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-      ],
+        ]
     );
   }
 
@@ -410,25 +371,19 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               }
               else
                 _passwordError="Le due password non corrispondono";
+
             }
 
 
-            if(_cittaController.text.isEmpty)
-              _validateCitta=true;
+            if(_paeseController.text.isEmpty)
+              _validatePaese=true;
             else {
-              _validateCitta = false;
+              _validatePaese = false;
               i++;
             }
 
 
-            if(_capController.text.isEmpty)
-              _validateCap=true;
-            else {
-              _validateCap = false;
-              i++;
-            }
-
-            if(i==7) {
+            if(i==6) {
               _insertToDb();
               Route route = MaterialPageRoute(
                   builder: (context) => homePage());
@@ -458,8 +413,8 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
   }
 
   _insertToDb() {
-  var encrypted=encryptAESCryptoJS(_passwordController.text, "password");
-  var decrypted=decryptAESCryptoJS(encrypted, "password");
+    var encrypted=encryptAESCryptoJS(_passwordController.text, "password");
+
     firestoreInstance.collection("users").add(
         {
           "Categoria": "Sportivo",
@@ -468,15 +423,11 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
           "Data_Di_Nascita ": _dataNascitaController,
           "Email": _emailController.text,
           "Password": encrypted,
-          "Indirizzo": {
-            "Città": _cittaController.text,
-            "CAP": _capController.text,
-          }
+          "Paese": _paeseController.text
         }).then((value){
       print(value.id);
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -531,9 +482,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
                       SizedBox(height: 10.0),
                       _buildDatadiNascitaTF(),
                       SizedBox(height: 10.0,),
-                      _buildCittaTF(),
-                      SizedBox(height: 10.0),
-                      _buildCAPTF(),
+                      _buildPaeseTF(),
                       SizedBox(height: 10.0),
                       _buildEmailTF(),
                       SizedBox(height: 10.0),

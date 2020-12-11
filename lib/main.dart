@@ -2,7 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:social_fitness_app/WelcomePage.dart';
-import 'package:social_fitness_app/userProfile.dart';
 
 
 void main() async {
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
                   hintColor: Color(0xFF0288D1),
                   primaryColor: Color(0xFF01579B),
                   canvasColor: Colors.transparent),
-              home: userProfile(),
+              home: WelcomePage(),
             );
           }
         }

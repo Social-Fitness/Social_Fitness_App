@@ -117,7 +117,7 @@ class WelcomePageState extends State<WelcomePage> {
                             Center(
                               child: Image(
                                 image: AssetImage(
-                                  'assets/image/running.png',
+                                  'assets/image/runecic.png',
                                 ),
                                 height: 300.0,
                                 width: 300.0,
@@ -125,7 +125,7 @@ class WelcomePageState extends State<WelcomePage> {
                             ),
                             SizedBox(height: 30.0),
                             Text(
-                              "Un'app pensata per praticare sport all’aperto amplificando l'interazione sociale",
+                              "Un'app pensata per runner e ciclisti",
                               style: kTitleStyle,
                             ),
                           ],
@@ -139,7 +139,7 @@ class WelcomePageState extends State<WelcomePage> {
                             Center(
                               child: Image(
                                 image: AssetImage(
-                                  'assets/image/mappa.png',
+                                  'assets/image/doc.png',
                                 ),
                                 height: 300.0,
                                 width: 300.0,
@@ -147,7 +147,7 @@ class WelcomePageState extends State<WelcomePage> {
                             ),
                             SizedBox(height: 30.0),
                             Text(
-                              'Avrai la possibilità di avere tutto a portata di mano avendo una mappa con pin per  visualizzare, cercare e partecipare alle diverse attività sportive organizzate all’aperto.',
+                              'Avrai la possibilità di avere a portata di mano diverse tipologie di allenamento',
                               style: kTitleStyle,
                             ),
                           ],
@@ -169,7 +169,7 @@ class WelcomePageState extends State<WelcomePage> {
                             ),
                             SizedBox(height: 30.0),
                             Text(
-                              "Organizza un'attività o lascialo fare ai Personal Trainer",
+                              "Se sei Personal Trainer potrai creare e condividere i tuoi allenamenti",
                               style: kTitleStyle,
                             ),
                           ],
