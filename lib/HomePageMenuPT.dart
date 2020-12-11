@@ -1,5 +1,6 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/SelezioneCicCor.dart';
 import 'userProfile.dart';
 import 'allenamento_ciclismo.dart';
 import 'MapPage.dart';
@@ -13,7 +14,7 @@ class homePagePT extends StatefulWidget {
 }
 class homePageStatePT extends State<homePagePT> {
   int selectedPage = 1;
-  final _pageOptions = [PianificaAttivitaPTScreen(),MapPage(),userProfile()];
+  final _pageOptions = [PianificaAttivitaPTScreen(),SelezioneSportScreen(),userProfile()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

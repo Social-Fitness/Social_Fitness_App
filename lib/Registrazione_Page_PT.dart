@@ -386,7 +386,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
             if(i==6) {
               _insertToDb();
               Route route = MaterialPageRoute(
-                  builder: (context) => homePage());
+                  builder: (context) => homePagePT());
               Navigator.push(context, route);
             }
 

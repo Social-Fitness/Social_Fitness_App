@@ -121,7 +121,7 @@ class SelezioneSportScreenState extends State<SelezioneSportScreen> {
                 SizedBox(height: 30.0),
                 Image(
                   image: AssetImage(
-                    'assets/image/PT_scelta.png',
+                    'assets/image/running.png',
                   ),
                   height: 150.0,
                   width: 150.0,
@@ -130,7 +130,7 @@ class SelezioneSportScreenState extends State<SelezioneSportScreen> {
                 SizedBox(height: 30.0),
                 Image(
                   image: AssetImage(
-                    'assets/image/runecic.png',
+                    'assets/image/bike.png',
                   ),
                   height: 200.0,
                   width: 200.0,
