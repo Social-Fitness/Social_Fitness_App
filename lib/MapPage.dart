@@ -3,13 +3,9 @@ import 'package:filter_list/filter_list.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
-import 'package:social_fitness_app/pianifica_att_pt.dart';
-import 'package:social_fitness_app/pianifica_att_utente.dart';
 import 'package:social_fitness_app/userProfile.dart';
 
 //la barra di sopra deve ricercare i luoghi all'interno della mappa
-
-
 
 class MapPage extends StatefulWidget {
   @override
@@ -27,13 +23,12 @@ class MapPageState extends State<MapPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   int selectedPage = 0;
-  final _pageOptions = [MapPage(),  userProfile(), PianificaAttivitaUtScreen(), PianificaAttivitaPTScreen()];
 
   List<String> countList = [
-    "Corsa",
+    "Jogging",
     "Ciclismo",
-    "Alpinismo",
-    "Arrampicata Sportiva",
+    "Corpo Libero",
+    "CrossFit",
     "Personal Trainer",
     "06:00 - 09:00",
     "09:00 - 12:00",
