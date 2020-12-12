@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:social_fitness_app/modifica_Profilo.dart';
 
 enum WhyFarther { harder, smarter, selfStarter, tradingCharter }
 

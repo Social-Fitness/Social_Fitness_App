@@ -304,7 +304,7 @@ class AllenamentoCicScreenState extends State<AllenamentoCicScreen> {
             onPressed: () {
               _insertToDb();
               Route route = MaterialPageRoute(
-                  builder: (context) => homePage());
+                  builder: (context) => homePagePT());
               Navigator.push(context, route);
             },
             child: Text(

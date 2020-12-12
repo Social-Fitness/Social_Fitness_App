@@ -46,6 +46,7 @@ dependencies:
   rflutter_alert: ^1.0.3
   tuple: ^1.0.3
   encrypt: ^4.0.0
+  country_list_pick: ^1.0.1+2
 
 dev_dependencies:
   flutter_test:

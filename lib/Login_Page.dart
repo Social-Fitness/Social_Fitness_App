@@ -249,7 +249,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 if(decrypted.compareTo(_passwordController.text)==0) {
 
                   Route route = MaterialPageRoute(
-                      builder: (context) => homePage());
+                      builder: (context) => homePagePT());
                   Navigator.push(context, route);
                 }
                 else {

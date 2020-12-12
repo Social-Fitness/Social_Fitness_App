@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -134,7 +135,36 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
   }
 
   Widget _buildPaeseTF() {
-    return Column(
+    return CountryListPick(
+    pickerBuilder:
+        (context, CountryCode countryCode) {
+       Column(
+        children: [
+          Image.asset(countryCode.flagUri,
+              package: 'country_list_pick'),
+          Text(countryCode.code),
+          Text(countryCode.dialCode)
+        ],
+      );
+    },
+    theme: CountryTheme(
+    isShowFlag: true,
+    isShowTitle: true,
+    isShowCode: true,
+    isDownIcon: true,
+    showEnglishName: true,
+    ),
+    // Set default value
+    initialSelection: '+62',
+    onChanged: (CountryCode code) {
+    print(code.name);
+    print(code.code);
+    print(code.dialCode);
+    print(code.flagUri);
+    },
+    );
+  }
+      /*return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
@@ -167,8 +197,8 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
           ),
         ),
       ],
-    );
-  }
+    );*/
+
 
   Widget _buildEmailTF() {
     return Column(
@@ -417,7 +447,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
 
     firestoreInstance.collection("users").add(
         {
-          "Categoria": "Sportivo",
+          "Categoria": "Personal Trainer",
           "Nome": _nomeController.text,
           "Cognome": _cognomeController.text,
           "Data_Di_Nascita ": _dataNascitaController,
