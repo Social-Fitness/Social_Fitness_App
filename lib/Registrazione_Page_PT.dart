@@ -134,37 +134,8 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
     );
   }
 
-  Widget _buildPaeseTF(BuildContext context) {
-    return CountryListPick(
-    pickerBuilder:
-        (context, CountryCode countryCode) {
-       Column(
-        children: [
-          Image.asset(countryCode.flagUri,
-              package: 'country_list_pick'),
-          Text(countryCode.code),
-          Text(countryCode.dialCode)
-        ],
-      );
-    },
-    theme: CountryTheme(
-    isShowFlag: true,
-    isShowTitle: true,
-    isShowCode: true,
-    isDownIcon: true,
-    showEnglishName: true,
-    ),
-    // Set default value
-    initialSelection: '+62',
-    onChanged: (CountryCode code) {
-    print(code.name);
-    print(code.code);
-    print(code.dialCode);
-    print(code.flagUri);
-    },
-    );
-  }
-      /*return Column(
+  Widget _buildPaeseTF() {
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
@@ -173,31 +144,33 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
         ),
         SizedBox(height: 10.0),
         Container(
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.center,
           decoration: kBoxDecorationStyle,
           height: 60.0,
-          child: TextField(
-            controller: _paeseController,
-            keyboardType: TextInputType.name,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
+          child: CountryListPick(
+            appBar: AppBar(
+              backgroundColor: Color(0xFF0288D1),
+              title: Text('SCEGLI IL PAESE'),
             ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.location_city,
-                color: Colors.white,
-              ),
-              hintText: 'Inserisci il tuo Paese',
-              hintStyle: kHintTextStyle,
-              errorText: _validatePaese ? 'Il campo non può essere vuoto' : null,
+            theme: CountryTheme(
+              isShowFlag: true,
+              isShowTitle: true,
+              isShowCode: true,
+              isDownIcon: true,
+              showEnglishName: true,
             ),
+            initialSelection: '+39',
+            onChanged: (CountryCode code) {
+              print(code.name);
+              print(code.code);
+              print(code.dialCode);
+              print(code.flagUri);
+            },
           ),
         ),
       ],
-    );*/
+    );
+  }
 
 
   Widget _buildEmailTF() {
@@ -509,10 +482,10 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
                       _buildNomeTF(),
                       SizedBox(height: 10.0),
                       _buildCognomeTF(),
-                      SizedBox(height: 10.0),
+                      SizedBox(height: 20.0),
                       _buildDatadiNascitaTF(),
                       SizedBox(height: 10.0,),
-                      _buildPaeseTF(context),
+                      _buildPaeseTF(),
                       SizedBox(height: 10.0),
                       _buildEmailTF(),
                       SizedBox(height: 10.0),
