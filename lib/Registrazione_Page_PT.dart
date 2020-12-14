@@ -121,7 +121,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
           height: 80,
           child: CupertinoDatePicker(
             mode: CupertinoDatePickerMode.date,
-            initialDateTime: DateTime(2000, 1, 1),
+            initialDateTime: DateTime(1950, 1, 1),
             onDateTimeChanged: (DateTime newDateTime) {
               _dataNascitaController = newDateTime.day.toString() + "-" + newDateTime.month.toString() + "-" + newDateTime.year.toString();
               // Do something
@@ -134,7 +134,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
     );
   }
 
-  Widget _buildPaeseTF() {
+  Widget _buildPaeseTF(BuildContext context) {
     return CountryListPick(
     pickerBuilder:
         (context, CountryCode countryCode) {
@@ -512,7 +512,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
                       SizedBox(height: 10.0),
                       _buildDatadiNascitaTF(),
                       SizedBox(height: 10.0,),
-                      _buildPaeseTF(),
+                      _buildPaeseTF(context),
                       SizedBox(height: 10.0),
                       _buildEmailTF(),
                       SizedBox(height: 10.0),

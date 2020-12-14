@@ -121,7 +121,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
           height: 80,
           child: CupertinoDatePicker(
             mode: CupertinoDatePickerMode.date,
-            initialDateTime: DateTime(2000, 1, 1),
+            initialDateTime: DateTime(1950, 1, 1),
             onDateTimeChanged: (DateTime newDateTime) {
               _dataNascitaController = newDateTime.day.toString() + "-" + newDateTime.month.toString() + "-" + newDateTime.year.toString();
               // Do something
