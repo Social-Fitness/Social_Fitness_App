@@ -2,7 +2,7 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/SelezioneCicCor.dart';
 import 'userProfile.dart';
-import 'allenamento_ciclismo.dart';
+import 'Allenamento_Ciclismo.dart';
 
 
 class homePagePT extends StatefulWidget {

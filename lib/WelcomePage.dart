@@ -183,7 +183,7 @@ class WelcomePageState extends State<WelcomePage> {
                             Center(
                               child: Image(
                                 image: AssetImage(
-                                  'assets/image/Logo.png',
+                                  'assets/image/Logo2.png',
                                 ),
                                 height: 300.0,
                                 width: 300.0,

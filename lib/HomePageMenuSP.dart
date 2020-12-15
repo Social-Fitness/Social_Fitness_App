@@ -1,7 +1,8 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/DashBoard.dart';
 import 'userProfile.dart';
-import 'allenamento_ciclismo.dart';
+import 'Allenamento_Ciclismo.dart';
 
 
 class homePageSP extends StatefulWidget {
@@ -12,7 +13,7 @@ class homePageSP extends StatefulWidget {
 }
 class homePageStateSP extends State<homePageSP> {
   int selectedPage = 0;
-  final _pageOptions = [AllenamentoCicScreen(),userProfile()];
+  final _pageOptions = [DashBoard(),userProfile()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

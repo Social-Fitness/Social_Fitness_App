@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:social_fitness_app/Registrazione_Page_PT.dart';
 import 'package:social_fitness_app/Registrazione_Page_Sportivo.dart';
-import 'package:social_fitness_app/allenamento_ciclismo.dart';
-import 'package:social_fitness_app/allenamento_corsa.dart';
+import 'package:social_fitness_app/Allenamento_Ciclismo.dart';
+import 'package:social_fitness_app/Allenamento_Corsa.dart';
 
 class SelezioneSportScreen extends StatefulWidget {
   @override
