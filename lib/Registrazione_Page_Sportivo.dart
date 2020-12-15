@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,13 +21,12 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
   TextEditingController _nomeController = new TextEditingController();
   TextEditingController _cognomeController = new TextEditingController();
   String _dataNascitaController;
-  TextEditingController _paeseController = new TextEditingController();
+  String _paeseController;
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
   TextEditingController _confermapasswordController = new TextEditingController();
   bool _validateNome = false;
   bool _validateCognome = false;
-  bool _validatePaese = false;
   bool _validateEmail = false;
   bool _validatePw = false;
   bool _validateConfermaPw = false;
@@ -144,32 +144,35 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
         ),
         SizedBox(height: 10.0),
         Container(
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.center,
           decoration: kBoxDecorationStyle,
           height: 60.0,
-          child: TextField(
-            controller: _paeseController,
-            keyboardType: TextInputType.name,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
+          child: CountryListPick(
+            appBar: AppBar(
+              backgroundColor: Color(0xFF0288D1),
+              title: Text('SCEGLI IL PAESE'),
             ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.location_city,
-                color: Colors.white,
-              ),
-              hintText: 'Inserisci il tuo Paese',
-              hintStyle: kHintTextStyle,
-              errorText: _validatePaese ? 'Il campo non può essere vuoto' : null,
+            theme: CountryTheme(
+              isShowFlag: true,
+              isShowTitle: true,
+              isShowCode: true,
+              isDownIcon: true,
+              showEnglishName: true,
             ),
+            initialSelection: '+39',
+            onChanged: (CountryCode code) {
+              print(code.name);
+              print(code.code);
+              print(code.dialCode);
+              print(code.flagUri);
+              _paeseController=code.name;
+            },
           ),
         ),
       ],
     );
   }
+
 
   Widget _buildEmailTF() {
     return Column(
@@ -376,15 +379,8 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
             }
 
 
-            if(_paeseController.text.isEmpty)
-              _validatePaese=true;
-            else {
-              _validatePaese = false;
-              i++;
-            }
 
-
-            if(i==6) {
+            if(i==5) {
               _insertToDb();
               Route route = MaterialPageRoute(
                   builder: (context) => homePageSP());
@@ -424,7 +420,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
           "Data_Di_Nascita ": _dataNascitaController,
           "Email": _emailController.text,
           "Password": encrypted,
-          "Paese": _paeseController.text
+          "Paese": _paeseController,
         }).then((value){
       print(value.id);
     });

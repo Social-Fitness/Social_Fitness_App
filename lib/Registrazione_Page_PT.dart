@@ -20,13 +20,12 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
   TextEditingController _nomeController = new TextEditingController();
   TextEditingController _cognomeController = new TextEditingController();
   String _dataNascitaController;
-  TextEditingController _paeseController = new TextEditingController();
+  String _paeseController;
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
   TextEditingController _confermapasswordController = new TextEditingController();
   bool _validateNome = false;
   bool _validateCognome = false;
-  bool _validatePaese = false;
   bool _validateEmail = false;
   bool _validatePw = false;
   bool _validateConfermaPw = false;
@@ -165,6 +164,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
               print(code.code);
               print(code.dialCode);
               print(code.flagUri);
+              _paeseController=code.name;
             },
           ),
         ),
@@ -377,16 +377,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
 
             }
 
-
-            if(_paeseController.text.isEmpty)
-              _validatePaese=true;
-            else {
-            _validatePaese = false;
-            i++;
-            }
-
-
-            if(i==6) {
+            if(i==5) {
               _insertToDb();
               Route route = MaterialPageRoute(
                   builder: (context) => homePagePT());
@@ -426,7 +417,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
           "Data_Di_Nascita ": _dataNascitaController,
           "Email": _emailController.text,
           "Password": encrypted,
-          "Paese": _paeseController.text
+          "Paese": _paeseController,
         }).then((value){
       print(value.id);
     });
