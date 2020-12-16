@@ -2,7 +2,6 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/DashBoard.dart';
 import 'userProfile.dart';
-import 'Allenamento_Ciclismo.dart';
 
 
 class homePageSP extends StatefulWidget {
@@ -23,6 +22,8 @@ class homePageStateSP extends State<homePageSP> {
           TabItem(icon: Icons.article_sharp, title: 'Allenamenti'),
           TabItem(icon: Icons.person, title: 'Profilo'),
         ],
+        backgroundColor: Color(0xFFfc6a26),
+        color: Color(0xFF01579B),
         initialActiveIndex: 0,//optional, default as 0
         onTap: (int i ){
           setState(() {

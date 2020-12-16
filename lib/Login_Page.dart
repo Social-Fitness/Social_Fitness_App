@@ -1,10 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:social_fitness_app/HomePageMenuPT.dart';
 import 'package:social_fitness_app/utils/constants.dart';
-
-import 'Back-End/Crypt_Password.dart';
 import 'SelezionePToSpo_page.dart';
 
 const _PATH = "assets/image";
@@ -32,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Text(
           'Email',
           style: kLabelStyle,
+
         ),
         SizedBox(height: 10.0),
         Container(
@@ -42,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
             controller: _emailController,
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
-              color: Colors.white,
+              color: Color(0xFFfc6a26),
               fontFamily: 'OpenSans',
             ),
 
@@ -51,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.email,
-                color: Colors.white,
+                color: Color(0xFFfc6a26),
               ),
               hintText: 'Inserisci la tua Email',
               errorText: _validateEmail ? 'Il campo non può essere vuoto' : _errorEmail,
@@ -96,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.lock,
-                color: Colors.white,
+                color: Color(0xFFfc6a26),
               ),
               hintText: 'Inserisci la tua Password',
               errorText: _validatePw ? 'Il campo non può essere vuoto' : null,
@@ -125,6 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Text(
           'Password dimenticata?',
           style: kLabelStyle,
+
         ),
       ),
     );
@@ -139,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
           title:  Text(
             "ERROR",
             style: TextStyle(
-              color: Colors.red,
+              color: Color(0xFFfc6a26),
               letterSpacing: 1.5,
               fontSize: 18.0,
               fontWeight: FontWeight.bold,
@@ -197,6 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Text(
             'Ricordami',
             style: kLabelStyle,
+
           ),
         ],
       ),
@@ -236,32 +236,28 @@ class _LoginScreenState extends State<LoginScreen> {
             }
 
             if (i == 2) {
-              print("I PARAMETRI SONO 2");
-              FirebaseFirestore.instance
-                  .collection("users")
-                  .where("Email", isEqualTo: _emailController)
-                  .getDocuments().then((QuerySnapshot docu) {
-                String pw=docu.documents[0].get("Password");
-                print("PW "+pw);
-
-                String decrypted=decryptAESCryptoJS(pw, "password");
-
-                if(decrypted.compareTo(_passwordController.text)==0) {
-
-                  Route route = MaterialPageRoute(
+/*
+            AsyncSnapshot<QuerySnapshot> snapshot = FirebaseFirestore.instance.collection('users').where("Email", isEqualTo: _emailController.text).snapshots();
+                if(snapshot.hasData) {
+                  snapshot.data.docs.map((document) {
+                    String pw=decryptAESCryptoJS(document['Password'], "password");
+                    print("PASSWORD"+pw);
+                    if (pw.compareTo(_passwordController.text)==true) {
+                      Route route = MaterialPageRoute(
                       builder: (context) => homePagePT());
-                  Navigator.push(context, route);
-                }
-                else {
-                  _showMyDialog();
+                      Navigator.push(context, route);
+                  }
+                    else {
+                    _showMyDialog();
+                    }
 
                   }
-              });
-
-
+                  );
+                };*/
               };
           });
         },
+
 
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -271,7 +267,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Text(
           'LOGIN',
           style: TextStyle(
-            color: Color(0xFF527DAA),
+            color: Color(0xFFfc6a26),
             letterSpacing: 1.5,
             fontSize: 18.0,
             fontWeight: FontWeight.bold,

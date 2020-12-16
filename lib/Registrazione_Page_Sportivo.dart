@@ -3,7 +3,6 @@ import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:social_fitness_app/HomePageMenuPT.dart';
 import 'package:social_fitness_app/HomePageMenuSP.dart';
 import 'package:social_fitness_app/utils/constants.dart';
 
@@ -59,7 +58,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.person,
-                color: Colors.white,
+                color: Color(0xFFfc6a26),
               ),
               hintText: 'Inserisci il tuo Nome',
               errorText: _validateNome ? 'Il campo non può essere vuoto' : null,
@@ -96,7 +95,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.person,
-                color: Colors.white,
+                color: Color(0xFFfc6a26),
               ),
               hintText: 'Inserisci il tuo Cognome',
               hintStyle: kHintTextStyle,
@@ -199,7 +198,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.email,
-                color: Colors.white,
+                color: Color(0xFFfc6a26),
               ),
               hintText: 'Inserisci la tua Email',
               hintStyle: kHintTextStyle,
@@ -241,7 +240,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
             controller: _passwordController,
             obscureText: _obscureText,
             style: TextStyle(
-              color: Colors.white,
+              color: Color(0xFFfc6a26),
               fontFamily: 'OpenSans',
             ),
             decoration: InputDecoration(
@@ -249,7 +248,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.lock,
-                color: Colors.white,
+                color: Color(0xFFfc6a26),
               ),
               hintText: 'Inserisci la tua Password',
               hintStyle: kHintTextStyle,
@@ -294,7 +293,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
                 contentPadding: EdgeInsets.only(top: 14.0),
                 prefixIcon: Icon(
                   Icons.lock,
-                  color: Colors.white,
+                  color: Color(0xFFfc6a26),
                 ),
                 hintText: 'Conferma la tua Password',
                 hintStyle: kHintTextStyle,
@@ -398,7 +397,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
         child: Text(
           'Registrati',
           style: TextStyle(
-            color: Color(0xFF527DAA),
+            color: Color(0xFFfc6a26),
             letterSpacing: 1.5,
             fontSize: 18.0,
             fontWeight: FontWeight.bold,

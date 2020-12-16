@@ -29,7 +29,7 @@ class WelcomePageState extends State<WelcomePage> {
       height: 8.0,
       width: isActive ? 24.0 : 16.0,
       decoration: BoxDecoration(
-        color: isActive ? Colors.white : Colors.black12.withOpacity(0.2),
+        color: isActive ? Color(0xFFfc6a26) : Colors.black12.withOpacity(0.2),
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     );
@@ -70,7 +70,7 @@ class WelcomePageState extends State<WelcomePage> {
                     child: Text(
                       'Salta',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Color(0xFFfc6a26),
                         fontSize: 20.0,
                       ),
                     ),
@@ -222,14 +222,14 @@ class WelcomePageState extends State<WelcomePage> {
                           Text(
                             'Avanti',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Color(0xFFfc6a26),
                               fontSize: 22.0,
                             ),
                           ),
                           SizedBox(width: 10.0),
                           Icon(
                             Icons.arrow_forward,
-                            color: Colors.white,
+                            color: Color(0xFFfc6a26),
                             size: 30.0,
                           ),
                         ],
@@ -260,7 +260,7 @@ class WelcomePageState extends State<WelcomePage> {
               child: Text(
                 'Iniziamo!',
                 style: TextStyle(
-                  color: Color(0xFF01579B),
+                  color: Color(0xFFfc6a26),
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                 ),

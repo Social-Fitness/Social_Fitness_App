@@ -33,7 +33,7 @@ Widget foodCard(String img, String title, String tipologia) {
               children: [
                 Expanded(
                   child: Text(
-                    "TIPOLOGIA",
+                    tipologia,
                     style: TextStyle(
                       fontSize: 12.0,
                       fontWeight: FontWeight.w700,

@@ -58,7 +58,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.person,
-                color: Colors.white,
+                color: Color(0xFFfc6a26),
               ),
               hintText: 'Inserisci il tuo Nome',
               errorText: _validateNome ? 'Il campo non può essere vuoto' : null,
@@ -95,7 +95,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.person,
-                color: Colors.white,
+                color: Color(0xFFfc6a26),
               ),
               hintText: 'Inserisci il tuo Cognome',
               hintStyle: kHintTextStyle,
@@ -198,7 +198,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.email,
-                color: Colors.white,
+                color: Color(0xFFfc6a26),
               ),
               hintText: 'Inserisci la tua Email',
               hintStyle: kHintTextStyle,
@@ -248,7 +248,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.lock,
-                color: Colors.white,
+                color: Color(0xFFfc6a26),
               ),
               hintText: 'Inserisci la tua Password',
               hintStyle: kHintTextStyle,
@@ -285,7 +285,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
             controller: _confermapasswordController,
             obscureText: _obscureConfermaText,
             style: TextStyle(
-              color: Colors.white,
+              color: Color(0xFFfc6a26),
               fontFamily: 'OpenSans',
             ),
             decoration: InputDecoration(
@@ -293,7 +293,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.lock,
-                color: Colors.white,
+                color: Color(0xFFfc6a26),
               ),
               hintText: 'Conferma la tua Password',
               hintStyle: kHintTextStyle,
@@ -395,7 +395,7 @@ class RegistrazionePersonalTrainerScreenState extends State<RegistrazionePersona
         child: Text(
           'Registrati',
           style: TextStyle(
-            color: Color(0xFF527DAA),
+            color: Color(0xFFfc6a26),
             letterSpacing: 1.5,
             fontSize: 18.0,
             fontWeight: FontWeight.bold,

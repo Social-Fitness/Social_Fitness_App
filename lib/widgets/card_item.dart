@@ -21,9 +21,9 @@ class CardItem extends StatelessWidget {
               IconButton(
                 onPressed: () {},
                 icon: Icon(
-                  Icons.accessibility,
+                  Icons.directions_run,
                   size: 40.0,
-                  color: Color(0xFF0288D1),
+                  color: Color(0xFFfc6a26),
                 ),
               ),
               SizedBox(width: 24.0),
@@ -35,13 +35,14 @@ class CardItem extends StatelessWidget {
                     "Corsa",
                     style: TextStyle(
                       fontSize: 18.0,
+                      color: Color(0xFFfc6a26),
                     ),
                   ),
                   SizedBox(height: 4.0),
                   Text(
                     "28 Ottobre 2020",
                     style: TextStyle(
-                      color: Colors.grey[700],
+                      color: Color(0xFF01579B),
                       fontSize: 12.0,
                     ),
                   ),

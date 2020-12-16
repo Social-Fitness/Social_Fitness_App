@@ -31,7 +31,7 @@ class SelezioneScreenState extends State<SelezioneScreen> {
         child: Text(
           'PERSONAL TRAINER',
           style: TextStyle(
-            color: Color(0xFF527DAA),
+            color: Color(0xFFfc6a26),
             letterSpacing: 1.5,
             fontSize: 18.0,
             fontWeight: FontWeight.bold,
@@ -63,7 +63,7 @@ class SelezioneScreenState extends State<SelezioneScreen> {
          Text(
           'RUNNER/CICLISTA',
           style: TextStyle(
-            color: Color(0xFF527DAA),
+            color: Color(0xFFfc6a26),
             letterSpacing: 1.5,
             fontSize: 18.0,
             fontWeight: FontWeight.bold,

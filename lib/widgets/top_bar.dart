@@ -13,7 +13,8 @@ class TopBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Nome Utente'), //Qui va inserito il nome del profilo che si è registrato dal database
+          title: const Text('Nome Utente'),
+          backgroundColor: Color(0xFFfc6a26),//Qui va inserito il nome del profilo che si è registrato dal database
           actions: <Widget>[
         IconButton(
         icon: const Icon(Icons.menu),

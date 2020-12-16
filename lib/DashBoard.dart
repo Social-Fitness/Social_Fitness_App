@@ -40,7 +40,7 @@ class DashBoardState extends State<DashBoard> {
         allTextList: countList,
         height: 500,
         borderRadius: 20,
-        headlineText: "Attività",
+        headlineText: "FILTRA GLI ALLENAMENTI",
         searchFieldHintText: "Cerca",
         selectedTextList: selectedCountList,
         onApplyButtonClick: (list) {
@@ -63,9 +63,10 @@ class DashBoardState extends State<DashBoard> {
       appBar: AppBar(
         backgroundColor: Color(0xFFfcfcfc),
         title: Text(
-          "Help Your Workout",
+          "HelpYourWorkout",
           style: TextStyle(
             color: Color(0xFFfc6a26),
+            fontSize: 30,
           ),
         ),
         centerTitle: true,
@@ -74,7 +75,8 @@ class DashBoardState extends State<DashBoard> {
           IconButton(
             icon: Icon(
               Icons.filter_alt,
-              color: Colors.black,
+              color: Color(0xFF01579B),
+              size: 40,
             ),
             onPressed: _openFilterDialog,
           )
@@ -90,10 +92,12 @@ class DashBoardState extends State<DashBoard> {
           children: [
             //Let's create the welcoming Text
             Text(
-              "Let's Workout! \nCerca il tuo allenamento",
+
+              "Let's Workout! \nCerca l'allenamento che fa per te",
               style: TextStyle(
                 fontSize: 28.0,
                 fontWeight: FontWeight.w700,
+                color: Color(0xFF01579B)
               ),
             ),
             SizedBox(
@@ -110,10 +114,12 @@ class DashBoardState extends State<DashBoard> {
                 children: [
                   Expanded(
                       child: TextField(
+
                         decoration: InputDecoration(
                           hintText: "Cerca... ",
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.only(left: 20.0),
+
                         ),
                       )),
                   RaisedButton(
@@ -126,10 +132,10 @@ class DashBoardState extends State<DashBoard> {
                       padding: const EdgeInsets.symmetric(vertical: 15.0),
                       child: Icon(
                         Icons.search,
-                        color: Colors.white,
+                        color: Color(0xFF01579B),
                       ),
                     ),
-                    color: Color(0xFF01579B),
+                    color: Color(0xFFfc6a26),
                   ),
                 ],
               ),

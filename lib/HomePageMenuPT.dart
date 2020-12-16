@@ -20,10 +20,12 @@ class homePageStatePT extends State<homePagePT> {
       body: _pageOptions[selectedPage],
       bottomNavigationBar: ConvexAppBar(
         items: [
-          TabItem(icon: Icons.article_sharp, title: 'Allenamenti'),
+          TabItem(icon: Icons.article_sharp, title: 'Allenamenti'), //parlare con pietro
           TabItem(icon: Icons.add_circle, title: 'Crea Allenamento'),
           TabItem(icon: Icons.person, title: 'Profilo'),
         ],
+        backgroundColor: Color(0xFFfc6a26),
+        color: Color(0xFF01579B),
         initialActiveIndex: 1,//optional, default as 0
         onTap: (int i ){
           setState(() {

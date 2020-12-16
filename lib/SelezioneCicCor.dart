@@ -33,7 +33,7 @@ class SelezioneSportScreenState extends State<SelezioneSportScreen> {
         child: Text(
           'CORSA/CAMMINATA',
           style: TextStyle(
-            color: Color(0xFF527DAA),
+            color: Color(0xFFfc6a26),
             letterSpacing: 1.5,
             fontSize: 18.0,
             fontWeight: FontWeight.bold,
@@ -65,7 +65,7 @@ class SelezioneSportScreenState extends State<SelezioneSportScreen> {
          Text(
           'CICLISMO',
           style: TextStyle(
-            color: Color(0xFF527DAA),
+            color: Color(0xFFfc6a26),
             letterSpacing: 1.5,
             fontSize: 18.0,
             fontWeight: FontWeight.bold,
