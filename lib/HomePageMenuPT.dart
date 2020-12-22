@@ -37,11 +37,17 @@ class homePageStatePT extends State<homePagePT> {
 
      body: _children[_currentIndex],
      bottomNavigationBar: BottomNavigationBar(
-       onTap: onTabTapped, // new
+       type: BottomNavigationBarType.fixed,
+       onTap: (value) {
+         // Respond to item press.
+         setState(() => _currentIndex = value);
+       },
        currentIndex: _currentIndex,
        backgroundColor: Colors.white,
        selectedItemColor: Color(0xFFfc6a26),
        unselectedItemColor: Color(0xFF01579B),
+       selectedFontSize: 15,
+       unselectedFontSize: 15,
        items: [
          new BottomNavigationBarItem(
              icon: new Icon(Icons.arrow_upward),
@@ -64,9 +70,4 @@ class homePageStatePT extends State<homePagePT> {
     );
   }
 
-  void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
 }

@@ -6,8 +6,6 @@
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/app.dill" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/debug_android_application.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/debug_android_application.stamp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/flutter_assets.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/kernel_snapshot.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/kernel_snapshot.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/kernel_snapshot.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/kernel_snapshot.stamp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
@@ -20,11 +18,6 @@
       <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/HomePageMenuPT.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HomePageMenuPT.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HomePageMenuSP.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HomePageMenuSP.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/SelezioneCicCor.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/WelcomePage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/WelcomePage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/userProfile.dart" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +123,7 @@
       <workItem from="1608127320598" duration="7068000" />
       <workItem from="1608134686538" duration="30000" />
       <workItem from="1608638065077" duration="632000" />
-      <workItem from="1608645066613" duration="2972000" />
+      <workItem from="1608645066613" duration="3636000" />
     </task>
     <task id="LOCAL-00001" summary="PIANIFICA ATTIVITA'host e pt">
       <created>1603885750998</created>
@@ -186,22 +179,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="152" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607678480826" />
-    <state width="724" height="186" key="GridCell.Tab.0.bottom" timestamp="1608647795802">
+    <state width="1493" height="184" key="GridCell.Tab.0.bottom" timestamp="1608648638442">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="186" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608647795802" />
-    <state width="724" height="186" key="GridCell.Tab.0.center" timestamp="1608647795802">
+    <state width="1493" height="184" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608648638442" />
+    <state width="1493" height="184" key="GridCell.Tab.0.center" timestamp="1608648638442">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="186" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608647795802" />
-    <state width="724" height="186" key="GridCell.Tab.0.left" timestamp="1608647795802">
+    <state width="1493" height="184" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608648638442" />
+    <state width="1493" height="184" key="GridCell.Tab.0.left" timestamp="1608648638442">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="186" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608647795802" />
-    <state width="724" height="186" key="GridCell.Tab.0.right" timestamp="1608647795802">
+    <state width="1493" height="184" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608648638442" />
+    <state width="1493" height="184" key="GridCell.Tab.0.right" timestamp="1608648638442">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="186" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608647795802" />
+    <state width="1493" height="184" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608648638442" />
     <state x="555" y="18" key="SettingsEditor" timestamp="1603809944609">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
