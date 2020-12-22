@@ -1,38 +1,72 @@
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:social_fitness_app/SelezioneCicCor.dart';
-import 'userProfile.dart';
-import 'Allenamento_Ciclismo.dart';
+import 'DashBoard.dart';
 
 
 class homePagePT extends StatefulWidget {
-  homePagePT({Key key, this.title}) : super(key: key);
-  final String title;
   @override
   homePageStatePT createState() => homePageStatePT();
 }
 class homePageStatePT extends State<homePagePT> {
-  int selectedPage = 1;
-  final _pageOptions = [AllenamentoCicScreen(),SelezioneSportScreen(),userProfile()];
+  int _currentIndex = 0;
+  final List<Widget> _children = [DashBoard(), DashBoard()];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pageOptions[selectedPage],
-      bottomNavigationBar: ConvexAppBar(
-        items: [
-          TabItem(icon: Icons.article_sharp, title: 'Allenamenti'), //parlare con pietro
-          TabItem(icon: Icons.add_circle, title: 'Crea Allenamento'),
-          TabItem(icon: Icons.person, title: 'Profilo'),
+      appBar: AppBar(
+        leading: Icon(
+          Icons.menu,
+        ),
+        title: Text("HelpYouWorkout"),
+
+        actions: [
+          Icon(Icons.add),
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child:
+        Icon(Icons.search),
+      ),
+          Icon(Icons.favorite)
         ],
-        backgroundColor: Color(0xFFfc6a26),
-        color: Color(0xFF01579B),
-        initialActiveIndex: 1,//optional, default as 0
-        onTap: (int i ){
-          setState(() {
-            selectedPage = i;
-          });
-        },
-      ),// This trailing comma makes auto-formatting nicer for build methods.
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(
+            color: Color(0xFF01579B),
+                size: 30,
+        ),
+      ),
+
+     body: _children[_currentIndex],
+     bottomNavigationBar: BottomNavigationBar(
+       onTap: onTabTapped, // new
+       currentIndex: _currentIndex,
+       backgroundColor: Colors.white,
+       selectedItemColor: Color(0xFFfc6a26),
+       unselectedItemColor: Color(0xFF01579B),
+       items: [
+         new BottomNavigationBarItem(
+             icon: new Icon(Icons.arrow_upward),
+           title: new Text("Torna su"),
+         ),
+         new BottomNavigationBarItem(
+           icon: new Icon(Icons.favorite),
+           title: new Text("Schede"),
+         ),
+         new BottomNavigationBarItem(
+           icon: new Icon(Icons.add),
+           title: new Text("Crea"),
+         ),
+         new BottomNavigationBarItem(
+           icon: new Icon(Icons.search),
+           title: new Text("Cerca"),
+         ),
+       ],
+     ),
     );
+  }
+
+  void onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
   }
 }

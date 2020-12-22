@@ -103,7 +103,7 @@ class WelcomePageState extends State<WelcomePage> {
                             ),
                             SizedBox(height: 30.0),
                             Text(
-                              "Benevenuto nel mondo Social Fitness",
+                              "Benevenuto nel mondo HelpYourWorkout",
                               style: kTitleStyle,
                             ),
                           ],

@@ -8,35 +8,23 @@
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/flutter_assets.d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/kernel_snapshot.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/kernel_snapshot.d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/kernel_snapshot.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/kernel_snapshot.stamp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/outputs.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a87932552a4342c5680bacf226d19bef/outputs.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/AssetManifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/assets/image/Logo.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/AssetManifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/assets/image/Logo.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/DashBoard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/DashBoard.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/HomePageMenuPT.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HomePageMenuPT.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/HomePageMenuSP.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HomePageMenuSP.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Login_Page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Login_Page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Registrazione_Page_PT.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Registrazione_Page_PT.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Registrazione_Page_Sportivo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Registrazione_Page_Sportivo.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/SelezioneCicCor.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/SelezioneCicCor.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/SelezionePToSpo_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/SelezionePToSpo_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/SelezioneCicCor.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/WelcomePage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/WelcomePage.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/WorkoutCard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/WorkoutCard.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/card_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/card_item.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/top_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/top_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/userProfile.dart" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,6 +128,9 @@
       <workItem from="1608044490234" duration="28000" />
       <workItem from="1608044563467" duration="204000" />
       <workItem from="1608127320598" duration="7068000" />
+      <workItem from="1608134686538" duration="30000" />
+      <workItem from="1608638065077" duration="632000" />
+      <workItem from="1608645066613" duration="2972000" />
     </task>
     <task id="LOCAL-00001" summary="PIANIFICA ATTIVITA'host e pt">
       <created>1603885750998</created>
@@ -179,10 +170,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1607008391256" />
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607707314195">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608646518509">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1607707314195" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1608646518509" />
     <state x="624" y="176" key="AndroidProcessChooserDialog" timestamp="1607357518009">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -195,22 +186,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="152" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607678480826" />
-    <state width="1493" height="185" key="GridCell.Tab.0.bottom" timestamp="1608134455758">
+    <state width="724" height="186" key="GridCell.Tab.0.bottom" timestamp="1608647795802">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="185" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608134455758" />
-    <state width="1493" height="185" key="GridCell.Tab.0.center" timestamp="1608134455758">
+    <state width="724" height="186" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608647795802" />
+    <state width="724" height="186" key="GridCell.Tab.0.center" timestamp="1608647795802">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="185" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608134455758" />
-    <state width="1493" height="185" key="GridCell.Tab.0.left" timestamp="1608134455758">
+    <state width="724" height="186" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608647795802" />
+    <state width="724" height="186" key="GridCell.Tab.0.left" timestamp="1608647795802">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="185" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608134455758" />
-    <state width="1493" height="185" key="GridCell.Tab.0.right" timestamp="1608134455758">
+    <state width="724" height="186" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608647795802" />
+    <state width="724" height="186" key="GridCell.Tab.0.right" timestamp="1608647795802">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="185" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608134455758" />
+    <state width="724" height="186" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608647795802" />
     <state x="555" y="18" key="SettingsEditor" timestamp="1603809944609">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
