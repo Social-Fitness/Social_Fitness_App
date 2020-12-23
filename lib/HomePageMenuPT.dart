@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'DashBoard.dart';
+import 'package:social_fitness_app/DashBoardPT.dart';
+import 'DashBoardSportivo.dart';
 
 
 class homePagePT extends StatefulWidget {
@@ -8,7 +9,7 @@ class homePagePT extends StatefulWidget {
 }
 class homePageStatePT extends State<homePagePT> {
   int _currentIndex = 0;
-  final List<Widget> _children = [DashBoard(), DashBoard()];
+  final List<Widget> _children = [DashBoardPT(), DashBoardPT()];
 
   @override
   Widget build(BuildContext context) {
