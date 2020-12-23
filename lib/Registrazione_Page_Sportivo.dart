@@ -20,11 +20,12 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
   TextEditingController _nomeController = new TextEditingController();
   TextEditingController _cognomeController = new TextEditingController();
   String _dataNascitaController;
-  String _paeseController;
   TextEditingController _emailController = new TextEditingController();
+  TextEditingController _cellController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
   TextEditingController _confermapasswordController = new TextEditingController();
   bool _validateNome = false;
+  bool _validateCell = false;
   bool _validateCognome = false;
   bool _validateEmail = false;
   bool _validatePw = false;
@@ -133,39 +134,37 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
     );
   }
 
-  Widget _buildPaeseTF() {
+  Widget _buildCellulareTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Paese',
+          'CAP',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
         Container(
-          alignment: Alignment.center,
+          alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 60.0,
-          child: CountryListPick(
-            appBar: AppBar(
-              backgroundColor: Color(0xFF0288D1),
-              title: Text('SCEGLI IL PAESE'),
+          child: TextField(
+            controller: _cellController,
+            keyboardType: TextInputType.number,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
             ),
-            theme: CountryTheme(
-              isShowFlag: true,
-              isShowTitle: true,
-              isShowCode: true,
-              isDownIcon: true,
-              showEnglishName: true,
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.location_city,
+                color: Colors.white,
+              ),
+              hintText: 'Inserisci il tuo Cellulare',
+              errorText: _validateCell ? 'Il campo non può essere vuoto' : null,
+              hintStyle: kHintTextStyle,
             ),
-            initialSelection: '+39',
-            onChanged: (CountryCode code) {
-              print(code.name);
-              print(code.code);
-              print(code.dialCode);
-              print(code.flagUri);
-              _paeseController=code.name;
-            },
           ),
         ),
       ],
@@ -339,6 +338,13 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               i++;
             }
 
+            if(_cellController.text.isEmpty)
+              _validateCell=true;
+            else {
+              _validateCell = false;
+              i++;
+            }
+
 
             Pattern pattern=r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
             RegExp regex= new RegExp(pattern);
@@ -379,7 +385,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
 
 
 
-            if(i==5) {
+            if(i==6) {
               _insertToDb();
               Route route = MaterialPageRoute(
                   builder: (context) => homePageSP());
@@ -419,7 +425,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
           "Data_Di_Nascita ": _dataNascitaController,
           "Email": _emailController.text,
           "Password": encrypted,
-          "Paese": _paeseController,
+          "Cellulare": _cellController.text,
         }).then((value){
       print(value.id);
     });
@@ -478,7 +484,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
                       SizedBox(height: 10.0),
                       _buildDatadiNascitaTF(),
                       SizedBox(height: 10.0,),
-                      _buildPaeseTF(),
+                      _buildCellulareTF(),
                       SizedBox(height: 10.0),
                       _buildEmailTF(),
                       SizedBox(height: 10.0),

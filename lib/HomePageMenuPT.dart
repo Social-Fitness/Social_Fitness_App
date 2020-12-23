@@ -44,14 +44,14 @@ class homePageStatePT extends State<homePagePT> {
          setState(() => _currentIndex = value);
        },
        currentIndex: _currentIndex,
-       backgroundColor: Colors.white,
+       backgroundColor: Colors.black12,
        selectedItemColor: Color(0xFFfc6a26),
        unselectedItemColor: Color(0xFF01579B),
        selectedFontSize: 15,
        unselectedFontSize: 15,
        items: [
          new BottomNavigationBarItem(
-             icon: new Icon(Icons.arrow_upward),
+           icon: new Icon(Icons.arrow_upward),
            title: new Text("Torna su"),
          ),
          new BottomNavigationBarItem(
@@ -70,5 +70,4 @@ class homePageStatePT extends State<homePagePT> {
      ),
     );
   }
-
 }

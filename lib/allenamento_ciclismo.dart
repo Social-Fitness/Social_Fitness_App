@@ -368,7 +368,7 @@ class AllenamentoCicScreenState extends State<AllenamentoCicScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'PIANIFICA UNA NUOVA ATTIVITÀ',
+                        'CREA UNA NUOVA ATTIVITÀ',
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: "Montserrat",
