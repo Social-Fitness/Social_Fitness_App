@@ -17,13 +17,16 @@ class homePageStatePT extends State<homePagePT> {
       appBar: AppBar(
         leading: IconButton(
           icon:Icon(Icons.menu),
+          onPressed: () { Route route = MaterialPageRoute(
+              builder: (context) => _myDrawerWithHeaderAndDivider(context) );
+          Navigator.push(context, route); },
         ),
-        title: Text("HelpYouWorkout"),
+        title: Text("HelpYourWorkout",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26) ), ),
 
         actions: [
           IconButton(icon:Icon(Icons.add)),
       Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: 5),
         child:
         IconButton(icon:Icon(Icons.search)),
       ),
