@@ -14,19 +14,19 @@ class homePageStatePT extends State<homePagePT> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
-          Icons.menu,
+        leading: IconButton(
+          icon:Icon(Icons.menu),
         ),
         title: Text("HelpYouWorkout"),
 
         actions: [
-          Icon(Icons.add),
+          IconButton(icon:Icon(Icons.add)),
       Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
         child:
-        Icon(Icons.search),
+        IconButton(icon:Icon(Icons.search)),
       ),
-          Icon(Icons.favorite)
+          IconButton(icon:Icon(Icons.favorite))
         ],
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(
