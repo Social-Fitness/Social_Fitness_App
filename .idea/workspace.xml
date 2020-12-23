@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ba857104-65df-4650-a4cc-dec240ab4271" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/DashBoardSportivo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/DashBoardSportivo.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/HomePageMenuPT.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HomePageMenuPT.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HomePageMenuSP.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HomePageMenuSP.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Registrazione_Page_PT.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Registrazione_Page_PT.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Registrazione_Page_Sportivo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Registrazione_Page_Sportivo.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/allenamento_ciclismo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/allenamento_ciclismo.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/allenamento_corsa.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/allenamento_corsa.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -120,6 +114,7 @@
       <workItem from="1608655447562" duration="608000" />
       <workItem from="1608656166402" duration="956000" />
       <workItem from="1608735523696" duration="2703000" />
+      <workItem from="1608738526725" duration="732000" />
     </task>
     <task id="LOCAL-00001" summary="PIANIFICA ATTIVITA'host e pt">
       <created>1603885750998</created>

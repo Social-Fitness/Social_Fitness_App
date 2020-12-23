@@ -70,4 +70,66 @@ class homePageStatePT extends State<homePagePT> {
      ),
     );
   }
+
+  Widget _myDrawerWithHeaderAndDivider(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: <Widget>[
+          DrawerHeader(
+            child: Text('Profilo'),
+            decoration: BoxDecoration(
+              color: Color(0xFFfc6a26),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.person),
+            title: Text('Nome e Cognome'),
+            onTap: () {
+              print('Nome e Cognome');
+            },
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.calendar_today),
+            title: Text('Data Di Nascita'),
+            onTap: () {
+              print('Data Di Nascita');
+            },
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.phone),
+            title: Text('Cellulare'),
+            onTap: () {
+              print('Cellulare');
+            },
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.email),
+            title: Text('E-mail'),
+            onTap: () {
+              print('E-mail');
+            },
+          ),
+          Divider(),
+          ListTile(
+            trailing: Icon(Icons.lock),
+            title: Text('Cambia la Password'),
+            onTap: () {
+              print('Closed!');
+            },
+          ),
+          Divider(),
+          ListTile(
+            trailing: Icon(Icons.exit_to_app),
+            title: Text('Logout'),
+            onTap: () {
+              print('Logout');
+            },
+          ),
+        ],
+      ),
+    );
+  }
 }
