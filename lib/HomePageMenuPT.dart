@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/DashBoardPT.dart';
 import 'DashBoardSportivo.dart';
@@ -10,14 +11,36 @@ class homePagePT extends StatefulWidget {
 class homePageStatePT extends State<homePagePT> {
   int _currentIndex = 0;
   final List<Widget> _children = [DashBoardPT(), DashBoardPT()];
+  final String _collection = 'users';
+  final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
+  String nome = "";
+  String cognome = "";
+  String email = "";
+
+  void messagesStream() async {
+    await for (var snapshot in _fireStore.collection(_collection).snapshots()) {
+      for (var message in snapshot.docs) {
+        //print(message.data());
+         if(message["Email"] == "fulvio123@gmail.com"){
+            nome = message["Nome"];
+            cognome = message["Cognome"];
+            email = message["Email"];
+            }
+      }
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
+    messagesStream();
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           icon:Icon(Icons.menu),
-          onPressed: () { Route route = MaterialPageRoute(
+          onPressed: () {
+            messagesStream();
+            Route route = MaterialPageRoute(
               builder: (context) => _myDrawerWithHeaderAndDivider(context) );
           Navigator.push(context, route); },
         ),
@@ -47,7 +70,6 @@ class homePageStatePT extends State<homePagePT> {
          setState(() => _currentIndex = value);
        },
        currentIndex: _currentIndex,
-       backgroundColor: Colors.black12,
        selectedItemColor: Color(0xFFfc6a26),
        unselectedItemColor: Color(0xFF01579B),
        selectedFontSize: 15,
@@ -75,64 +97,68 @@ class homePageStatePT extends State<homePagePT> {
   }
 
   Widget _myDrawerWithHeaderAndDivider(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        children: <Widget>[
-          DrawerHeader(
-            child: Text('Profilo'),
-            decoration: BoxDecoration(
-              color: Color(0xFFfc6a26),
+    return Container(
+        child: Drawer(// your specified height
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+            DrawerHeader(
+              child: Text('PROFILO',  style: TextStyle(fontSize: 40, color: Colors.white,),
+                textAlign: TextAlign.center,),
+              decoration: BoxDecoration(
+                color: Color(0xFFfc6a26),
+              ),
+          ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text(nome + " " + cognome),
+              onTap: () {
+                print('Nome e Cognome');
+              },
             ),
-          ),
-          ListTile(
-            leading: Icon(Icons.person),
-            title: Text('Nome e Cognome'),
-            onTap: () {
-              print('Nome e Cognome');
-            },
-          ),
-          Divider(),
-          ListTile(
-            leading: Icon(Icons.calendar_today),
-            title: Text('Data Di Nascita'),
-            onTap: () {
-              print('Data Di Nascita');
-            },
-          ),
-          Divider(),
-          ListTile(
-            leading: Icon(Icons.phone),
-            title: Text('Cellulare'),
-            onTap: () {
-              print('Cellulare');
-            },
-          ),
-          Divider(),
-          ListTile(
-            leading: Icon(Icons.email),
-            title: Text('E-mail'),
-            onTap: () {
-              print('E-mail');
-            },
-          ),
-          Divider(),
-          ListTile(
-            trailing: Icon(Icons.lock),
-            title: Text('Cambia la Password'),
-            onTap: () {
-              print('Closed!');
-            },
-          ),
-          Divider(),
-          ListTile(
-            trailing: Icon(Icons.exit_to_app),
-            title: Text('Logout'),
-            onTap: () {
-              print('Logout');
-            },
-          ),
-        ],
-      ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.calendar_today),
+              title: Text("Data Di nascita"),
+              onTap: () {
+                print('Data Di Nascita');
+              },
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.phone),
+              title: Text('Cellulare'),
+              onTap: () {
+               print('Cellulare');
+              },
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.email),
+              title: Text(email),
+              onTap: () {
+                print('E-mail');
+              },
+            ),
+            Divider(),
+            ListTile(
+              trailing: Icon(Icons.lock),
+              title: Text('Cambia la Password'),
+              onTap: () {
+                print('Closed!');
+              },
+            ),
+            Divider(),
+            ListTile(
+              trailing: Icon(Icons.exit_to_app),
+              title: Text('Logout'),
+              onTap: () {
+                print('Logout');
+              },
+            ),
+          ],
+        ),
+        ),
     );
   }
 }
