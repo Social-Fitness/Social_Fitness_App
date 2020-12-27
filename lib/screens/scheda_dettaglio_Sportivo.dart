@@ -69,11 +69,9 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              _buildButtonColumn(Icons.thumb_up, widget.detail.likeCount),
-              _buildButtonColumn(Icons.thumb_down, widget.detail.dislikeCount),
-              _buildButtonColumn(Icons.share, "Share"),
+              _buildButtonColumn(Icons.share, "Condividi"),
               _buildButtonColumn(Icons.cloud_download, "Download"),
-              _buildButtonColumn(Icons.playlist_add, "Save"),
+              _buildButtonColumn(Icons.favorite, "Salva"),
             ],
           ),
         )
@@ -118,7 +116,7 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
                 widget.detail.channelTitle,
                 overflow: TextOverflow.ellipsis,
               ),
-              subtitle: Text("15,000 subscribers"),
+              subtitle: Text("15.000 salvataggi"),
             ),
           ),
           FlatButton.icon(
@@ -128,8 +126,8 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
                 color: Colors.red,
               ),
               label: Text(
-                "SUBSCRIBE",
-                style: TextStyle(color: Colors.red),
+                "SEGUI",
+                style: TextStyle(color: Color(0xFFfc6a26)),
               ))
         ],
       ),

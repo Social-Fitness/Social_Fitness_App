@@ -22,7 +22,7 @@ class ListaSchedaPt extends StatelessWidget {
           return InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => SchedaDettaglip_Pt(
+                builder: (context) => SchedaDettaglio_Pt(
                   detail: listData[index],
                 ),
               ));
@@ -40,7 +40,7 @@ class ListaSchedaPt extends StatelessWidget {
             return InkWell(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => SchedaDettaglip_Pt(
+                  builder: (context) => SchedaDettaglio_Pt(
                         detail: listData[index],
                       ),
                 ));
@@ -51,7 +51,7 @@ class ListaSchedaPt extends StatelessWidget {
             return InkWell(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => SchedaDettaglip_Pt(
+                  builder: (context) => SchedaDettaglio_Pt(
                         detail: listData[index],
                       ),
                 ));

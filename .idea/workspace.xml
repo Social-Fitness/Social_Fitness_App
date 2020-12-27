@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba857104-65df-4650-a4cc-dec240ab4271" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/CambioPW.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/HomePageMenuPT.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HomePageMenuPT.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HomePageMenuSP.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HomePageMenuSP.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Lista_Schede_PT.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Lista_Schede_PT.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Registrazione_Page_PT.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Registrazione_Page_PT.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/scheda_dettaglio_PT.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/scheda_dettaglio_PT.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/scheda_dettaglio_Sportivo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/scheda_dettaglio_Sportivo.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +120,8 @@
       <workItem from="1608656166402" duration="956000" />
       <workItem from="1608735523696" duration="2703000" />
       <workItem from="1608738526725" duration="732000" />
+      <workItem from="1609072597772" duration="1824000" />
+      <workItem from="1609074521762" duration="295000" />
     </task>
     <task id="LOCAL-00001" summary="PIANIFICA ATTIVITA'host e pt">
       <created>1603885750998</created>

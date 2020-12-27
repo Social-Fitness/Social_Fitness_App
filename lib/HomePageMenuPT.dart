@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/CambioPW.dart';
 import 'package:social_fitness_app/DashBoardPT.dart';
 import 'DashBoardSportivo.dart';
 
@@ -112,40 +113,30 @@ class homePageStatePT extends State<homePagePT> {
             ListTile(
               leading: Icon(Icons.person),
               title: Text(nome + " " + cognome),
-              onTap: () {
-                print('Nome e Cognome');
-              },
             ),
             Divider(),
             ListTile(
               leading: Icon(Icons.calendar_today),
               title: Text("Data Di nascita"),
-              onTap: () {
-                print('Data Di Nascita');
-              },
             ),
             Divider(),
             ListTile(
               leading: Icon(Icons.phone),
               title: Text('Cellulare'),
-              onTap: () {
-               print('Cellulare');
-              },
             ),
             Divider(),
             ListTile(
               leading: Icon(Icons.email),
               title: Text(email),
-              onTap: () {
-                print('E-mail');
-              },
             ),
             Divider(),
             ListTile(
               trailing: Icon(Icons.lock),
               title: Text('Cambia la Password'),
               onTap: () {
-                print('Closed!');
+                Route route = MaterialPageRoute(
+                    builder: (context) => CambioPW());
+                Navigator.push(context, route);
               },
             ),
             Divider(),

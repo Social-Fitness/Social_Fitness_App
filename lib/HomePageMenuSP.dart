@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:filter_list/filter_list.dart';
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/CambioPW.dart';
 import 'package:social_fitness_app/DashBoardSportivo.dart';
 
 
@@ -11,6 +13,26 @@ class homePageSP extends StatefulWidget {
 class homePageStateSP extends State<homePageSP> {
   int _currentIndex = 0;
   final List<Widget> _children = [DashBoardSportivo(), DashBoardSportivo()];
+
+  final String _collection = 'users';
+  final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
+  String nome = "";
+  String cognome = "";
+  String email = "";
+
+  void messagesStream() async {
+    await for (var snapshot in _fireStore.collection(_collection).snapshots()) {
+      for (var message in snapshot.docs) {
+        //print(message.data());
+        if(message["Email"] == "fulvio123@gmail.com"){
+          nome = message["Nome"];
+          cognome = message["Cognome"];
+          email = message["Email"];
+        }
+      }
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +48,14 @@ class homePageStateSP extends State<homePageSP> {
             child:
             IconButton(icon:Icon(Icons.search)),
           ),
-          IconButton(icon:Icon(Icons.menu))
+          IconButton(
+            icon:Icon(Icons.menu),
+            onPressed: () {
+            messagesStream();
+            Route route = MaterialPageRoute(
+            builder: (context) => _myDrawerWithHeaderAndDivider(context) );
+            Navigator.push(context, route); },
+          ),
         ],
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(
@@ -103,5 +132,61 @@ class homePageStateSP extends State<homePageSP> {
           }
           Navigator.pop(context);
         });
+  }
+
+  Widget _myDrawerWithHeaderAndDivider(BuildContext context) {
+    return Container(
+      child: Drawer(// your specified height
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('PROFILO',  style: TextStyle(fontSize: 40, color: Colors.white,),
+                textAlign: TextAlign.center,),
+              decoration: BoxDecoration(
+                color: Color(0xFFfc6a26),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text(nome + " " + cognome),
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.calendar_today),
+              title: Text("Data Di nascita"),
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.phone),
+              title: Text('Cellulare'),
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.email),
+              title: Text(email),
+            ),
+            Divider(),
+            ListTile(
+              trailing: Icon(Icons.lock),
+              title: Text('Cambia la Password'),
+              onTap: () {
+                Route route = MaterialPageRoute(
+                    builder: (context) => CambioPW());
+                Navigator.push(context, route);
+              },
+            ),
+            Divider(),
+            ListTile(
+              trailing: Icon(Icons.exit_to_app),
+              title: Text('Logout'),
+              onTap: () {
+                print('Logout');
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

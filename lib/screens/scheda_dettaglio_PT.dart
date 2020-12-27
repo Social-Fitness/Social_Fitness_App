@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/models/PersonalTrainer_model.dart';
-import 'package:social_fitness_app/models/Sportivo_model.dart';
 
 import '../Lista_Schede_PT.dart';
 
-class SchedaDettaglip_Pt extends StatefulWidget {
+class SchedaDettaglio_Pt extends StatefulWidget {
   final PersonalTrainerModel detail;
 
-  const SchedaDettaglip_Pt({Key key, @required this.detail}) : super(key: key);
+  const SchedaDettaglio_Pt({Key key, @required this.detail}) : super(key: key);
 
   @override
   _VideoDetailState createState() => _VideoDetailState();
 }
 
-class _VideoDetailState extends State<SchedaDettaglip_Pt> {
+class _VideoDetailState extends State<SchedaDettaglio_Pt> {
   @override
   Widget build(BuildContext context) {
     List<Widget> _layouts = [
