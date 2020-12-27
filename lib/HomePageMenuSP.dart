@@ -38,8 +38,8 @@ class homePageStateSP extends State<homePageSP> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("HelpYouWorkout"),
-
+        title: Text("HelpYouWorkout",
+        style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26) )),
         actions: [
           IconButton(icon:Icon(Icons.filter_alt),
           onPressed: _openFilterDialog,),
@@ -72,7 +72,7 @@ class homePageStateSP extends State<homePageSP> {
           setState(() => _currentIndex = value);
         },
         currentIndex: _currentIndex,
-        backgroundColor: Colors.black12,
+        backgroundColor: Colors.white,
         selectedItemColor: Color(0xFFfc6a26),
         unselectedItemColor: Color(0xFF01579B),
         selectedFontSize: 15,
@@ -88,7 +88,7 @@ class homePageStateSP extends State<homePageSP> {
           ),
           new BottomNavigationBarItem(
             icon: new Icon(Icons.assignment),
-            title: new Text("Schede preferite"),
+            title: new Text("Schede"),
           ),
           new BottomNavigationBarItem(
             icon: new Icon(Icons.add_alert),

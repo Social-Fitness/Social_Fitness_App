@@ -139,7 +139,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'CAP',
+          'Cellulare',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
@@ -158,8 +158,8 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.location_city,
-                color: Colors.white,
+                Icons.phone,
+                color: Color(0xFFfc6a26),
               ),
               hintText: 'Inserisci il tuo Cellulare',
               errorText: _validateCell ? 'Il campo non può essere vuoto' : null,
@@ -239,7 +239,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
             controller: _passwordController,
             obscureText: _obscureText,
             style: TextStyle(
-              color: Color(0xFFfc6a26),
+              color: Colors.white,
               fontFamily: 'OpenSans',
             ),
             decoration: InputDecoration(

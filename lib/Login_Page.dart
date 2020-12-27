@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:social_fitness_app/Back-End/Crypt_Password.dart';
+import 'package:social_fitness_app/HomePageMenuPT.dart';
+import 'package:social_fitness_app/HomePageMenuSP.dart';
 import 'package:social_fitness_app/utils/constants.dart';
 import 'SelezionePToSpo_page.dart';
 
@@ -14,13 +17,29 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final firestoreInstance = FirebaseFirestore.instance;
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
   bool _rememberMe = false;
   bool _validateEmail=false;
   bool _validatePw=false;
   String _errorEmail=null;
+  final String _collection = 'users';
+  final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
+  String passwordDB="";
+  String categoriaDB="";
+  String pw="";
+
+
+  void messagesStream() async {
+    await for (var snapshot in _fireStore.collection(_collection).snapshots()) {
+      for (var message in snapshot.docs) {
+        if(message["Email"] == _emailController.text){
+          passwordDB = message["Password"];
+          categoriaDB= message["Categoria"];
+        }
+      }
+    }
+  }
 
   Widget _buildEmailTF() {
     return Column(
@@ -40,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
             controller: _emailController,
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
-              color: Color(0xFFfc6a26),
+              color: Colors.white,
               fontFamily: 'OpenSans',
             ),
 
@@ -235,26 +254,31 @@ class _LoginScreenState extends State<LoginScreen> {
               i++;
             }
 
-            if (i == 2) {
-/*
-            AsyncSnapshot<QuerySnapshot> snapshot = FirebaseFirestore.instance.collection('users').where("Email", isEqualTo: _emailController.text).snapshots();
-                if(snapshot.hasData) {
-                  snapshot.data.docs.map((document) {
-                    String pw=decryptAESCryptoJS(document['Password'], "password");
-                    print("PASSWORD"+pw);
-                    if (pw.compareTo(_passwordController.text)==true) {
-                      Route route = MaterialPageRoute(
-                      builder: (context) => homePagePT());
-                      Navigator.push(context, route);
-                  }
-                    else {
-                    _showMyDialog();
-                    }
+            messagesStream();
 
-                  }
-                  );
-                };*/
-              };
+            if (i == 2) {
+              print("QUI");
+              print("PASSWORD " + passwordDB + "CATEGORIA "+ categoriaDB);
+              pw=decryptAESCryptoJS(passwordDB, "password");
+              print("PASSWORD " + pw + "CATEGORIA "+ categoriaDB);
+              print("COMPARE TO " + (pw.compareTo(_passwordController.text)).toString());
+              if(pw.compareTo(_passwordController.text)==0) {
+                if(categoriaDB.compareTo("Sportivo")==0) {
+                  Route route = MaterialPageRoute(
+                      builder: (context) => homePageSP());
+                  Navigator.push(context, route);
+                }
+                else {
+                  Route route = MaterialPageRoute(
+                      builder: (context) => homePagePT());
+                  Navigator.push(context, route);
+                }
+              }
+              else {
+                _showMyDialog();
+              }
+            }
+
           });
         },
 
