@@ -3,7 +3,10 @@ import 'package:filter_list/filter_list.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/CambioPW.dart';
 import 'package:social_fitness_app/DashBoardSportivo.dart';
+import 'package:social_fitness_app/Login_Page.dart';
 import 'package:social_fitness_app/widgets/Scheda_In_Evidenza.dart';
+
+import 'Back-End/Search.dart';
 
 
 class homePageSP extends StatefulWidget {
@@ -20,15 +23,19 @@ class homePageStateSP extends State<homePageSP> {
   String nome = "";
   String cognome = "";
   String email = "";
+  String dataNascita = "";
+  String cellulare = "";
 
   void messagesStream() async {
     await for (var snapshot in _fireStore.collection(_collection).snapshots()) {
       for (var message in snapshot.docs) {
         //print(message.data());
-        if(message["Email"] == "fulvio123@gmail.com"){
+        if(message["Email"] == "alicevid99@gmail.com"){
           nome = message["Nome"];
           cognome = message["Cognome"];
           email = message["Email"];
+          dataNascita=message["Data_Di_Nascita "];
+          cellulare=message["Cellulare"];
         }
       }
     }
@@ -61,7 +68,10 @@ class homePageStateSP extends State<homePageSP> {
           ),
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: () {},
+            onPressed: () {
+              List<String> example=["uno", "due","tre"];
+              showSearch(context: context, delegate: Search(example));
+            },
           ),
           IconButton(
             icon: Icon(Icons.favorite),
@@ -158,12 +168,12 @@ class homePageStateSP extends State<homePageSP> {
             Divider(),
             ListTile(
               leading: Icon(Icons.calendar_today),
-              title: Text("Data Di nascita"),
+              title: Text(dataNascita),
             ),
             Divider(),
             ListTile(
               leading: Icon(Icons.phone),
-              title: Text('Cellulare'),
+              title: Text(cellulare),
             ),
             Divider(),
             ListTile(
@@ -185,7 +195,9 @@ class homePageStateSP extends State<homePageSP> {
               trailing: Icon(Icons.exit_to_app),
               title: Text('Logout'),
               onTap: () {
-                print('Logout');
+                Route route = MaterialPageRoute(
+                    builder: (context) => LoginScreen());
+                Navigator.push(context, route);
               },
             ),
           ],

@@ -121,13 +121,6 @@
             </list>
           </value>
         </entry>
-        <entry key="country_list_pick">
-          <value>
-            <list>
-              <option value="$PROJECT_DIR$/../../../../FLUTTER/.pub-cache/hosted/pub.dartlang.org/country_list_pick-1.0.1+2/lib" />
-            </list>
-          </value>
-        </entry>
         <entry key="crypto">
           <value>
             <list>
@@ -687,7 +680,6 @@
       <root url="file://$PROJECT_DIR$/../../../../FLUTTER/.pub-cache/hosted/pub.dartlang.org/collection-1.15.0-nullsafety.3/lib" />
       <root url="file://$PROJECT_DIR$/../../../../FLUTTER/.pub-cache/hosted/pub.dartlang.org/convert-2.1.1/lib" />
       <root url="file://$PROJECT_DIR$/../../../../FLUTTER/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-2.6.0/lib" />
-      <root url="file://$PROJECT_DIR$/../../../../FLUTTER/.pub-cache/hosted/pub.dartlang.org/country_list_pick-1.0.1+2/lib" />
       <root url="file://$PROJECT_DIR$/../../../../FLUTTER/.pub-cache/hosted/pub.dartlang.org/crypto-2.1.5/lib" />
       <root url="file://$PROJECT_DIR$/../../../../FLUTTER/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../FLUTTER/.pub-cache/hosted/pub.dartlang.org/datetime_picker_formfield-1.0.0/lib" />

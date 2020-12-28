@@ -1,7 +1,11 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/CambioPW.dart';
 import 'package:social_fitness_app/DashBoardPT.dart';
+import 'package:social_fitness_app/Login_Page.dart';
+import 'Back-End/Search.dart';
 import 'DashBoardSportivo.dart';
 
 
@@ -62,7 +66,10 @@ class homePageStatePT extends State<homePagePT> {
           ),
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: () {},
+            onPressed: () {
+              List<String> example=["uno", "due","tre"];
+              showSearch(context: context, delegate: Search(example));
+            },
           ),
           IconButton(
             icon: Icon(Icons.favorite),
@@ -98,6 +105,7 @@ class homePageStatePT extends State<homePagePT> {
          new BottomNavigationBarItem(
            icon: new Icon(Icons.search),
            title: new Text("Cerca"),
+
          ),
        ],
      ),
@@ -124,12 +132,12 @@ class homePageStatePT extends State<homePagePT> {
             Divider(),
             ListTile(
               leading: Icon(Icons.calendar_today),
-              title: Text("Data Di nascita"),
+              title: Text(dataNascita),
             ),
             Divider(),
             ListTile(
               leading: Icon(Icons.phone),
-              title: Text('Cellulare'),
+              title: Text(cellulare),
             ),
             Divider(),
             ListTile(
@@ -151,7 +159,9 @@ class homePageStatePT extends State<homePagePT> {
               trailing: Icon(Icons.exit_to_app),
               title: Text('Logout'),
               onTap: () {
-                print('Logout');
+                Route route = MaterialPageRoute(
+                    builder: (context) => LoginScreen());
+                Navigator.push(context, route);
               },
             ),
           ],

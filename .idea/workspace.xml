@@ -2,7 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba857104-65df-4650-a4cc-dec240ab4271" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/Back-End/Search.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HomePageMenuPT.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HomePageMenuPT.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/HomePageMenuSP.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HomePageMenuSP.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Login_Page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Login_Page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Registrazione_Page_Sportivo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Registrazione_Page_Sportivo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +66,17 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
       <method v="2" />
@@ -120,6 +144,9 @@
       <workItem from="1609082290195" duration="548000" />
       <workItem from="1609165343172" duration="697000" />
       <workItem from="1609166137290" duration="52000" />
+      <workItem from="1609166347674" duration="1194000" />
+      <workItem from="1609168002268" duration="181000" />
+      <workItem from="1609168676846" duration="1882000" />
     </task>
     <task id="LOCAL-00001" summary="PIANIFICA ATTIVITA'host e pt">
       <created>1603885750998</created>
@@ -175,22 +202,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="152" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607678480826" />
-    <state width="1493" height="184" key="GridCell.Tab.0.bottom" timestamp="1609166045350">
+    <state width="1493" height="185" key="GridCell.Tab.0.bottom" timestamp="1609170579701">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="184" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1609166045350" />
-    <state width="1493" height="184" key="GridCell.Tab.0.center" timestamp="1609166045350">
+    <state width="1493" height="185" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1609170579701" />
+    <state width="1493" height="185" key="GridCell.Tab.0.center" timestamp="1609170579701">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="184" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1609166045350" />
-    <state width="1493" height="184" key="GridCell.Tab.0.left" timestamp="1609166045350">
+    <state width="1493" height="185" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1609170579701" />
+    <state width="1493" height="185" key="GridCell.Tab.0.left" timestamp="1609170579701">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="184" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1609166045350" />
-    <state width="1493" height="184" key="GridCell.Tab.0.right" timestamp="1609166045350">
+    <state width="1493" height="185" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1609170579701" />
+    <state width="1493" height="185" key="GridCell.Tab.0.right" timestamp="1609170579701">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="184" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1609166045350" />
+    <state width="1493" height="185" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1609170579701" />
     <state x="555" y="18" key="SettingsEditor" timestamp="1603809944609">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -104,12 +104,6 @@
       "languageVersion": "2.1"
     },
     {
-      "name": "country_list_pick",
-      "rootUri": "file:///C:/FLUTTER/.pub-cache/hosted/pub.dartlang.org/country_list_pick-1.0.1+2",
-      "packageUri": "lib/",
-      "languageVersion": "2.3"
-    },
-    {
       "name": "crypto",
       "rootUri": "file:///C:/FLUTTER/.pub-cache/hosted/pub.dartlang.org/crypto-2.1.5",
       "packageUri": "lib/",
@@ -578,7 +572,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-12-12T09:31:57.362373Z",
+  "generated": "2020-12-28T14:57:51.687295Z",
   "generator": "pub",
   "generatorVersion": "2.10.2"
 }

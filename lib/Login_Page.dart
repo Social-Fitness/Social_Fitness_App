@@ -257,11 +257,7 @@ class _LoginScreenState extends State<LoginScreen> {
             messagesStream();
 
             if (i == 2) {
-              print("QUI");
-              print("PASSWORD " + passwordDB + "CATEGORIA "+ categoriaDB);
               pw=decryptAESCryptoJS(passwordDB, "password");
-              print("PASSWORD " + pw + "CATEGORIA "+ categoriaDB);
-              print("COMPARE TO " + (pw.compareTo(_passwordController.text)).toString());
               if(pw.compareTo(_passwordController.text)==0) {
                 if(categoriaDB.compareTo("Sportivo")==0) {
                   Route route = MaterialPageRoute(
