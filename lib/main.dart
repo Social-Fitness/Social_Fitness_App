@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:social_fitness_app/WelcomePage.dart';
+import 'HomePageMenuPT.dart';
+import 'HomePageMenuSP.dart';
 
 
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
                   hintColor: Color(0xFFfc6a26),
                   primaryColor: Color(0xFF01579B),
                   canvasColor: Colors.transparent),*/
-              home: WelcomePage(),//DashBoard(),
+              home: homePageSP(),//DashBoard(),
             );
           }
         }

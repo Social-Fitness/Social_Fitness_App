@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/screens/home_pt.dart';
+import 'package:social_fitness_app/screens/home_sportivo.dart';
 
 
 class DashBoardSportivo extends StatefulWidget {
@@ -19,7 +20,7 @@ class DashBoardState extends State<DashBoardSportivo> {
   @override
   Widget build(BuildContext context) {
     List<Widget> _screens = [
-      HomeScreen(),
+      HomeScreenSportivo(),
       Center(child: Text("Subscriptions")),
     ];
 

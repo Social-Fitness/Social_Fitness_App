@@ -3,6 +3,7 @@ import 'package:filter_list/filter_list.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/CambioPW.dart';
 import 'package:social_fitness_app/DashBoardSportivo.dart';
+import 'package:social_fitness_app/widgets/Scheda_In_Evidenza.dart';
 
 
 class homePageSP extends StatefulWidget {
@@ -12,15 +13,13 @@ class homePageSP extends StatefulWidget {
 
 class homePageStateSP extends State<homePageSP> {
   int _currentIndex = 0;
-  final List<Widget> _children = [DashBoardSportivo(), DashBoardSportivo()];
+  final List<Widget> _children = [DashBoardSportivo(), SchedeStories()];
 
   final String _collection = 'users';
   final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
   String nome = "";
   String cognome = "";
   String email = "";
-  String cellulare="";
-  String dataNascita="";
 
   void messagesStream() async {
     await for (var snapshot in _fireStore.collection(_collection).snapshots()) {
@@ -30,8 +29,6 @@ class homePageStateSP extends State<homePageSP> {
           nome = message["Nome"];
           cognome = message["Cognome"];
           email = message["Email"];
-          cellulare=message["Cellulare"];
-          dataNascita=message["Data_Di_Nascita "];
         }
       }
     }
@@ -40,35 +37,39 @@ class homePageStateSP extends State<homePageSP> {
 
   @override
   Widget build(BuildContext context) {
+    messagesStream();
     return Scaffold(
       appBar: AppBar(
-        title: Text("HelpYouWorkout",
-        style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26) )),
-        actions: [
-          IconButton(icon:Icon(Icons.filter_alt),
-          onPressed: _openFilterDialog,),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child:
-            IconButton(icon:Icon(Icons.search)),
-          ),
-          IconButton(
-            icon:Icon(Icons.menu),
-            onPressed: () {
-            messagesStream();
-            Route route = MaterialPageRoute(
-            builder: (context) => _myDrawerWithHeaderAndDivider(context) );
-            Navigator.push(context, route); },
-          ),
-        ],
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(
           color: Color(0xFF01579B),
           size: 30,
         ),
+        leading: IconButton(
+          icon:Icon(Icons.menu),
+          onPressed: () {
+            messagesStream();
+            Route route = MaterialPageRoute(
+                builder: (context) => _myDrawerWithHeaderAndDivider(context) );
+            Navigator.push(context, route); },
+        ),
+        title: Text("HelpYourWorkout",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.favorite),
+            onPressed: () {},
+          ),
+        ],
       ),
-
-      body: _children[_currentIndex],
+      body: _children[1],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         onTap: (value) {
@@ -76,7 +77,6 @@ class homePageStateSP extends State<homePageSP> {
           setState(() => _currentIndex = value);
         },
         currentIndex: _currentIndex,
-        backgroundColor: Colors.white,
         selectedItemColor: Color(0xFFfc6a26),
         unselectedItemColor: Color(0xFF01579B),
         selectedFontSize: 15,
@@ -87,16 +87,16 @@ class homePageStateSP extends State<homePageSP> {
             title: new Text("Torna su"),
           ),
           new BottomNavigationBarItem(
-            icon: new Icon(Icons.people_alt),
-            title: new Text("Seguiti"),
-          ),
-          new BottomNavigationBarItem(
-            icon: new Icon(Icons.assignment),
+            icon: new Icon(Icons.favorite),
             title: new Text("Schede"),
           ),
           new BottomNavigationBarItem(
-            icon: new Icon(Icons.add_alert),
-            title: new Text("Notifiche"),
+            icon: new Icon(Icons.add),
+            title: new Text("Crea"),
+          ),
+          new BottomNavigationBarItem(
+            icon: new Icon(Icons.search),
+            title: new Text("Cerca"),
           ),
         ],
       ),
@@ -158,12 +158,12 @@ class homePageStateSP extends State<homePageSP> {
             Divider(),
             ListTile(
               leading: Icon(Icons.calendar_today),
-              title: Text(dataNascita),
+              title: Text("Data Di nascita"),
             ),
             Divider(),
             ListTile(
               leading: Icon(Icons.phone),
-              title: Text(cellulare),
+              title: Text('Cellulare'),
             ),
             Divider(),
             ListTile(

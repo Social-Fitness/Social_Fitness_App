@@ -24,7 +24,7 @@ class homePageStatePT extends State<homePagePT> {
     await for (var snapshot in _fireStore.collection(_collection).snapshots()) {
       for (var message in snapshot.docs) {
         //print(message.data());
-         if(message["Email"] == "salvatore@gmail.com"){
+        if(message["Email"] == "salvatore@gmail.com"){
             nome = message["Nome"];
             cognome = message["Cognome"];
             email = message["Email"];
@@ -41,32 +41,35 @@ class homePageStatePT extends State<homePagePT> {
     messagesStream();
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(
+          color: Color(0xFF01579B),
+          size: 30,
+        ),
         leading: IconButton(
           icon:Icon(Icons.menu),
           onPressed: () {
             messagesStream();
             Route route = MaterialPageRoute(
-              builder: (context) => _myDrawerWithHeaderAndDivider(context) );
-          Navigator.push(context, route); },
+                builder: (context) => _myDrawerWithHeaderAndDivider(context) );
+            Navigator.push(context, route); },
         ),
-        title: Text("HelpYourWorkout",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26) ), ),
-
-        actions: [
-          IconButton(icon:Icon(Icons.add)),
-      Padding(
-        padding: EdgeInsets.symmetric(horizontal: 5),
-        child:
-        IconButton(icon:Icon(Icons.search)),
-      ),
-          IconButton(icon:Icon(Icons.favorite))
+        title: Text("HelpYourWorkout",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.favorite),
+            onPressed: () {},
+          ),
         ],
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(
-            color: Color(0xFF01579B),
-                size: 30,
-        ),
       ),
-
      body: _children[_currentIndex],
      bottomNavigationBar: BottomNavigationBar(
        type: BottomNavigationBarType.fixed,
@@ -121,12 +124,12 @@ class homePageStatePT extends State<homePagePT> {
             Divider(),
             ListTile(
               leading: Icon(Icons.calendar_today),
-              title: Text(dataNascita),
+              title: Text("Data Di nascita"),
             ),
             Divider(),
             ListTile(
               leading: Icon(Icons.phone),
-              title: Text(cellulare),
+              title: Text('Cellulare'),
             ),
             Divider(),
             ListTile(

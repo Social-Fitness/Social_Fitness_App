@@ -5,7 +5,7 @@ import 'package:social_fitness_app/models/Sportivo_model.dart';
 import '../Lista_Schede_Sportivo.dart';
 
 
-class HomeScreen extends StatelessWidget {
+class HomeScreenSportivo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListaSchedaSportivo(listData: sportivoData,);
