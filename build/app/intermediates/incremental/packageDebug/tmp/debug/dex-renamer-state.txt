@@ -1,4 +1,4 @@
-#Sun Dec 27 16:20:33 CET 2020
+#Mon Dec 28 15:27:06 CET 2020
 base.2=C\:\\Users\\Alice Vidoni\\Desktop\\Social_Fitness_App\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes2.dex
 base.1=C\:\\Users\\Alice Vidoni\\Desktop\\Social_Fitness_App\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
 base.0=C\:\\Users\\Alice Vidoni\\Desktop\\Social_Fitness_App\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
