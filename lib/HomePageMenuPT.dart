@@ -1,12 +1,9 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/CambioPW.dart';
 import 'package:social_fitness_app/DashBoardPT.dart';
 import 'package:social_fitness_app/Login_Page.dart';
 import 'Back-End/Search.dart';
-import 'DashBoardSportivo.dart';
 
 
 class homePagePT extends StatefulWidget {
@@ -91,8 +88,8 @@ class homePageStatePT extends State<homePagePT> {
        unselectedFontSize: 15,
        items: [
          new BottomNavigationBarItem(
-           icon: new Icon(Icons.arrow_upward),
-           title: new Text("Torna su"),
+           icon: new Icon(Icons.home),
+           title: new Text("Home"),
          ),
          new BottomNavigationBarItem(
            icon: new Icon(Icons.favorite),
@@ -127,9 +124,14 @@ class homePageStatePT extends State<homePagePT> {
           ),
             ListTile(
               leading: Icon(Icons.person),
-              title: Text(nome + " " + cognome),
+              title: Text(nome),
             ),
             Divider(),
+              ListTile(
+                leading: Icon(Icons.person),
+                title: Text(cognome),
+              ),
+              Divider(),
             ListTile(
               leading: Icon(Icons.calendar_today),
               title: Text(dataNascita),

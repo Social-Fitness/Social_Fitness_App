@@ -62,10 +62,7 @@ class homePageStateSP extends State<homePageSP> {
         ),
         title: Text("HelpYourWorkout",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () {},
-          ),
+
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
@@ -74,8 +71,10 @@ class homePageStateSP extends State<homePageSP> {
             },
           ),
           IconButton(
-            icon: Icon(Icons.favorite),
-            onPressed: () {},
+            icon: Icon(Icons.filter_alt),
+            onPressed: () {
+              _openFilterDialog();
+            },
           ),
         ],
       ),
@@ -93,20 +92,20 @@ class homePageStateSP extends State<homePageSP> {
         unselectedFontSize: 15,
         items: [
           new BottomNavigationBarItem(
-            icon: new Icon(Icons.arrow_upward),
-            title: new Text("Torna su"),
+            icon: new Icon(Icons.home),
+            title: new Text("Home"),
+          ),
+          new BottomNavigationBarItem(
+            icon: new Icon(Icons.people_rounded),
+            title: new Text("Seguiti"),
           ),
           new BottomNavigationBarItem(
             icon: new Icon(Icons.favorite),
             title: new Text("Schede"),
           ),
           new BottomNavigationBarItem(
-            icon: new Icon(Icons.add),
-            title: new Text("Crea"),
-          ),
-          new BottomNavigationBarItem(
-            icon: new Icon(Icons.search),
-            title: new Text("Cerca"),
+            icon: new Icon(Icons.add_alert),
+            title: new Text("Notifiche"),
           ),
         ],
       ),
@@ -163,7 +162,12 @@ class homePageStateSP extends State<homePageSP> {
             ),
             ListTile(
               leading: Icon(Icons.person),
-              title: Text(nome + " " + cognome),
+              title: Text(nome),
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text(cognome),
             ),
             Divider(),
             ListTile(
