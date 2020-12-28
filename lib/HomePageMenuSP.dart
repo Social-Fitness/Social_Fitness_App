@@ -64,16 +64,16 @@ class homePageStateSP extends State<homePageSP> {
         actions: <Widget>[
 
           IconButton(
+            icon: Icon(Icons.filter_alt),
+            onPressed: () {
+              _openFilterDialog();
+            },
+          ),
+          IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
               List<String> example=["uno", "due","tre"];
               showSearch(context: context, delegate: Search(example));
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.filter_alt),
-            onPressed: () {
-              _openFilterDialog();
             },
           ),
         ],
