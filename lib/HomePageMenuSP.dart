@@ -19,6 +19,8 @@ class homePageStateSP extends State<homePageSP> {
   String nome = "";
   String cognome = "";
   String email = "";
+  String cellulare="";
+  String dataNascita="";
 
   void messagesStream() async {
     await for (var snapshot in _fireStore.collection(_collection).snapshots()) {
@@ -28,6 +30,8 @@ class homePageStateSP extends State<homePageSP> {
           nome = message["Nome"];
           cognome = message["Cognome"];
           email = message["Email"];
+          cellulare=message["Cellulare"];
+          dataNascita=message["Data_Di_Nascita "];
         }
       }
     }
@@ -154,12 +158,12 @@ class homePageStateSP extends State<homePageSP> {
             Divider(),
             ListTile(
               leading: Icon(Icons.calendar_today),
-              title: Text("Data Di nascita"),
+              title: Text(dataNascita),
             ),
             Divider(),
             ListTile(
               leading: Icon(Icons.phone),
-              title: Text('Cellulare'),
+              title: Text(cellulare),
             ),
             Divider(),
             ListTile(

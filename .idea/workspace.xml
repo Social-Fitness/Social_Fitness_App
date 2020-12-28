@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba857104-65df-4650-a4cc-dec240ab4271" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HomePageMenuPT.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HomePageMenuPT.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HomePageMenuSP.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HomePageMenuSP.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +119,7 @@
       <workItem from="1609078815779" duration="3388000" />
       <workItem from="1609082290195" duration="548000" />
       <workItem from="1609165343172" duration="697000" />
+      <workItem from="1609166137290" duration="52000" />
     </task>
     <task id="LOCAL-00001" summary="PIANIFICA ATTIVITA'host e pt">
       <created>1603885750998</created>
