@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/CambioPW.dart';
-import 'package:social_fitness_app/DashBoardPT.dart';
 import 'package:social_fitness_app/Login_Page.dart';
-import 'Back-End/Search.dart';
+import 'package:social_fitness_app/widgets/Search_Bar.dart';
+import 'DashBoardPT.dart';
+import 'widgets/Search.dart';
 
 
 class homePagePT extends StatefulWidget {
@@ -12,7 +13,7 @@ class homePagePT extends StatefulWidget {
 }
 class homePageStatePT extends State<homePagePT> {
   int _currentIndex = 0;
-  final List<Widget> _children = [DashBoardPT(), DashBoardPT()];
+  final List<Widget> _children = [ DashBoardPT(), null,null, SearchBar()];
   final String _collection = 'users';
   final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
   String nome = "";
@@ -108,6 +109,7 @@ class homePageStatePT extends State<homePagePT> {
      ),
     );
   }
+
 
   Widget _myDrawerWithHeaderAndDivider(BuildContext context) {
     return Container(

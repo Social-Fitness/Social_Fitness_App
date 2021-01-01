@@ -29,7 +29,7 @@ List<SportivoModel> sportivoData = [
     thumbNail:
     "assets/image/Scheda1.jpg",
     publishedTime: "2 settimane fa",
-    channelTitle: "Coach Pietro",
+    channelTitle: "Pietro Grimaldi",
     channelAvatar:
     "assets/image/logo_prova.png",
     viewCount: "50M visualizzazioni",
@@ -42,7 +42,7 @@ List<SportivoModel> sportivoData = [
     thumbNail:
     "assets/image/Scheda2.jpg",
     publishedTime: "16 ore fa",
-    channelTitle: "Coach Edoardo",
+    channelTitle: "Edoardo Attanasio",
     channelAvatar:
     "assets/image/logo_prova.png",
     viewCount: "917K visualizzazioni",
@@ -55,7 +55,7 @@ List<SportivoModel> sportivoData = [
     thumbNail:
     "assets/image/Scheda3.jpg",
     publishedTime: "6 giorni fa",
-    channelTitle: "Coach Giangi",
+    channelTitle: "Carmine Seccia",
     channelAvatar:
     "assets/image/logo_prova.png",
     viewCount: "53M visualizzazioni",

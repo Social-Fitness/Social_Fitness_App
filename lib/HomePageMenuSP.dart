@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:social_fitness_app/CambioPW.dart';
 import 'package:social_fitness_app/DashBoardSportivo.dart';
 import 'package:social_fitness_app/Login_Page.dart';
-import 'package:social_fitness_app/widgets/Scheda_In_Evidenza.dart';
 
-import 'Back-End/Search.dart';
+import 'widgets/Search.dart';
 
 
 class homePageSP extends StatefulWidget {
@@ -15,8 +14,9 @@ class homePageSP extends StatefulWidget {
 }
 
 class homePageStateSP extends State<homePageSP> {
+  List<String> example=["uno", "due","tre"];
   int _currentIndex = 0;
-  final List<Widget> _children = [DashBoardSportivo(), SchedeStories()];
+  final List<Widget> _children = [DashBoardSportivo(),null, null, null];
 
   final String _collection = 'users';
   final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
@@ -72,13 +72,12 @@ class homePageStateSP extends State<homePageSP> {
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
-              List<String> example=["uno", "due","tre"];
               showSearch(context: context, delegate: Search(example));
             },
           ),
         ],
       ),
-      body: _children[1],
+      body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         onTap: (value) {

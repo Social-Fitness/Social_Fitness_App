@@ -62,7 +62,6 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Colors.white,
               fontFamily: 'OpenSans',
             ),
-
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
@@ -74,7 +73,6 @@ class _LoginScreenState extends State<LoginScreen> {
               errorText: _validateEmail ? 'Il campo non può essere vuoto' : _errorEmail,
               hintStyle: kHintTextStyle,
             ),
-
           ),
         ),
       ],
@@ -298,70 +296,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildSignInWithText() {
-    return Column(
-      children: <Widget>[
-        Text(
-          '- OPPURE -',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-        SizedBox(height: 20.0),
-        Text(
-          'Registrati con',
-          style: kLabelStyle,
-        ),
-      ],
-    );
-  }
-
-  Widget _buildSocialBtn(Function onTap, AssetImage logo) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 60.0,
-        width: 60.0,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              offset: Offset(0, 2),
-              blurRadius: 6.0,
-            ),
-          ],
-          image: DecorationImage(
-            image: logo,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSocialBtnRow() {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 50.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          _buildSocialBtn(
-                () => print('Login con Facebook'),
-            AssetImage(_PIC01,
-            ),
-          ),
-          _buildSocialBtn(
-                () => print('Login con Google'),
-            AssetImage(
-              _PIC02,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   Widget _buildSignupBtn() {
     return GestureDetector(
@@ -449,9 +383,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       _buildPasswordTF(),
                       _buildForgotPasswordBtn(),
                       _buildRememberMeCheckbox(),
+                      SizedBox(
+                        height: 50.0,
+                      ),
                       _buildLoginBtn(),
-                      _buildSignInWithText(),
-                      _buildSocialBtnRow(),
                       _buildSignupBtn(),
                     ],
                   ),
