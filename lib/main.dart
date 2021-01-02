@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
                   hintColor: Color(0xFFfc6a26),
                   primaryColor: Color(0xFF01579B),
                   canvasColor: Colors.transparent),*/
-              home: homePageSP(),
+              home: WelcomePage(),
             );
           }
         }

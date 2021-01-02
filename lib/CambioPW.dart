@@ -164,6 +164,25 @@ class CambioPWState extends State<CambioPW> {
     );
   }
 
+  Widget _buildIndietroTF() {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          IconButton(
+            iconSize: 50,
+            icon: Icon(Icons.arrow_back),
+            color: Color(0xFFfc6a26),
+            onPressed: () {
+              Route route = MaterialPageRoute(
+                  builder: (context) => homePagePT() );
+              Navigator.push(context, route); },
+          ),
+
+            ]
+      );
+
+  }
+
 
 
   Widget _buildCambiaPWBtn() {
@@ -303,7 +322,8 @@ class CambioPWState extends State<CambioPW> {
                       _buildPasswordTF(),
                       SizedBox(height: 10.0),
                       _buildConfermaPasswordTF(),
-                      _buildCambiaPWBtn()
+                      _buildCambiaPWBtn(),
+                      _buildIndietroTF()
                     ],
                   ),
                 ),

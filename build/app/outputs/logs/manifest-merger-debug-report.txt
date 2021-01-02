@@ -10,6 +10,7 @@ MERGED from [:sqflite] C:\Users\Alice Vidoni\Desktop\Social_Fitness_App\build\sq
 MERGED from [:google_maps_flutter] C:\Users\Alice Vidoni\Desktop\Social_Fitness_App\build\google_maps_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\Alice Vidoni\Desktop\Social_Fitness_App\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:geolocator] C:\Users\Alice Vidoni\Desktop\Social_Fitness_App\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_keyboard_visibility] C:\Users\Alice Vidoni\Desktop\Social_Fitness_App\build\flutter_keyboard_visibility\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider] C:\Users\Alice Vidoni\Desktop\Social_Fitness_App\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:cloud_firestore] C:\Users\Alice Vidoni\Desktop\Social_Fitness_App\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_auth] C:\Users\Alice Vidoni\Desktop\Social_Fitness_App\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
@@ -206,6 +207,8 @@ MERGED from [:flutter_plugin_android_lifecycle] C:\Users\Alice Vidoni\Desktop\So
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\Alice Vidoni\Desktop\Social_Fitness_App\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:geolocator] C:\Users\Alice Vidoni\Desktop\Social_Fitness_App\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:geolocator] C:\Users\Alice Vidoni\Desktop\Social_Fitness_App\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_keyboard_visibility] C:\Users\Alice Vidoni\Desktop\Social_Fitness_App\build\flutter_keyboard_visibility\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_keyboard_visibility] C:\Users\Alice Vidoni\Desktop\Social_Fitness_App\build\flutter_keyboard_visibility\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] C:\Users\Alice Vidoni\Desktop\Social_Fitness_App\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] C:\Users\Alice Vidoni\Desktop\Social_Fitness_App\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] C:\Users\Alice Vidoni\Desktop\Social_Fitness_App\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
