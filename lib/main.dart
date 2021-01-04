@@ -1,8 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'HomePageMenuPT.dart';
-import 'HomePageMenuSP.dart';
+import 'WelcomePage.dart';
 
 
 
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
                   hintColor: Color(0xFFfc6a26),
                   primaryColor: Color(0xFF01579B),
                   canvasColor: Colors.transparent),*/
-              home: homePagePT(),//Home(),
+              home: WelcomePage(),
             );
           }
         }
