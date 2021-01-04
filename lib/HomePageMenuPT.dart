@@ -4,7 +4,10 @@ import 'package:social_fitness_app/CambioPW.dart';
 import 'package:social_fitness_app/Login_Page.dart';
 import 'package:social_fitness_app/widgets/Search_Bar.dart';
 import 'DashBoardPT.dart';
+import 'allenamento_ciclismo.dart';
+import 'allenamento_corsa.dart';
 import 'widgets/Search.dart';
+import 'package:full_screen_menu/full_screen_menu.dart';
 
 
 class homePagePT extends StatefulWidget {
@@ -22,6 +25,7 @@ class homePageStatePT extends State<homePagePT> {
   String cellulare="";
   String dataNascita="";
 
+
   void messagesStream() async {
     await for (var snapshot in _fireStore.collection(_collection).snapshots()) {
       for (var message in snapshot.docs) {
@@ -36,7 +40,6 @@ class homePageStatePT extends State<homePagePT> {
       }
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +63,37 @@ class homePageStatePT extends State<homePagePT> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
-            onPressed: () {},
+            onPressed: () {
+              FullScreenMenu.show(
+                context,
+                items: [
+                  FSMenuItem(
+                      icon: Icon(Icons.directions_run, color: Colors.white),
+                      text: Text("Corsa"),
+                      onTap: (){
+                        FullScreenMenu.hide();
+                        Route route = MaterialPageRoute(
+                            builder: (context) => AllenamentoCorScreen() );
+                        Navigator.push(context, route);
+                      }
+                  ),
+                  FSMenuItem(
+                    icon: Icon(Icons.directions_bike, color: Colors.white),
+                    text: Text('Ciclismo'),
+                      onTap: () {
+                      FullScreenMenu.hide();
+                        Route route = MaterialPageRoute(
+                            builder: (context) => AllenamentoCicScreen() );
+                        Navigator.push(context, route);
+                    }
+                  ),
+                  FSMenuItem(
+                    icon: Icon(Icons.block, color: Colors.white),
+                    text: Text('Novità In Arrivo'),
+                  ),
+                ],
+              );
+            },
           ),
           IconButton(
             icon: Icon(Icons.search),
@@ -71,7 +104,9 @@ class homePageStatePT extends State<homePagePT> {
           ),
           IconButton(
             icon: Icon(Icons.favorite),
-            onPressed: () {},
+            onPressed: () {
+                _showPopupMenu();
+            },
           ),
         ],
       ),
@@ -109,6 +144,30 @@ class homePageStatePT extends State<homePagePT> {
      ),
     );
   }
+
+_showPopupMenu() {
+  showMenu<String>(
+    context: context,
+    position: RelativeRect.fromLTRB(25.0, 25.0, 0.0, 0.0),
+    color: Colors.white,
+    items: [
+      PopupMenuItem<String>(
+          child: const Text('Visualizza In Ordine Crescente'), value: '1', textStyle: TextStyle(fontSize: 14, color: Color(0xFF01579B))),
+      PopupMenuItem<String>(
+          child: const Text('Visualizza In Ordine Decrescente'), value: '2', textStyle: TextStyle(fontSize: 14, color: Color(0xFF01579B))),
+    ],
+    elevation: 8.0,
+  )
+      .then<void>((String itemSelected) {
+    if (itemSelected == null) return;
+
+    if (itemSelected == "1") {
+      //code here
+    } else if (itemSelected == "2") {
+      //code here
+    }
+  });
+}
 
 
   Widget _myDrawerWithHeaderAndDivider(BuildContext context) {
