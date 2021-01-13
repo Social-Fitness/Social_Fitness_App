@@ -56,10 +56,10 @@ class DashBoardState extends State<DashBoardSportivo> {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: <Widget>[
-                story('assets/image/Scheda1.jpg','Pietro Grimaldo'),
-                story('assets/image/Scheda2.jpg','Salvatore Amideo'),
-                story('assets/image/Scheda3.jpg','Ivan Di Pietro'),
-                story('assets/image/Scheda4.jpg','Alice Vidoni'),
+                story('assets/image/pt1.jpg','Pietro Grimaldi'),
+                story('assets/image/pt2.jpg','Salvatore Amideo'),
+                story('assets/image/pt4.jpg','Ivan Di Pietro'),
+                story('assets/image/pt3.jpg','Anna Vanoni'),
               ],
             ),
           ),

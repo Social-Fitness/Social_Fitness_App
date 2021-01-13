@@ -52,7 +52,7 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
           : MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top,
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: NetworkImage(widget.detail.thumbNail), fit: BoxFit.cover)),
+              image: AssetImage(widget.detail.thumbNail), fit: BoxFit.cover)),
     );
   }
 
@@ -62,7 +62,6 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
         ListTile(
           title: Text(widget.detail.title),
           subtitle: Text(widget.detail.viewCount),
-          trailing: Icon(Icons.arrow_drop_down),
         ),
         Container(
           padding: const EdgeInsets.all(16.0),
@@ -110,20 +109,20 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
           Expanded(
             child: ListTile(
               leading: CircleAvatar(
-                backgroundImage: NetworkImage(widget.detail.channelAvatar),
+                backgroundImage: AssetImage(widget.detail.channelAvatar),
               ),
               title: Text(
                 widget.detail.channelTitle,
                 overflow: TextOverflow.ellipsis,
               ),
-              subtitle: Text("15.000 salvataggi"),
+              subtitle: Text("15.000 follower"),
             ),
           ),
           FlatButton.icon(
               onPressed: () {},
               icon: Icon(
-                Icons.play_circle_filled,
-                color: Colors.red,
+                Icons.people_rounded,
+                color: Color(0xFFfc6a26),
               ),
               label: Text(
                 "SEGUI",
@@ -136,16 +135,13 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
 
   Widget _moreInfo() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 15.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Expanded(child: Text("Up next")),
-          Text("Autoplay"),
-          Switch(
-            onChanged: (c) {},
-            value: true,
-          ),
+
+          Expanded(child: Text("Altre schede...")),
+
         ],
       ),
     );

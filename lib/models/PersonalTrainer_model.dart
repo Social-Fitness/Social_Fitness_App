@@ -11,23 +11,23 @@ class PersonalTrainerModel {
 
 List<PersonalTrainerModel> personalTrainerData = [
   PersonalTrainerModel(
-    titolo: "Workout 1",
+    titolo:  "Allenamento addominali",
     salva: "50M Salvataggi",
     foto:
     "assets/image/Scheda1.jpg",
   ),
   PersonalTrainerModel(
-    titolo: "Workout 2",
+    titolo:  "Allenamento dorsali",
     salva: "917K Salvataggi",
     foto:
     "assets/image/Scheda2.jpg",
 
   ),
   PersonalTrainerModel(
-    titolo: "Workout 3",
+    titolo:"Allenamento bicipiti",
     salva: "53M Salvataggi",
     foto:
-    "assets/image/Scheda3.jpg",
+    "assets/image/Scheda6.jpg",
 
   ),
 ];

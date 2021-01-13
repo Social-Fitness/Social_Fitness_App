@@ -56,10 +56,10 @@ class DashBoardState extends State<DashBoardPT> {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: <Widget>[
-                story('assets/image/Scheda1.jpg','260'),
-                story('assets/image/Scheda2.jpg','220'),
-                story('assets/image/Scheda3.jpg','180'),
-                story('assets/image/Scheda4.jpg','100'),
+                story('assets/image/Scheda2.jpg','260'),
+                story('assets/image/Scheda1.jpg','220'),
+                story('assets/image/Scheda6.jpg','180'),
+                story('assets/image/Scheda7.jpg','100'),
               ],
             ),
           ),

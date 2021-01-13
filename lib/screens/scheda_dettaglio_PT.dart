@@ -3,21 +3,22 @@ import 'package:social_fitness_app/models/PersonalTrainer_model.dart';
 
 import '../Lista_Schede_PT.dart';
 
-class SchedaDettaglio_Pt extends StatefulWidget {
+class SchedaDettaglioPT extends StatefulWidget {
   final PersonalTrainerModel detail;
 
-  const SchedaDettaglio_Pt({Key key, @required this.detail}) : super(key: key);
+  const SchedaDettaglioPT({Key key, @required this.detail}) : super(key: key);
 
   @override
   _VideoDetailState createState() => _VideoDetailState();
 }
 
-class _VideoDetailState extends State<SchedaDettaglio_Pt> {
+class _VideoDetailState extends State<SchedaDettaglioPT> {
   @override
   Widget build(BuildContext context) {
     List<Widget> _layouts = [
       _videoInfo(),
       _channelInfo(),
+      _moreInfo(),
       ListaSchedaPt(
         listData: personalTrainerData,
         isMiniList: true,
@@ -30,16 +31,29 @@ class _VideoDetailState extends State<SchedaDettaglio_Pt> {
 
     return Scaffold(
         body: Column(
-      children: <Widget>[
-        Expanded(
-          child: ListView(
-            children: _layouts,
-          ),
-        )
-      ],
-    ));
+          children: <Widget>[
+            _buildVideoPlayer(context),
+            Expanded(
+              child: ListView(
+                children: _layouts,
+              ),
+            )
+          ],
+        ));
   }
 
+  Widget _buildVideoPlayer(BuildContext context) {
+    return Container(
+      margin: new EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).orientation == Orientation.portrait
+          ? 200.0
+          : MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top,
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(widget.detail.foto), fit: BoxFit.cover)),
+    );
+  }
 
   Widget _videoInfo() {
     return Column(
@@ -47,7 +61,6 @@ class _VideoDetailState extends State<SchedaDettaglio_Pt> {
         ListTile(
           title: Text(widget.detail.titolo),
           subtitle: Text(widget.detail.salva),
-          trailing: Icon(Icons.arrow_drop_down),
         ),
         Container(
           padding: const EdgeInsets.all(16.0),
@@ -56,7 +69,7 @@ class _VideoDetailState extends State<SchedaDettaglio_Pt> {
             children: <Widget>[
               _buildButtonColumn(Icons.share, "Condividi"),
               _buildButtonColumn(Icons.cloud_download, "Download"),
-              _buildButtonColumn(Icons.playlist_add, "Salva"),
+
             ],
           ),
         )
@@ -90,26 +103,21 @@ class _VideoDetailState extends State<SchedaDettaglio_Pt> {
           bottom: BorderSide(color: Colors.grey, width: 0.5),
         ),
       ),
+
+    );
+  }
+
+  Widget _moreInfo() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 15.0),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Expanded(
-            child: ListTile(
-              subtitle: Text("15,000 iscritti"),
-            ),
-          ),
-          FlatButton.icon(
-              onPressed: () {},
-              icon: Icon(
-                Icons.play_circle_filled,
-                color: Colors.red,
-              ),
-              label: Text(
-                "ISCRIVITI",
-                style: TextStyle(color: Colors.red),
-              ))
+
+          Expanded(child: Text("Altre schede...")),
+
         ],
       ),
     );
   }
-
 }
