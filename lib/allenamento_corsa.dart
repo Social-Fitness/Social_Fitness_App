@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:social_fitness_app/HomePageMenuPT.dart';
 import 'package:social_fitness_app/utils/constants.dart';
+import 'package:social_fitness_app/widgets/Richiesta_schede.dart';
 
 class AllenamentoCorScreen extends StatefulWidget {
   @override
@@ -13,23 +14,23 @@ class AllenamentoCorScreen extends StatefulWidget {
 
 class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
   final firestoreInstance = FirebaseFirestore.instance;
-  TextEditingController _nomeController = new TextEditingController();
-  String _dataController;
-  TextEditingController _oraController = new TextEditingController();
-  TextEditingController _cittaController = new TextEditingController();
-  TextEditingController _indirizzoController = new TextEditingController();
-  bool _validateNome = false;
-  bool _validateCitta = false;
-  bool _validateIndirizzo = false;
-  bool _validateOra = false;
+  TextEditingController _BPMController = new TextEditingController();
+  TextEditingController _kmController = new TextEditingController();
+  TextEditingController _pendenzaController = new TextEditingController();
+  String _obiettivoController;
+  bool _validateBPM = false;
+  bool _validatekm = false;
+  bool _validatePendenza = false;
+
+  List<String> obiettivi = ['10', 'Mezza', 'Maratona', '30KM'];
 
 
-  Widget _buildNomeTF() {
+  Widget _buildBPMTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Nome Attività',
+          'BPM',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
@@ -38,7 +39,7 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            controller: _nomeController,
+            controller: _BPMController,
             keyboardType: TextInputType.name,
             style: TextStyle(
               color: Colors.white,
@@ -51,8 +52,8 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
                 Icons.directions_run,
                 color: Colors.white,
               ),
-              hintText: 'Inserisci il Nome dell\'attività',
-              errorText: _validateNome ? 'Il campo non può essere vuoto' : null,
+              hintText: 'Inserisci i BPM',
+              errorText: _validateBPM ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -61,38 +62,12 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
     );
   }
 
-  Widget _buildDataTF() {
+  Widget _buildKMTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Data (GG-MM-AAAAA)',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          height: 80,
-          child: CupertinoDatePicker(
-            mode: CupertinoDatePickerMode.date,
-            initialDateTime: DateTime(2000, 1, 1),
-            onDateTimeChanged: (DateTime newDateTime) {
-              _dataController = newDateTime.day.toString() + "-" + newDateTime.month.toString() + "-" + newDateTime.year.toString();
-              // Do something
-            },
-          ),
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-        ),
-      ],
-    );
-  }
-
-  Widget _buildOraTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Ora (HH:mm)',
+          'KM',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
@@ -101,7 +76,7 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            controller: _oraController,
+            controller: _kmController,
             keyboardType: TextInputType.name,
             style: TextStyle(
               color: Colors.white,
@@ -114,8 +89,8 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
                 Icons.watch_later_outlined,
                 color: Colors.white,
               ),
-              hintText: 'Inserisci l\'Ora',
-              errorText: _validateOra ? 'Il campo non può essere vuoto' : null,
+              hintText: 'Inserisci i km',
+              errorText: _validatekm ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -124,12 +99,12 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
     );
   }
 
-  Widget _buildCittaTF() {
+  Widget _buildPendenzaTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Città',
+          'Pendenza',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
@@ -138,7 +113,7 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            controller: _cittaController,
+            controller: _pendenzaController,
             keyboardType: TextInputType.name,
             style: TextStyle(
               color: Colors.white,
@@ -148,11 +123,11 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.location_city,
+                Icons.watch_later_outlined,
                 color: Colors.white,
               ),
-              hintText: 'Inserisci la Città',
-              errorText: _validateCitta ? 'Il campo non può essere vuoto' : null,
+              hintText: 'Inserisci pendenza',
+              errorText: _validatePendenza ? 'Il campo non può essere vuoto' : null,
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -161,12 +136,12 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
     );
   }
 
-  Widget _buildIndirizzoTF() {
+  Widget _buildObiettivoTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Indirizzo (via, CAP)',
+          'Obiettivo',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
@@ -174,32 +149,27 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 60.0,
-          child: TextField(
-            controller: _indirizzoController,
-            keyboardType: TextInputType.number,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.add_location_alt,
-                color: Colors.white,
+          child: DropdownButton(
+              hint: Text('Please choose a location'), // Not necessary for Option 1
+              value: _obiettivoController,
+              onChanged: (newValue) {
+              setState(() {
+              _obiettivoController = newValue;
+              });
+              },
+              items: obiettivi.map((location) {
+              return DropdownMenuItem(
+              child: new Text(location),
+              value: location,
+              );
+              }).toList(),
               ),
-              hintText: 'Inserisci l\'indirizzo',
-              errorText: _validateIndirizzo ? 'Il campo non può essere vuoto' : null,
-              hintStyle: kHintTextStyle,
             ),
-          ),
-        ),
-      ],
+        ],
     );
   }
 
-
-  Widget _buildCreaBtn() {
+    Widget _buildCreaBtn() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: double.infinity,
@@ -208,29 +178,24 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
         onPressed: () {
           setState(() {
             int i=0;
-            if(_nomeController.text.isEmpty)
-              _validateNome=true;
+            if(_BPMController.text.isEmpty)
+              _validateBPM=true;
             else
               i++;
 
-            if(_oraController.text.isEmpty)
-              _validateOra=true;
+            if(_kmController.text.isEmpty)
+              _validatekm=true;
             else
               i++;
 
-            if(_cittaController.text.isEmpty)
-              _validateCitta=true;
-            else
-              i++;
-
-
-            if(_indirizzoController.text.isEmpty)
-              _validateIndirizzo=true;
+            if(_pendenzaController.text.isEmpty)
+              _validatePendenza=true;
             else
               i++;
 
 
-            if(i==5)
+
+            if(i==3)
               _buildPopupTF(context);
 
           });
@@ -257,13 +222,13 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
   _buildPopupTF(context) {
     return Alert(
         context: context,
-        title: "NUOVA ATTIVITÀ CREATA!",
+        title: "NUOVA SCHEDA CREATA!",
         content:
         DialogButton(
           onPressed: () {
             _insertToDb();
             Route route = MaterialPageRoute(
-                builder: (context) => homePagePT());
+                builder: (context) => RichiestaSchedePage());
             Navigator.push(context, route);
           },
           child: Text(
@@ -275,13 +240,12 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
   }
 
   _insertToDb() {
-    firestoreInstance.collection("activity_host").add(
+    firestoreInstance.collection("SchedaCorsa").add(
         {
-          "Nome" : _nomeController.text,
-          "Data" : _dataController,
-          "Ora ": _oraController.text,
-          "Città" : _cittaController.text,
-          "Indirizzo" : _indirizzoController.text,
+          "BPM" : _BPMController.text,
+          "KM" : _kmController,
+          "Pendenza ": _pendenzaController.text,
+          "Obiettivo" : _obiettivoController,
 
         }).then((value){
       print(value.id);
@@ -327,7 +291,7 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'CREA UNA NUOVA ATTIVITÀ',
+                        'CREA UNA NUOVA SCHEDA',
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: "Montserrat",
@@ -336,15 +300,13 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
                         ),
                       ),
                       SizedBox(height: 30.0),
-                      _buildNomeTF(),
+                      _buildBPMTF(),
                       SizedBox(height: 10.0),
-                      _buildDataTF(),
+                      _buildKMTF(),
                       SizedBox(height: 10.0),
-                      _buildOraTF(),
+                      _buildPendenzaTF(),
                       SizedBox(height: 10.0,),
-                      _buildCittaTF(),
-                      SizedBox(height: 10.0),
-                      _buildIndirizzoTF(),
+                      _buildObiettivoTF(),
                       _buildCreaBtn()
                     ],
                   ),

@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/CambioPW.dart';
 import 'package:social_fitness_app/Login_Page.dart';
+import 'package:social_fitness_app/widgets/Richiesta_schede.dart';
 import 'package:social_fitness_app/widgets/Search_Bar.dart';
 import 'DashBoardPT.dart';
 import 'allenamento_ciclismo.dart';
 import 'allenamento_corsa.dart';
 import 'widgets/Search.dart';
-import 'package:full_screen_menu/full_screen_menu.dart';
 
 
 class homePagePT extends StatefulWidget {
@@ -62,37 +62,11 @@ class homePageStatePT extends State<homePagePT> {
         title: Text("HelpYourWorkout",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.add),
+            icon: Icon(Icons.add_alert),
             onPressed: () {
-              FullScreenMenu.show(
-                context,
-                items: [
-                  FSMenuItem(
-                      icon: Icon(Icons.directions_run, color: Colors.white),
-                      text: Text("Corsa"),
-                      onTap: (){
-                        FullScreenMenu.hide();
-                        Route route = MaterialPageRoute(
-                            builder: (context) => AllenamentoCorScreen() );
-                        Navigator.push(context, route);
-                      }
-                  ),
-                  FSMenuItem(
-                    icon: Icon(Icons.directions_bike, color: Colors.white),
-                    text: Text('Ciclismo'),
-                      onTap: () {
-                      FullScreenMenu.hide();
-                        Route route = MaterialPageRoute(
-                            builder: (context) => AllenamentoCicScreen() );
-                        Navigator.push(context, route);
-                    }
-                  ),
-                  FSMenuItem(
-                    icon: Icon(Icons.block, color: Colors.white),
-                    text: Text('Novità In Arrivo'),
-                  ),
-                ],
-              );
+              Route route = MaterialPageRoute(
+                  builder: (context) => RichiestaSchedePage());
+              Navigator.push(context, route);
             },
           ),
           IconButton(
@@ -130,10 +104,6 @@ class homePageStatePT extends State<homePagePT> {
          new BottomNavigationBarItem(
            icon: new Icon(Icons.favorite),
            title: new Text("Schede"),
-         ),
-         new BottomNavigationBarItem(
-           icon: new Icon(Icons.add),
-           title: new Text("Crea"),
          ),
          new BottomNavigationBarItem(
            icon: new Icon(Icons.search),
