@@ -3,12 +3,12 @@ import 'package:social_fitness_app/models/Sportivo_model.dart';
 
 import 'package:social_fitness_app/screens/scheda_dettaglio_Sportivo.dart';
 
-class ListaSchedaSportivo extends StatelessWidget {
+class ShedePreferite_Sportivo extends StatelessWidget {
   final List<SportivoModel> listData;
   final bool isMiniList;
   final bool isHorizontalList;
 
-  const ListaSchedaSportivo(
+  const ShedePreferite_Sportivo(
       {this.listData, this.isMiniList = false, this.isHorizontalList = false});
 
   @override
@@ -96,7 +96,7 @@ class ListaSchedaSportivo extends StatelessWidget {
               "${listData[index].channelTitle} . ${listData[index].viewCount} . ${listData[index].publishedTime}"),
           trailing: Container(
               margin: const EdgeInsets.only(bottom: 20.0),
-              child: Icon(Icons.favorite_border)),
+              child: Icon(Icons.favorite)),
         ),
       ],
     );

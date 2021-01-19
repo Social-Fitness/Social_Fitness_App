@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:social_fitness_app/CambioPW.dart';
 import 'package:social_fitness_app/DashBoardSportivo.dart';
 import 'package:social_fitness_app/Login_Page.dart';
+import 'package:social_fitness_app/widgets/Dashboard_SchedePreferite.dart';
+import 'package:social_fitness_app/widgets/Following_Page.dart';
+import 'package:social_fitness_app/widgets/Notifiche_page.dart';
 
 import 'widgets/Search.dart';
 
@@ -16,7 +19,7 @@ class homePageSP extends StatefulWidget {
 class homePageStateSP extends State<homePageSP> {
   List<String> example=["uno", "due","tre"];
   int _currentIndex = 0;
-  final List<Widget> _children = [DashBoardSportivo(),null, null, null];
+  final List<Widget> _children = [DashBoardSportivo(),FollowingPage(),DashBoard_SchedePreferite(), NotifichePage()];
 
   final String _collection = 'users';
   final FirebaseFirestore _fireStore = FirebaseFirestore.instance;

@@ -26,7 +26,7 @@ List<SportivoModel> sportivoData = [
     publishedTime: "2 settimane fa",
     channelTitle: "Pietro Grimaldi",
     channelAvatar:
-    "assets/image/pt1.png",
+    "assets/image/pt1.jpg",
     viewCount: "50M salvataggi",
   ),
   SportivoModel(
@@ -36,7 +36,7 @@ List<SportivoModel> sportivoData = [
     publishedTime: "16 ore fa",
     channelTitle: "Salvatore Amideo",
     channelAvatar:
-    "assets/image/pt2.png",
+    "assets/image/pt2.jpg",
     viewCount: "917K salvataggi",
   ),
   SportivoModel(
@@ -46,7 +46,7 @@ List<SportivoModel> sportivoData = [
     publishedTime: "6 giorni fa",
     channelTitle: "Anna Vanoni",
     channelAvatar:
-    "assets/image/pt3.png",
+    "assets/image/pt3.jpg",
     viewCount: "53M salvataggi",
   ),
 ];
