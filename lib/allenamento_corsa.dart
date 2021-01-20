@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:social_fitness_app/HomePageMenuPT.dart';
 import 'package:social_fitness_app/utils/constants.dart';
 import 'package:social_fitness_app/widgets/Richiesta_schede.dart';
 
@@ -49,7 +48,7 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.directions_run,
+                Icons.favorite,
                 color: Colors.white,
               ),
               hintText: 'Inserisci i BPM',
@@ -86,7 +85,7 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.watch_later_outlined,
+                Icons.directions_run,
                 color: Colors.white,
               ),
               hintText: 'Inserisci i km',
@@ -123,7 +122,7 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.watch_later_outlined,
+                Icons.stacked_line_chart,
                 color: Colors.white,
               ),
               hintText: 'Inserisci pendenza',
@@ -144,13 +143,15 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
           'Obiettivo',
           style: kLabelStyle,
         ),
-        SizedBox(height: 10.0),
+        SizedBox(height: 10.0, ),
         Container(
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: DropdownButton(
-              hint: Text('Please choose a location'), // Not necessary for Option 1
+            icon: Icon(Icons.assistant_photo,                 color: Colors.white,
+            ),
+              hint: Text('Seleziona l\'obiettivo'), // Not necessary for Option 1
               value: _obiettivoController,
               onChanged: (newValue) {
               setState(() {

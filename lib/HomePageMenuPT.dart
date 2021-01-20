@@ -16,7 +16,7 @@ class homePagePT extends StatefulWidget {
 }
 class homePageStatePT extends State<homePagePT> {
   int _currentIndex = 0;
-  final List<Widget> _children = [ DashBoardPT(), null,null, SearchBar()];
+  final List<Widget> _children = [ DashBoardPT(), null,RichiestaSchedePage(), SearchBar()];
   final String _collection = 'users';
   final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
   String nome = "";
@@ -61,14 +61,7 @@ class homePageStatePT extends State<homePagePT> {
         ),
         title: Text("HelpYourWorkout",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.add_alert),
-            onPressed: () {
-              Route route = MaterialPageRoute(
-                  builder: (context) => RichiestaSchedePage());
-              Navigator.push(context, route);
-            },
-          ),
+
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
@@ -104,6 +97,10 @@ class homePageStatePT extends State<homePagePT> {
          new BottomNavigationBarItem(
            icon: new Icon(Icons.favorite),
            title: new Text("Schede"),
+         ),
+         new BottomNavigationBarItem(
+           icon: new Icon(Icons.add_alert),
+           title: new Text("Richieste"),
          ),
          new BottomNavigationBarItem(
            icon: new Icon(Icons.search),

@@ -25,26 +25,28 @@ class RichiestaSchedePageState extends State<RichiestaSchedePage> {
                 child: new Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    GestureDetector(
-                      onTap:() {
-                        _showMyDialog();
-                      },
-                      child: CircleAvatar(
+                        CircleAvatar(
                         radius: 30.0,
                         backgroundImage: AssetImage("assets/image/pt1.jpg"),
                         backgroundColor: Colors.transparent,
                       ),
-                    ),
-                    new Text("UTENTE ${index+1} Ha richiesto una scheda scheda"), //Far uscire nome Pt al posto di PT+numero
+                    new Text("UTENTE ${index+1} Ha richiesto una scheda scheda \n " + "CICLISMO"), //Far uscire nome Pt al posto di PT+numero
+                GestureDetector(
+                  onTap:() {
+                    print("CLICK SU SCHEDA");
+                    _showMyDialog();
+                  },
+                    child: Image.asset("assets/image/create_scheda.png",height: 50.0,),
+                ),
                   ],
-                )
+                ),
             );
           }),
     );
   }
 
 
-  Future<void> _showMyDialog() async {  // Questo apre un pop up di avviso, quando email o password sbagliati
+  Future<void> _showMyDialog() async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
@@ -78,14 +80,21 @@ class RichiestaSchedePageState extends State<RichiestaSchedePage> {
           ),
           actions: <Widget>[
             TextButton(
+              child: Text('CANCEL'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
               child: Text('CREA'),
               onPressed: () {
                 //if è stato richiesto corsa o ciclismo apri form corretto
-                Route route = MaterialPageRoute(
+               Route route = MaterialPageRoute(
                     builder: (context) => AllenamentoCorScreen());
                 Navigator.push(context, route);
               },
             ),
+
           ],
         );
       },
