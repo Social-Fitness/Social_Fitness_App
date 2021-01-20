@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:social_fitness_app/HomePageMenuPT.dart';
 import 'package:social_fitness_app/utils/constants.dart';
 import 'package:social_fitness_app/widgets/Richiesta_schede.dart';
 
@@ -229,7 +230,7 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
           onPressed: () {
             _insertToDb();
             Route route = MaterialPageRoute(
-                builder: (context) => RichiestaSchedePage());
+                builder: (context) => homePagePT());
             Navigator.push(context, route);
           },
           child: Text(
@@ -244,7 +245,7 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
     firestoreInstance.collection("SchedaCorsa").add(
         {
           "BPM" : _BPMController.text,
-          "KM" : _kmController,
+          "KM" : _kmController.text,
           "Pendenza ": _pendenzaController.text,
           "Obiettivo" : _obiettivoController,
 
