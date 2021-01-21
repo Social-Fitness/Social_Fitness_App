@@ -208,7 +208,7 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
         ),
         color: Colors.white,
         child: Text(
-          'Crea',
+          'INVIA',
           style: TextStyle(
             color: Color(0xFF527DAA),
             letterSpacing: 1.5,
@@ -224,7 +224,7 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
   _buildPopupTF(context) {
     return Alert(
         context: context,
-        title: "NUOVA SCHEDA CREATA!",
+        title: "NUOVA SCHEDA INVIATA!",
         content:
         DialogButton(
           onPressed: () {
