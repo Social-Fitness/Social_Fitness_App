@@ -7,6 +7,7 @@ import 'package:social_fitness_app/Login_Page.dart';
 import 'package:social_fitness_app/widgets/Dashboard_SchedePreferite.dart';
 import 'package:social_fitness_app/widgets/Following_Page.dart';
 import 'package:social_fitness_app/widgets/Notifiche_page.dart';
+import 'package:social_fitness_app/widgets/Profile_Sportivo.dart';
 
 import 'widgets/Search.dart';
 
@@ -60,7 +61,7 @@ class homePageStateSP extends State<homePageSP> {
           onPressed: () {
             messagesStream();
             Route route = MaterialPageRoute(
-                builder: (context) => _myDrawerWithHeaderAndDivider(context) );
+                builder: (context) => ProfileSP(nome: nome,cognome: cognome,email: email,dataNascita: dataNascita,cellulare: cellulare));
             Navigator.push(context, route); },
         ),
         title: Text("HelpYourWorkout",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
@@ -147,68 +148,5 @@ class homePageStateSP extends State<homePageSP> {
           }
           Navigator.pop(context);
         });
-  }
-
-  Widget _myDrawerWithHeaderAndDivider(BuildContext context) {
-    return Container(
-      child: Drawer(// your specified height
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('PROFILO',  style: TextStyle(fontSize: 40, color: Colors.white,),
-                textAlign: TextAlign.center,),
-              decoration: BoxDecoration(
-                color: Color(0xFFfc6a26),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text(nome),
-            ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text(cognome),
-            ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.calendar_today),
-              title: Text(dataNascita),
-            ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.phone),
-              title: Text(cellulare),
-            ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.email),
-              title: Text(email),
-            ),
-            Divider(),
-            ListTile(
-              trailing: Icon(Icons.lock),
-              title: Text('Cambia la Password'),
-              onTap: () {
-                Route route = MaterialPageRoute(
-                    builder: (context) => CambioPW());
-                Navigator.push(context, route);
-              },
-            ),
-            Divider(),
-            ListTile(
-              trailing: Icon(Icons.exit_to_app),
-              title: Text('Logout'),
-              onTap: () {
-                Route route = MaterialPageRoute(
-                    builder: (context) => LoginScreen());
-                Navigator.push(context, route);
-              },
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }

@@ -26,17 +26,17 @@ class RichiestaSchedePageState extends State<RichiestaSchedePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                         CircleAvatar(
-                        radius: 30.0,
+                        radius: 18.0,
                         backgroundImage: AssetImage("assets/image/pt1.jpg"),
                         backgroundColor: Colors.transparent,
                       ),
-                    new Text("UTENTE ${index+1} Ha richiesto una scheda scheda \n " + "CICLISMO"), //Far uscire nome Pt al posto di PT+numero
+                    new Text("Utente ${index+1} Ha richiesto una scheda scheda \n " + "Ciclismo"), //Far uscire nome Pt al posto di PT+numero
                 GestureDetector(
                   onTap:() {
                     print("CLICK SU SCHEDA");
                     _showMyDialog();
                   },
-                    child: Image.asset("assets/image/create_scheda.png",height: 50.0,),
+                    child: Image.asset("assets/image/create_scheda.png",height: 35.0,),
                 ),
                   ],
                 ),

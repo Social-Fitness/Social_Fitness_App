@@ -150,8 +150,7 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: DropdownButton(
-            icon: Icon(Icons.assistant_photo,                 color: Colors.white,
-            ),
+            icon: Icon(Icons.assistant_photo,color: Colors.white,),
               hint: Text('Seleziona l\'obiettivo'), // Not necessary for Option 1
               value: _obiettivoController,
               onChanged: (newValue) {
