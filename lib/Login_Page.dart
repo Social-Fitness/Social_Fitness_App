@@ -2,14 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:social_fitness_app/Back-End/Crypt_Password.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/HomePageMenuPT.dart';
 import 'package:social_fitness_app/HomePageMenuSP.dart';
 import 'package:social_fitness_app/utils/constants.dart';
 import 'SelezionePToSpo_page.dart';
 
 const _PATH = "assets/image";
-const _PIC01 = "$_PATH/facebook.jpg";
-const _PIC02 = "$_PATH/google_logo.png";
+
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -28,6 +28,12 @@ class _LoginScreenState extends State<LoginScreen> {
   String passwordDB="";
   String categoriaDB="";
   String pw="";
+  String nome="";
+  String cognome="";
+  String dataNascita="";
+  String cellulare="";
+  String email="";
+  String img_profilo="";
 
 
   void messagesStream() async {
@@ -36,6 +42,12 @@ class _LoginScreenState extends State<LoginScreen> {
         if(message["Email"] == _emailController.text){
           passwordDB = message["Password"];
           categoriaDB= message["Categoria"];
+          email=message["Email"];
+          cellulare=message["Cellulare"];
+          cognome=message["Cognome"];
+          dataNascita=message["Data_Di_Nascita"];
+          nome=message["Nome"];
+          img_profilo=message["ImgProfilo"];
         }
       }
     }
@@ -255,16 +267,17 @@ class _LoginScreenState extends State<LoginScreen> {
             messagesStream();
 
             if (i == 2) {
+              Utente utente=new Utente(nome, cognome, email, cellulare, dataNascita, categoriaDB, passwordDB, img_profilo);
               pw=decryptAESCryptoJS(passwordDB, "password");
               if(pw.compareTo(_passwordController.text)==0) {
                 if(categoriaDB.compareTo("Sportivo")==0) {
                   Route route = MaterialPageRoute(
-                      builder: (context) => homePageSP());
+                      builder: (context) => homePageSP(utente: utente));
                   Navigator.push(context, route);
                 }
                 else {
                   Route route = MaterialPageRoute(
-                      builder: (context) => homePagePT());
+                      builder: (context) => homePagePT(utente: utente));
                   Navigator.push(context, route);
                 }
               }

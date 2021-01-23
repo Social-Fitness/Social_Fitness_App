@@ -1,28 +1,25 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 
 import '../Login_Page.dart';
 
 class ProfileSP extends StatefulWidget {
-  ProfileSP({Key key, this.nome, this.cognome,this.email,this.dataNascita,this.cellulare}) : super(key: key);
-  
-  final String nome;
-  final String cognome;
-  final String email;
-  final String dataNascita;
-  final String cellulare;
-
+  final Utente utente;
+  ProfileSP({Key key, this.utente}) : super(key: key);
   @override
-  ProfileSPState createState() => new ProfileSPState();
+  ProfileSPState createState() => new ProfileSPState(utente: utente);
 }
 
 class ProfileSPState extends State<ProfileSP> {
-  @override
+  final Utente utente;
+  ProfileSPState({Key key, this.utente});
+
   @override
   Widget build(BuildContext context) {
     final _width = MediaQuery.of(context).size.width;
     final _height = MediaQuery.of(context).size.height;
+
 
     return new Container(
       child: new Stack(
@@ -54,7 +51,7 @@ class ProfileSPState extends State<ProfileSP> {
                           new SizedBox(
                             height: _height / 30,
                           ),
-                          new Text( nome + cognome,
+                          new Text( utente.getNome() + utente.getCognome(),
                             style: new TextStyle(
                                 fontSize: 18.0,
                                 color: Colors.white,
@@ -100,10 +97,10 @@ class ProfileSPState extends State<ProfileSP> {
                           child: new Column(
                             children: <Widget>[
                               infoChild(
-                                  _width, Icons.email, email),
-                              infoChild(_width, Icons.calendar_today, dataNascita),
+                                  _width, Icons.email, utente.getEmail()),
+                              infoChild(_width, Icons.calendar_today, utente.getDataNascita()),
                               infoChild(
-                                  _width, Icons.phone, cellulare),
+                                  _width, Icons.phone, utente.getCellulare()),
                               new Padding(
                                 padding: new EdgeInsets.only(top: _height / 30),
                                 child: new Container(

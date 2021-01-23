@@ -6,6 +6,7 @@ import 'package:social_fitness_app/HomePageMenuSP.dart';
 import 'package:social_fitness_app/utils/constants.dart';
 
 import 'Back-End/Crypt_Password.dart';
+import 'Bean/Utente.dart';
 
 
 class RegistrazioneSportivoScreen extends StatefulWidget {
@@ -31,6 +32,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
   bool _validateConfermaPw = false;
   String _errorEmail=null;
   String _passwordError=null;
+  String encrypted="";
 
 
   Widget _buildNomeTF() {
@@ -386,8 +388,10 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
 
             if(i==6) {
               _insertToDb();
+              Utente utente=new Utente(_nomeController.text, _cognomeController.text, _emailController.text, _cellController.text, _dataNascitaController, "Sportivo", encrypted , null);
+
               Route route = MaterialPageRoute(
-                  builder: (context) => homePageSP());
+                  builder: (context) => homePageSP(utente: utente));
               Navigator.push(context, route);
             }
 
@@ -414,7 +418,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
   }
 
   _insertToDb() {
-    var encrypted=encryptAESCryptoJS(_passwordController.text, "password");
+    encrypted=encryptAESCryptoJS(_passwordController.text, "password");
 
     firestoreInstance.collection("users").add(
         {
@@ -425,6 +429,7 @@ class RegistrazioneSportivoScreenState extends State<RegistrazioneSportivoScreen
           "Email": _emailController.text,
           "Password": encrypted,
           "Cellulare": _cellController.text,
+          "ImgProfilo": null,
         }).then((value){
       print(value.id);
     });

@@ -1,49 +1,30 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:social_fitness_app/CambioPW.dart';
-import 'package:social_fitness_app/Login_Page.dart';
+import 'package:social_fitness_app/widgets/Profile_Sportivo.dart';
 import 'package:social_fitness_app/widgets/Richiesta_schede.dart';
 import 'package:social_fitness_app/widgets/Search_Bar.dart';
+import 'Bean/Utente.dart';
 import 'DashBoardPT.dart';
-import 'allenamento_ciclismo.dart';
-import 'allenamento_corsa.dart';
+
 import 'widgets/Search.dart';
 
 
 class homePagePT extends StatefulWidget {
+
+  final Utente utente;
+  homePagePT({Key key, this.utente}) : super(key: key);
   @override
-  homePageStatePT createState() => homePageStatePT();
+  homePageStatePT createState() => homePageStatePT(utente: utente);
 }
+
 class homePageStatePT extends State<homePagePT> {
   int _currentIndex = 0;
   final List<Widget> _children = [ DashBoardPT(), null,RichiestaSchedePage(), SearchBar()];
-  final String _collection = 'users';
-  final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
-  String nome = "";
-  String cognome = "";
-  String email = "";
-  String cellulare="";
-  String dataNascita="";
 
-
-  void messagesStream() async {
-    await for (var snapshot in _fireStore.collection(_collection).snapshots()) {
-      for (var message in snapshot.docs) {
-        //print(message.data());
-        if(message["Email"] == "salvatore@gmail.com"){
-            nome = message["Nome"];
-            cognome = message["Cognome"];
-            email = message["Email"];
-            cellulare=message["Cellulare"];
-            dataNascita=message["Data_Di_Nascita "];
-            }
-      }
-    }
-  }
+  final Utente utente;
+  homePageStatePT({Key key, this.utente});
 
   @override
   Widget build(BuildContext context) {
-    messagesStream();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -54,9 +35,8 @@ class homePageStatePT extends State<homePagePT> {
         leading: IconButton(
           icon:Icon(Icons.menu),
           onPressed: () {
-            messagesStream();
             Route route = MaterialPageRoute(
-                builder: (context) => _myDrawerWithHeaderAndDivider(context) );
+                builder: (context) => ProfileSP(utente: utente) );
             Navigator.push(context, route); },
         ),
         title: Text("HelpYourWorkout",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
@@ -136,67 +116,4 @@ _showPopupMenu() {
   });
 }
 
-
-  Widget _myDrawerWithHeaderAndDivider(BuildContext context) {
-    return Container(
-        child: Drawer(// your specified height
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-            DrawerHeader(
-              child: Text('PROFILO',  style: TextStyle(fontSize: 40, color: Colors.white,),
-                textAlign: TextAlign.center,),
-              decoration: BoxDecoration(
-                color: Color(0xFFfc6a26),
-              ),
-          ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text(nome),
-            ),
-            Divider(),
-              ListTile(
-                leading: Icon(Icons.person),
-                title: Text(cognome),
-              ),
-              Divider(),
-            ListTile(
-              leading: Icon(Icons.calendar_today),
-              title: Text(dataNascita),
-            ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.phone),
-              title: Text(cellulare),
-            ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.email),
-              title: Text(email),
-            ),
-            Divider(),
-            ListTile(
-              trailing: Icon(Icons.lock),
-              title: Text('Cambia la Password'),
-              onTap: () {
-                Route route = MaterialPageRoute(
-                    builder: (context) => CambioPW());
-                Navigator.push(context, route);
-              },
-            ),
-            Divider(),
-            ListTile(
-              trailing: Icon(Icons.exit_to_app),
-              title: Text('Logout'),
-              onTap: () {
-                Route route = MaterialPageRoute(
-                    builder: (context) => LoginScreen());
-                Navigator.push(context, route);
-              },
-            ),
-          ],
-        ),
-        ),
-    );
-  }
 }
