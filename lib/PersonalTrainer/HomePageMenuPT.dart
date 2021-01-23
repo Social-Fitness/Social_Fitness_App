@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:social_fitness_app/widgets/Profile_Sportivo.dart';
-import 'package:social_fitness_app/widgets/Richiesta_schede.dart';
-import 'package:social_fitness_app/widgets/Search_Bar.dart';
-import 'Bean/Utente.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
+import 'package:social_fitness_app/Sportivo/Profile_Sportivo.dart';
+import 'package:social_fitness_app/PersonalTrainer/Richiesta_schede.dart';
+import 'package:social_fitness_app/Widgets_Comuni/Search.dart';
+import 'package:social_fitness_app/Widgets_Comuni/Search_Bar.dart';
 import 'DashBoardPT.dart';
-
-import 'widgets/Search.dart';
 
 
 class homePagePT extends StatefulWidget {

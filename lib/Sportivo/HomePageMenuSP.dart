@@ -1,13 +1,13 @@
 import 'package:filter_list/filter_list.dart';
 import 'package:flutter/material.dart';
-import 'package:social_fitness_app/DashBoardSportivo.dart';
-import 'package:social_fitness_app/widgets/Dashboard_SchedePreferite.dart';
-import 'package:social_fitness_app/widgets/Following_Page.dart';
-import 'package:social_fitness_app/widgets/Notifiche_page.dart';
-import 'package:social_fitness_app/widgets/Profile_Sportivo.dart';
+import 'package:social_fitness_app/Sportivo/DashBoardSportivo.dart';
+import 'package:social_fitness_app/Sportivo/Dashboard_SchedePreferite.dart';
+import 'package:social_fitness_app/Sportivo/Following_Page.dart';
+import 'package:social_fitness_app/Sportivo/Notifiche_page.dart';
+import 'package:social_fitness_app/Sportivo/Profile_Sportivo.dart';
+import 'package:social_fitness_app/Widgets_Comuni/Search.dart';
 
-import 'Bean/Utente.dart';
-import 'widgets/Search.dart';
+import '../Bean/Utente.dart';
 
 
 class homePageSP extends StatefulWidget {

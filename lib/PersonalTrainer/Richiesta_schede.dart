@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:social_fitness_app/allenamento_corsa.dart';
+import 'package:social_fitness_app/PersonalTrainer/allenamento_corsa.dart';
 
 class RichiestaSchedePage extends StatefulWidget {
   @override

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:social_fitness_app/models/Sportivo_model.dart';
+import 'package:social_fitness_app/PersonalTrainer/PersonalTrainer_model.dart';
+import 'package:social_fitness_app/PersonalTrainer/scheda_dettaglio_PT.dart';
 
-import 'package:social_fitness_app/screens/scheda_dettaglio_Sportivo.dart';
-
-class ShedePreferite_Sportivo extends StatelessWidget {
-  final List<SportivoModel> listData;
+class ListaSchedaPt extends StatelessWidget {
+  final List<PersonalTrainerModel> listData;
   final bool isMiniList;
   final bool isHorizontalList;
 
-  const ShedePreferite_Sportivo(
+  const ListaSchedaPt(
       {this.listData, this.isMiniList = false, this.isHorizontalList = false});
 
   @override
@@ -23,7 +22,7 @@ class ShedePreferite_Sportivo extends StatelessWidget {
           return InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => SchedaDettaglioSportivo(
+                builder: (context) => SchedaDettaglioPT(
                   detail: listData[index],
                 ),
               ));
@@ -41,9 +40,9 @@ class ShedePreferite_Sportivo extends StatelessWidget {
             return InkWell(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => SchedaDettaglioSportivo(
-                    detail: listData[index],
-                  ),
+                  builder: (context) => SchedaDettaglioPT(
+                        detail: listData[index],
+                      ),
                 ));
               },
               child: _buildLandscapeList(context, index),
@@ -52,9 +51,9 @@ class ShedePreferite_Sportivo extends StatelessWidget {
             return InkWell(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => SchedaDettaglioSportivo(
-                    detail: listData[index],
-                  ),
+                  builder: (context) => SchedaDettaglioPT(
+                        detail: listData[index],
+                      ),
                 ));
               },
               child: _buildPortraitList(context, index),
@@ -62,9 +61,9 @@ class ShedePreferite_Sportivo extends StatelessWidget {
           }
         },
         separatorBuilder: (context, index) => Divider(
-          height: 1.0,
-          color: Colors.grey,
-        ),
+              height: 1.0,
+              color: Colors.grey,
+            ),
         itemCount: listData.length,
       );
     }
@@ -78,25 +77,47 @@ class ShedePreferite_Sportivo extends StatelessWidget {
           height: 200.0,
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(listData[index].thumbNail),
+                image: AssetImage(listData[index].foto),
                 fit: BoxFit.cover),
           ),
         ),
         ListTile(
           contentPadding: const EdgeInsets.all(8.0),
           dense: true,
-          leading: CircleAvatar(
-            backgroundImage: AssetImage(listData[index].channelAvatar),
-          ),
           title: Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
-            child: Text(listData[index].title),
+            child: Text(listData[index].titolo, style: new TextStyle(
+              fontSize: 20,
+            ), ),
           ),
           subtitle: Text(
-              "${listData[index].channelTitle} . ${listData[index].viewCount} . ${listData[index].publishedTime}"),
-          trailing: Container(
+              " ${listData[index].salva}"  ),
+          trailing: Wrap(
+            spacing:100, // space between two icons
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(bottom: 5, top: 27, right: 33),
+                child: Icon(Icons.favorite, size: 16,),
+              ), // icon-1
+              Container(
               margin: const EdgeInsets.only(bottom: 20.0),
-              child: Icon(Icons.favorite)),
+              child: RaisedButton(
+                onPressed: () {
+                  print("Button modifica premuto");
+                },
+                color: Color(0xFFfc6a26),
+                child: Text(
+                  "MODIFICA",
+                  style: TextStyle(fontSize: 10),
+                ),
+                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Color(0xFFfc6a26), width: 3),
+                    borderRadius: BorderRadius.circular(5)),
+              )
+        ),
+          ],
+          ),
         ),
       ],
     );
@@ -115,7 +136,7 @@ class ShedePreferite_Sportivo extends StatelessWidget {
             height: isMiniList ? 100.0 : 188.0 / 1.5,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage(listData[index].thumbNail) ,
+                  image: AssetImage(listData[index].foto) ,
                   fit: BoxFit.cover),
             ),
           ),
@@ -128,25 +149,16 @@ class ShedePreferite_Sportivo extends StatelessWidget {
                   dense: isMiniList ? true : false,
                   title: Padding(
                     padding: const EdgeInsets.only(bottom: 4.0),
-                    child: Text(listData[index].title) ,
+                    child: Text(listData[index].titolo) ,
                   ),
                   subtitle: !isMiniList
                       ? Text(
-                      "${listData[index].channelTitle} . ${listData[index].viewCount} . ${listData[index].publishedTime}")
+                          "${listData[index].salva}")
                       : Text(
-                      "${listData[index].channelTitle} . ${listData[index].viewCount}"),
+                          " ${listData[index].salva}"),
                   trailing: Container(
                       margin: const EdgeInsets.only(bottom: 30.0),
                       child: Icon(Icons.more_vert)),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: !isMiniList
-                      ? CircleAvatar(
-                    backgroundImage:
-                    AssetImage(listData[index].channelAvatar),
-                  )
-                      : SizedBox(),
                 ),
               ],
             ),
@@ -155,7 +167,6 @@ class ShedePreferite_Sportivo extends StatelessWidget {
       ),
     );
   }
-
 
   Widget _buildHorizontalList(BuildContext context, int index) {
     return Container(
@@ -169,10 +180,10 @@ class ShedePreferite_Sportivo extends StatelessWidget {
             height: 188 / 2.2,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(listData[index].thumbNail),
+                image: AssetImage(listData[index].foto),
               ),
             ),
-          ),
+            ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -183,17 +194,10 @@ class ShedePreferite_Sportivo extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.only(bottom: 4.0),
                       child: Text(
-                        listData[index].title,
+                        listData[index].titolo,
                         style: TextStyle(fontSize: 12.0),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    Text(
-                      listData[index].channelTitle,
-                      style: TextStyle(
-                        fontSize: 12.0,
-                        color: Colors.grey[600],
                       ),
                     ),
                   ],

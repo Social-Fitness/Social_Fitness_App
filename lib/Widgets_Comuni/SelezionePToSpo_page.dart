@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:social_fitness_app/Registrazione_Page_PT.dart';
-import 'package:social_fitness_app/Registrazione_Page_Sportivo.dart';
+import 'package:social_fitness_app/PersonalTrainer/Registrazione_Page_PT.dart';
+import 'package:social_fitness_app/Sportivo/Registrazione_Page_Sportivo.dart';
 
 class SelezioneScreen extends StatefulWidget {
   @override

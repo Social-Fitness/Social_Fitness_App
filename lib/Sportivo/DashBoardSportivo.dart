@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:social_fitness_app/widgets/Schede_Preferite.dart';
+import 'package:social_fitness_app/PersonalTrainer/home_pt.dart';
+import 'package:social_fitness_app/Sportivo/home_sportivo.dart';
 
 
-class DashBoard_SchedePreferite extends StatefulWidget {
+class DashBoardSportivo extends StatefulWidget {
   @override
   DashBoardState createState() => DashBoardState();
 }
 
-class DashBoardState extends State<DashBoard_SchedePreferite> {
+class DashBoardState extends State<DashBoardSportivo> {
   int _currentIndex = 0;
 
   _onTapped(int index) {
@@ -19,14 +20,14 @@ class DashBoardState extends State<DashBoard_SchedePreferite> {
   @override
   Widget build(BuildContext context) {
     List<Widget> _screens = [
-      ShedePreferite_Sportivo(),
+      HomeScreenSportivo(),
       Center(child: Text("Subscriptions")),
     ];
 
     return Scaffold(
       body: ListView(
         children: <Widget>[
-          ShedePreferite_Sportivo(),
+          HomeScreenSportivo(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
             child: Row(
@@ -105,3 +106,4 @@ class DashBoardState extends State<DashBoard_SchedePreferite> {
     );
   }
 }
+

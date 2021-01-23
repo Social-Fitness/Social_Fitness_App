@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:social_fitness_app/Back-End/Crypt_Password.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
-import 'package:social_fitness_app/HomePageMenuPT.dart';
-import 'package:social_fitness_app/HomePageMenuSP.dart';
+import 'package:social_fitness_app/Sportivo/HomePageMenuSP.dart';
 import 'package:social_fitness_app/utils/constants.dart';
+import '../PersonalTrainer/HomePageMenuPT.dart';
 import 'SelezionePToSpo_page.dart';
 
 const _PATH = "assets/image";

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
 
-import '../Login_Page.dart';
+import '../Widgets_Comuni/Login_Page.dart';
 
 class ProfileSP extends StatefulWidget {
   final Utente utente;

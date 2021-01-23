@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:social_fitness_app/models/Sportivo_model.dart';
+import 'package:social_fitness_app/Sportivo/Sportivo_model.dart';
 
-import 'package:social_fitness_app/screens/scheda_dettaglio_Sportivo.dart';
+import 'package:social_fitness_app/Sportivo/scheda_dettaglio_Sportivo.dart';
 
 class ListaSchedaSportivo extends StatelessWidget {
   final List<SportivoModel> listData;

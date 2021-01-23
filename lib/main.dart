@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:social_fitness_app/widgets/Profile_Sportivo.dart';
-import 'WelcomePage.dart';
+import 'package:social_fitness_app/Sportivo/Profile_Sportivo.dart';
+import 'Widgets_Comuni/WelcomePage.dart';
 
 
 

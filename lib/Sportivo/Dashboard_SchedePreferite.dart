@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:social_fitness_app/screens/home_pt.dart';
+import 'package:social_fitness_app/Sportivo/Schede_Preferite.dart';
 
 
-class DashBoardPT extends StatefulWidget {
+class DashBoard_SchedePreferite extends StatefulWidget {
   @override
   DashBoardState createState() => DashBoardState();
 }
 
-class DashBoardState extends State<DashBoardPT> {
+class DashBoardState extends State<DashBoard_SchedePreferite> {
   int _currentIndex = 0;
 
   _onTapped(int index) {
@@ -20,21 +19,21 @@ class DashBoardState extends State<DashBoardPT> {
   @override
   Widget build(BuildContext context) {
     List<Widget> _screens = [
-      HomeScreen(),
+      ShedePreferite_Sportivo(),
       Center(child: Text("Subscriptions")),
     ];
 
     return Scaffold(
       body: ListView(
         children: <Widget>[
-          HomeScreen(),
+          ShedePreferite_Sportivo(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  'Le Schede Più Amate',
+                  'Schede In Evidenza',
                   style: TextStyle(
                       color: Colors.black.withOpacity(.8),
                       fontWeight: FontWeight.w600,
@@ -56,10 +55,10 @@ class DashBoardState extends State<DashBoardPT> {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: <Widget>[
-                story('assets/image/Scheda2.jpg','260'),
-                story('assets/image/Scheda1.jpg','220'),
-                story('assets/image/Scheda6.jpg','180'),
-                story('assets/image/Scheda7.jpg','100'),
+                story('assets/image/pt1.jpg','Pietro Grimaldi'),
+                story('assets/image/pt2.jpg','Salvatore Amideo'),
+                story('assets/image/pt4.jpg','Ivan Di Pietro'),
+                story('assets/image/pt3.jpg','Anna Vanoni'),
               ],
             ),
           ),
@@ -89,25 +88,20 @@ class DashBoardState extends State<DashBoardPT> {
             height: 10,
           ),
           Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-          Text(
-            name,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w700,
-              color: Color(0xFF01579B),
-            ),
-          ),
-          Icon(
-            Icons.favorite,
-            color: Color(0xFF01579B),
-          )
-    ],
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                name,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xFF01579B),
+                ),
+              ),
+            ],
           ),
         ],
       ),
     );
   }
-
 }
