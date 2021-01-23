@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -237,7 +238,7 @@ class CambioPWState extends State<CambioPW> {
             }
 
             if(i==3) {
-             //fare update nel database
+              _updateToDB();
               if(utente.categoria.compareTo("Personal Trainer")==0) {
                 Route route = MaterialPageRoute(
                     builder: (context) => homePagePT(utente: utente));
@@ -252,6 +253,8 @@ class CambioPWState extends State<CambioPW> {
           });
 
         },
+
+
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -271,22 +274,12 @@ class CambioPWState extends State<CambioPW> {
     );
   }
 
-  /*_updateToDB() {
+  _updateToDB() async {
     var encrypted=encryptAESCryptoJS(_passwordController.text, "password");
-
-    firestoreInstance.collection("users").add(
-        {
-          "Categoria": "Personal Trainer",
-          "Nome": _nomeController.text,
-          "Cognome": _cognomeController.text,
-          "Data_Di_Nascita ": _dataNascitaController,
-          "Email": _emailController.text,
-          "Password": encrypted,
-          "Cellulare": _cellController.text,
-        }).then((value){
-      print(value.id);
-    });
-  }*/
+    final firestoreInstance = FirebaseFirestore.instance;
+    firestoreInstance.collection("users").document(utente.email).update({"Password":encrypted});
+    utente.setPW(encrypted);
+  }
 
   @override
   Widget build(BuildContext context) {

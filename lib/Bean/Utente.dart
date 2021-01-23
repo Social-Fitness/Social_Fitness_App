@@ -10,5 +10,8 @@ class Utente {
 
   Utente(this.nome, this.cognome, this.email, this.cellulare, this.dataNascita, this.categoria, this.password, this.imgProfilo);
 
+  setPW(String nuova) {
+    password=nuova;
+  }
 
 }
