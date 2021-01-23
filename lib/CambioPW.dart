@@ -5,9 +5,15 @@ import 'package:flutter/services.dart';
 import 'package:social_fitness_app/HomePageMenuPT.dart';
 import 'package:social_fitness_app/utils/constants.dart';
 
+import 'Back-End/Crypt_Password.dart';
+import 'Bean/Utente.dart';
+import 'HomePageMenuSP.dart';
+
 
 
 class CambioPW extends StatefulWidget {
+  final Utente utente;
+  CambioPW({Key key, this.utente}) : super(key: key);
   @override
   CambioPWState createState() => CambioPWState();
 }
@@ -22,7 +28,8 @@ class CambioPWState extends State<CambioPW> {
   bool _validatePw = false;
   bool _validateConfermaPw = false;
   String _passwordError=null;
-
+  final Utente utente;
+  CambioPWState({Key key, this.utente});
 
   Widget _buildPWattualeTF() {
     return Column(
@@ -103,7 +110,7 @@ class CambioPWState extends State<CambioPW> {
               ),
               hintText: 'Inserisci la nuova Password',
               hintStyle: kHintTextStyle,
-              errorText: _validatePw ? 'Il campo non può essere vuoto' : null,
+              errorText: _validatePw ? 'Il campo non può essere vuoto' : _passwordError,
               suffixIcon: SizedBox(
                 width: 50.0,
                 height: 50.0,
@@ -194,7 +201,12 @@ class CambioPWState extends State<CambioPW> {
         onPressed: () {
           setState(() {
             int i=0;
+            String temp=decryptAESCryptoJS(utente.password, "password");
 
+            if(_pwattualeController.text.compareTo(temp)!=0){
+              _passwordError="Password attuale non corretta";
+            }
+            
             if (_pwattualeController.text.isEmpty)
               _validatePWattuale = true;
             else
@@ -226,9 +238,15 @@ class CambioPWState extends State<CambioPW> {
 
             if(i==3) {
              //fare update nel database
-              Route route = MaterialPageRoute(
-                  builder: (context) => homePagePT());
-              Navigator.push(context, route);
+              if(utente.categoria.compareTo("Personal Trainer")==0) {
+                Route route = MaterialPageRoute(
+                    builder: (context) => homePagePT(utente: utente));
+                Navigator.push(context, route);
+              } else {
+                Route route = MaterialPageRoute(
+                    builder: (context) => homePageSP(utente: utente));
+                Navigator.push(context, route);
+              }
             }
 
           });

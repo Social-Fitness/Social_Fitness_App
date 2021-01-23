@@ -51,7 +51,7 @@ class ProfileSPState extends State<ProfileSP> {
                           new SizedBox(
                             height: _height / 30,
                           ),
-                          new Text( utente.getNome() + utente.getCognome(),
+                          new Text( utente.nome + utente.cognome,
                             style: new TextStyle(
                                 fontSize: 18.0,
                                 color: Colors.white,
@@ -97,10 +97,10 @@ class ProfileSPState extends State<ProfileSP> {
                           child: new Column(
                             children: <Widget>[
                               infoChild(
-                                  _width, Icons.email, utente.getEmail()),
-                              infoChild(_width, Icons.calendar_today, utente.getDataNascita()),
+                                  _width, Icons.email, utente.email),
+                              infoChild(_width, Icons.calendar_today, utente.dataNascita),
                               infoChild(
-                                  _width, Icons.phone, utente.getCellulare()),
+                                  _width, Icons.phone, utente.cellulare),
                               new Padding(
                                 padding: new EdgeInsets.only(top: _height / 30),
                                 child: new Container(

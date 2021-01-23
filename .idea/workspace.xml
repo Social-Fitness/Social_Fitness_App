@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba857104-65df-4650-a4cc-dec240ab4271" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/Bean/Utente.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HomePageMenuPT.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HomePageMenuPT.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HomePageMenuSP.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HomePageMenuSP.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Login_Page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Login_Page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Registrazione_Page_PT.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Registrazione_Page_PT.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Registrazione_Page_Sportivo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Registrazione_Page_Sportivo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Bean/Utente.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Bean/Utente.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/CambioPW.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/CambioPW.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/Profile_Sportivo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Profile_Sportivo.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,17 +57,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
       <method v="2" />
@@ -155,6 +140,7 @@
       <workItem from="1611330937209" duration="57000" />
       <workItem from="1611398315311" duration="823000" />
       <workItem from="1611406268788" duration="3588000" />
+      <workItem from="1611418845651" duration="688000" />
     </task>
     <task id="LOCAL-00001" summary="PIANIFICA ATTIVITA'host e pt">
       <created>1603885750998</created>
