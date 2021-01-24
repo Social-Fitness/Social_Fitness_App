@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
-import 'package:social_fitness_app/Sportivo/Profile_Sportivo.dart';
+import 'package:social_fitness_app/PersonalTrainer/Profilo_PT.dart';
 import 'package:social_fitness_app/PersonalTrainer/Richiesta_schede.dart';
 import 'package:social_fitness_app/Widgets_Comuni/Search.dart';
 import 'package:social_fitness_app/Widgets_Comuni/Search_Bar.dart';
@@ -35,7 +35,7 @@ class homePageStatePT extends State<homePagePT> {
           icon:Icon(Icons.menu),
           onPressed: () {
             Route route = MaterialPageRoute(
-                builder: (context) => ProfileSP(utente: utente) );
+                builder: (context) => ProfilePT(utente: utente) );
             Navigator.push(context, route); },
         ),
         title: Text("HelpYourWorkout",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),

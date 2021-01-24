@@ -3,18 +3,17 @@ import 'package:flutter/rendering.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Widgets_Comuni/CambioPW.dart';
 
-import '../Widgets_Comuni/Login_Page.dart';
 
-class ProfileSP extends StatefulWidget {
+class ProfilePT extends StatefulWidget {
   final Utente utente;
-  ProfileSP({Key key, this.utente}) : super(key: key);
+  ProfilePT({Key key, this.utente}) : super(key: key);
   @override
-  ProfileSPState createState() => new ProfileSPState(utente: utente);
+  ProfilePTState createState() => new ProfilePTState(utente: utente);
 }
 
-class ProfileSPState extends State<ProfileSP> {
+class ProfilePTState extends State<ProfilePT> {
   final Utente utente;
-  ProfileSPState({Key key, this.utente});
+  ProfilePTState({Key key, this.utente});
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +88,8 @@ class ProfileSPState extends State<ProfileSP> {
                             child: new Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  headerChild('Seguiti', 360),
+                                  headerChild('Follower', 360),
+                                  headerChild('Schede', 10),
                                 ]),
                           ),
                         ),
@@ -154,9 +154,9 @@ class ProfileSPState extends State<ProfileSP> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          Route route = MaterialPageRoute(
-              builder: (context) => CambioPW(utente: utente) );
-          Navigator.push(context, route);
+            Route route = MaterialPageRoute(
+            builder: (context) => CambioPW(utente: utente) );
+            Navigator.push(context, route);
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(

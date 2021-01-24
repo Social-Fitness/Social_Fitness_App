@@ -45,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
           email=message["Email"];
           cellulare=message["Cellulare"];
           cognome=message["Cognome"];
-          dataNascita=message["Data_Di_Nascita"];
+          dataNascita=message["Data_Di_Nascita "];
           nome=message["Nome"];
           img_profilo=message["ImgProfilo"];
         }

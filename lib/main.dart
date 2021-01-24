@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:social_fitness_app/PersonalTrainer/Profilo_Public.dart';
 import 'package:social_fitness_app/Sportivo/Profile_Sportivo.dart';
 import 'Widgets_Comuni/WelcomePage.dart';
 
@@ -22,12 +23,12 @@ class MyApp extends StatelessWidget {
             return MaterialApp(
               title: 'HelpYourWorkout',
               debugShowCheckedModeBanner: false,
-              /*theme: ThemeData(
+              /*theme: ThemeData
                   fontFamily: "Montserrat",
                   hintColor: Color(0xFFfc6a26),
                   primaryColor: Color(0xFF01579B),
                   canvasColor: Colors.transparent),*/
-              home: WelcomePage(),
+              home: PublicProfilePage(),
             );
           }
         }
