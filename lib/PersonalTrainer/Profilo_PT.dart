@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Widgets_Comuni/CambioPW.dart';
+import 'package:social_fitness_app/Widgets_Comuni/Login_Page.dart';
 
 
 class ProfilePT extends StatefulWidget {
@@ -127,6 +128,10 @@ class ProfilePTState extends State<ProfilePT> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
+          Route route = MaterialPageRoute(
+              builder: (context) => LoginScreen());
+          Navigator.push(context, route);
+
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
