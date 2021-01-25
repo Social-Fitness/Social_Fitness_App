@@ -1,4 +1,4 @@
-# SOCIAL FITNESS APP
+# HelpYourFitness
 
 Application created for the enterprise mobile application course held at the University of Salerno
 
