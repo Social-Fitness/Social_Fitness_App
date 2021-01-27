@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/PersonalTrainer/Profilo_Public.dart';
 
 class Search extends SearchDelegate {
 
@@ -54,8 +55,10 @@ class Search extends SearchDelegate {
             suggestionList[index],
           ),
           onTap: () {
-            selectedResult=suggestionList[index];
-            showResults(context);
+            print("SELECTED" + suggestionList[index]);
+            Route route = MaterialPageRoute(
+                builder: (context) => PublicProfilePage(nome: suggestionList[index]));
+            Navigator.push(context, route);
           },
         );
       },

@@ -1,5 +1,5 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,6 +31,8 @@ class CambioPWState extends State<CambioPW> {
   String _passwordError=null;
   final Utente utente;
   CambioPWState({Key key, this.utente});
+
+
 
   Widget _buildPWattualeTF() {
     return Column(
@@ -144,7 +146,7 @@ class CambioPWState extends State<CambioPW> {
               controller: _confermapasswordController,
               obscureText: _obscureConfermaText,
               style: TextStyle(
-                color: Color(0xFFfc6a26),
+                color: Colors.white,
                 fontFamily: 'OpenSans',
               ),
               decoration: InputDecoration(
@@ -204,15 +206,15 @@ class CambioPWState extends State<CambioPW> {
             int i=0;
             String temp=decryptAESCryptoJS(utente.password, "password");
 
-            if(_pwattualeController.text.compareTo(temp)!=0){
-              _passwordError="Password attuale non corretta";
-            }
-            
             if (_pwattualeController.text.isEmpty)
               _validatePWattuale = true;
-            else
-              _validatePWattuale=false;
-              i++;
+            else {
+              if (_pwattualeController.text.compareTo(temp) == 0) {
+                _validatePWattuale = false;
+                i++;
+              }
+              _passwordError="Password attuale non corretta";
+            }
 
 
             if(_passwordController.text.isEmpty)
@@ -276,8 +278,9 @@ class CambioPWState extends State<CambioPW> {
 
   _updateToDB() async {
     var encrypted=encryptAESCryptoJS(_passwordController.text, "password");
-    final firestoreInstance = FirebaseFirestore.instance;
-    firestoreInstance.collection("users").document(utente.email).update({"Password":encrypted});
+    var db = FirebaseFirestore.instance;
+    var doc = db.collection("users").doc(utente.email);
+    doc.update({"Password": encrypted});
     utente.setPW(encrypted);
   }
 

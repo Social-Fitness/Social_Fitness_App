@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:filter_list/filter_list.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/Sportivo/DashBoardSportivo.dart';
@@ -18,7 +19,24 @@ class homePageSP extends StatefulWidget {
 }
 
 class homePageStateSP extends State<homePageSP> {
-  List<String> example=["uno", "due","tre"];
+
+  var _fireStore = FirebaseFirestore.instance;
+  List<String> pt=[];
+
+  void messagesStream() async {
+    await for (var snapshot in _fireStore.collection("users").snapshots()) {
+      for (var message in snapshot.docs) {
+        //print(message.data());
+        if(message["Categoria"] == "Personal Trainer"){
+          String nome = message["Nome"];
+          String cognome = message["Cognome"];
+          String completo=nome + " " + cognome;
+          pt.add(completo);
+        }
+      }
+    }
+  }
+
   int _currentIndex = 0;
   final List<Widget> _children = [DashBoardSportivo(),FollowingPage(),DashBoard_SchedePreferite(), NotifichePage()];
   final Utente utente;
@@ -54,7 +72,8 @@ class homePageStateSP extends State<homePageSP> {
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
-              showSearch(context: context, delegate: Search(example));
+              messagesStream();
+              showSearch(context: context, delegate: Search(pt));
             },
           ),
         ],

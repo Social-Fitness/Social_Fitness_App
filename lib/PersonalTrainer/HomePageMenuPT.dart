@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/PersonalTrainer/Profilo_PT.dart';
@@ -22,6 +23,23 @@ class homePageStatePT extends State<homePagePT> {
   final Utente utente;
   homePageStatePT({Key key, this.utente});
 
+  var _fireStore = FirebaseFirestore.instance;
+  List<String> pt= [];
+
+  void messagesStream() async {
+    await for (var snapshot in _fireStore.collection("users").snapshots()) {
+      for (var message in snapshot.docs) {
+        //print(message.data());
+        if(message["Categoria"] == "Personal Trainer"){
+          String nome = message["Nome"];
+          String cognome = message["Cognome"];
+          String completo=nome + " " + cognome;
+          pt.add(completo);
+        }
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,8 +62,8 @@ class homePageStatePT extends State<homePagePT> {
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
-              List<String> example=["uno", "due","tre"];
-              showSearch(context: context, delegate: Search(example));
+              messagesStream();
+              showSearch(context: context, delegate: Search(pt));
             },
           ),
           IconButton(

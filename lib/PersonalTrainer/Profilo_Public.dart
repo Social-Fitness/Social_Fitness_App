@@ -1,21 +1,48 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/PersonalTrainer/SchedePublic.dart';
 
 class PublicProfilePage extends StatefulWidget {
-
-
+ String nome;
+  PublicProfilePage({Key key, this.nome}): super(key:key);
   @override
-  PublicProfilePageState createState() => PublicProfilePageState();
+  PublicProfilePageState createState() => new PublicProfilePageState(nome: nome);
 }
 
 class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerProviderStateMixin {
   TabController tabController;
+  String nome;
+  PublicProfilePageState ({Key key, this.nome});
+  var _fireStore = FirebaseFirestore.instance;
+  String cognome="";
+  String cellulare="";
+  String email="";
+  String img_profilo="";
+
+  void messagesStream() async {
+    List<String> division=nome.split(" ");
+    nome=division[0];
+    cognome=division[1];
+    print("NOME" + nome);
+    print("COGNOME"+ cognome);
+    await for (var snapshot in _fireStore.collection("users").snapshots()) {
+      for (var message in snapshot.docs) {
+        //print(message.data());
+        if(message["Nome"] == nome && message["Cognome"]== cognome){
+          email=message["Email"];
+          cellulare=message["Cellulare"];
+          img_profilo=message["ImgProfilo"];
+        }
+      }
+    }
+  }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     tabController =TabController(length: 2, vsync: this);
+    messagesStream();
   }
 
 
@@ -64,7 +91,7 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
 
                 children: <Widget>[
                   SizedBox(height: 20),
-                  Text('Salvatore Amideo',
+                  Text(nome + " " + cognome,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -77,8 +104,8 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(Icons.location_on, size: 17,),
-                      Text('Calabria - Italy',
+                      Icon(Icons.email, size: 17,),
+                      Text(email,
                         style: TextStyle(
                             fontSize: 10,
                             color: Colors.black.withOpacity(0.6)
