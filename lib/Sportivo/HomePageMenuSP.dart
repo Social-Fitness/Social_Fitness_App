@@ -73,7 +73,7 @@ class homePageStateSP extends State<homePageSP> {
             icon: Icon(Icons.search),
             onPressed: () {
               messagesStream();
-              showSearch(context: context, delegate: Search(pt));
+              showSearch(context: context, delegate: Search(pt, utente:utente));
             },
           ),
         ],

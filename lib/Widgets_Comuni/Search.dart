@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:social_fitness_app/PersonalTrainer/Profilo_Public.dart';
+import 'file:///C:/Users/Alice%20Vidoni/Desktop/Social_Fitness_App/lib/Sportivo/Profilo_Public.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 
 class Search extends SearchDelegate {
-
+  Utente utente;
   @override
   List<Widget> buildActions(BuildContext context) {
     return <Widget>[
@@ -37,7 +38,7 @@ class Search extends SearchDelegate {
   }
 
   final List<String> listExample;
-  Search(this.listExample);
+  Search(this.listExample,{this.utente});
   final List<String> recentList=["Text1", "Text2", "Text3"];
 
   @override
@@ -57,7 +58,7 @@ class Search extends SearchDelegate {
           onTap: () {
             print("SELECTED" + suggestionList[index]);
             Route route = MaterialPageRoute(
-                builder: (context) => PublicProfilePage(nome: suggestionList[index]));
+                builder: (context) => PublicProfilePage(nome: suggestionList[index], utente:utente));
             Navigator.push(context, route);
           },
         );

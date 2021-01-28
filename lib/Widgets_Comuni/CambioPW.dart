@@ -63,7 +63,7 @@ class CambioPWState extends State<CambioPW> {
               ),
               hintText: 'Inserisci la tua Password attuale',
               hintStyle: kHintTextStyle,
-              errorText: _validatePWattuale ? 'Il campo non può essere vuoto' : null,
+              errorText: _validatePWattuale ? 'Il campo non può essere vuoto' : _passwordError,
             ),
           ),
         ),
@@ -209,8 +209,9 @@ class CambioPWState extends State<CambioPW> {
             if (_pwattualeController.text.isEmpty)
               _validatePWattuale = true;
             else {
-              if (_pwattualeController.text.compareTo(temp) == 0) {
-                _validatePWattuale = false;
+              _validatePWattuale=false;
+              if ((_pwattualeController).text.compareTo(temp) == 0) {
+                _passwordError = null;
                 i++;
               }
               _passwordError="Password attuale non corretta";

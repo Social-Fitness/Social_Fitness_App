@@ -1,18 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/PersonalTrainer/SchedePublic.dart';
+import 'package:social_fitness_app/Sportivo/Selezione%20Sport.dart';
 
 class PublicProfilePage extends StatefulWidget {
  String nome;
-  PublicProfilePage({Key key, this.nome}): super(key:key);
+ Utente utente;
+  PublicProfilePage({Key key, this.nome, this.utente}): super(key:key);
   @override
-  PublicProfilePageState createState() => new PublicProfilePageState(nome: nome);
+  PublicProfilePageState createState() => new PublicProfilePageState(nome: nome, utente:utente);
 }
 
 class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerProviderStateMixin {
   TabController tabController;
   String nome;
-  PublicProfilePageState ({Key key, this.nome});
+  Utente utente;
+  PublicProfilePageState ({Key key, this.nome, this.utente});
   var _fireStore = FirebaseFirestore.instance;
   String cognome="";
   String cellulare="";
@@ -214,6 +218,9 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
+          Route route = MaterialPageRoute(
+              builder: (context) =>SelezioneSportScreen(email:email, utente: utente));
+          Navigator.push(context, route);
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
