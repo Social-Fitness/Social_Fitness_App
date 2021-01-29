@@ -8,7 +8,6 @@ import 'package:social_fitness_app/utils/constants.dart';
 import '../PersonalTrainer/HomePageMenuPT.dart';
 import 'SelezionePToSpo_page.dart';
 
-const _PATH = "assets/image";
 
 
 class LoginScreen extends StatefulWidget {
@@ -33,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
   String dataNascita="";
   String cellulare="";
   String email="";
-  String img_profilo="";
+  String img_profilo=null;
 
 
   void messagesStream() async {

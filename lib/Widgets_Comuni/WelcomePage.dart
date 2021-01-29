@@ -125,7 +125,7 @@ class WelcomePageState extends State<WelcomePage> {
                             ),
                             SizedBox(height: 30.0),
                             Text(
-                              "Un'app pensata per runner e ciclisti",
+                              "Un'app pensata per tutti i runner e i ciclisti",
                               style: kTitleStyle,
                             ),
                           ],
@@ -147,7 +147,7 @@ class WelcomePageState extends State<WelcomePage> {
                             ),
                             SizedBox(height: 30.0),
                             Text(
-                              'Avrai la possibilità di avere a portata di mano diverse tipologie di allenamento',
+                              'Avrai la possibilità di condividere i tuoi allenamenti',
                               style: kTitleStyle,
                             ),
                           ],
@@ -169,7 +169,7 @@ class WelcomePageState extends State<WelcomePage> {
                             ),
                             SizedBox(height: 30.0),
                             Text(
-                              "Se sei Personal Trainer potrai creare e condividere i tuoi allenamenti",
+                              "E richiederne sempre di nuovi",
                               style: kTitleStyle,
                             ),
                           ],

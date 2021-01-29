@@ -16,7 +16,7 @@ class CambioPW extends StatefulWidget {
   final Utente utente;
   CambioPW({Key key, this.utente}) : super(key: key);
   @override
-  CambioPWState createState() => CambioPWState();
+  CambioPWState createState() => CambioPWState(utente: utente);
 }
 
 class CambioPWState extends State<CambioPW> {
@@ -210,7 +210,7 @@ class CambioPWState extends State<CambioPW> {
               _validatePWattuale = true;
             else {
               _validatePWattuale=false;
-              if ((_pwattualeController).text.compareTo(temp) == 0) {
+              if ((_pwattualeController.text).compareTo(temp) == 0) {
                 _passwordError = null;
                 i++;
               }
@@ -278,11 +278,12 @@ class CambioPWState extends State<CambioPW> {
   }
 
   _updateToDB() async {
-    var encrypted=encryptAESCryptoJS(_passwordController.text, "password");
+    var encrypted = encryptAESCryptoJS(_passwordController.text, "password");
     var db = FirebaseFirestore.instance;
     var doc = db.collection("users").doc(utente.email);
     doc.update({"Password": encrypted});
     utente.setPW(encrypted);
+    }
   }
 
   @override
