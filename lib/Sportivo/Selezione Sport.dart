@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
-import 'package:social_fitness_app/Sportivo/Richiesta_Scheda.dart';
+import 'package:social_fitness_app/Sportivo/Richiesta_Schede_Corsa.dart';
+
+import 'Richiesta_SChede_Ciclismo.dart';
 
 
 class SelezioneSportScreen extends StatefulWidget {
@@ -28,7 +30,7 @@ class SelezioneSportScreenState extends State<SelezioneSportScreen> {
         onPressed: () {
           sport="Corsa";
           Route route = MaterialPageRoute(
-              builder: (context) =>Richiesta(sport: sport, email: email, utente:utente));
+              builder: (context) =>RichiestaCorsa(email: email, utente:utente));
           Navigator.push(context, route);
         },
         padding: EdgeInsets.all(15.0),
@@ -59,7 +61,7 @@ class SelezioneSportScreenState extends State<SelezioneSportScreen> {
         onPressed: () {
           sport="Ciclismo";
           Route route = MaterialPageRoute(
-              builder: (context) =>Richiesta(sport: sport, email:email, utente:utente));
+              builder: (context) =>RichiestaCiclismo(email:email, utente:utente));
           Navigator.push(context, route);
         },
         padding: EdgeInsets.all(15.0),

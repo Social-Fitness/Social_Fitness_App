@@ -24,18 +24,16 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
   String img_profilo="";
 
   void messagesStream() async {
-    List<String> division=nome.split(" ");
-    nome=division[0];
-    cognome=division[1];
-    print("NOME" + nome);
-    print("COGNOME"+ cognome);
     await for (var snapshot in _fireStore.collection("users").snapshots()) {
       for (var message in snapshot.docs) {
         //print(message.data());
-        if(message["Nome"] == nome && message["Cognome"]== cognome){
+        String s=message["Nome"] +" "+ message["Cognome"];
+        if(s.compareTo(nome)==0){
           email=message["Email"];
           cellulare=message["Cellulare"];
           img_profilo=message["ImgProfilo"];
+          nome=message["Nome"];
+          cognome=message["Cognome"];
         }
       }
     }

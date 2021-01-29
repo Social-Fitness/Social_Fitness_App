@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/Alice%20Vidoni/Desktop/Social_Fitness_App/lib/Sportivo/Profilo_Public.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
+import 'package:social_fitness_app/Sportivo/Profilo_Public.dart';
+
 
 class Search extends SearchDelegate {
   Utente utente;
