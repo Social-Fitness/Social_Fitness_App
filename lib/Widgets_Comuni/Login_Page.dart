@@ -81,6 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Icons.email,
                 color: Color(0xFFfc6a26),
               ),
+
               hintText: 'Inserisci la tua Email',
               errorText: _validateEmail ? 'Il campo non può essere vuoto' : _errorEmail,
               hintStyle: kHintTextStyle,

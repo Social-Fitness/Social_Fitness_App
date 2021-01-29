@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Alice Vidoni\\Desktop\\Social_Fitness_App\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ta\\values-ta.xml",
+            "outputFile": "D:\\ProfiloUtente\\Desktop\\Social_Fitness_App\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ta\\values-ta.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Alice Vidoni\\.gradle\\caches\\transforms-2\\files-2.1\\35c6271043b1425f98f4c3536d04e924\\play-services-base-17.1.0\\res\\values-ta\\values.xml",
+                    "source": "C:\\Users\\Antonio\\.gradle\\caches\\transforms-2\\files-2.1\\35c6271043b1425f98f4c3536d04e924\\play-services-base-17.1.0\\res\\values-ta\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -21,24 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Alice Vidoni\\.gradle\\caches\\transforms-2\\files-2.1\\fdb7f764bae631c34cad86862de08b65\\core-1.1.0\\res\\values-ta\\values-ta.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "20",
-                        "startColumns": "4",
-                        "startOffsets": "2830",
-                        "endColumns": "100",
-                        "endOffsets": "2926"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Alice Vidoni\\.gradle\\caches\\transforms-2\\files-2.1\\78540d00279fa8dc8f0c6248230e5a76\\jetified-play-services-basement-17.1.0\\res\\values-ta\\values.xml",
+                    "source": "C:\\Users\\Antonio\\.gradle\\caches\\transforms-2\\files-2.1\\a18d94821b7f3890055193be702f670c\\jetified-play-services-basement-17.1.0\\res\\values-ta\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -52,6 +35,23 @@
                         "startOffsets": "1247",
                         "endColumns": "219",
                         "endOffsets": "1462"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Antonio\\.gradle\\caches\\transforms-2\\files-2.1\\fdb7f764bae631c34cad86862de08b65\\core-1.1.0\\res\\values-ta\\values-ta.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "20",
+                        "startColumns": "4",
+                        "startOffsets": "2830",
+                        "endColumns": "100",
+                        "endOffsets": "2926"
                     }
                 }
             ]

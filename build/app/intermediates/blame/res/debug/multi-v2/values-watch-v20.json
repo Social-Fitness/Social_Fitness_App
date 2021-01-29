@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Alice Vidoni\\Desktop\\Social_Fitness_App\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
+            "outputFile": "D:\\ProfiloUtente\\Desktop\\Social_Fitness_App\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Alice Vidoni\\.gradle\\caches\\transforms-2\\files-2.1\\a67883621869c1df203bb7977359bb98\\jetified-play-services-auth-16.0.1\\res\\values-watch-v20\\values.xml",
+                    "source": "C:\\Users\\Antonio\\.gradle\\caches\\transforms-2\\files-2.1\\9d31eec8a0f79f56f1129114d5b5fc70\\jetified-play-services-auth-16.0.1\\res\\values-watch-v20\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",

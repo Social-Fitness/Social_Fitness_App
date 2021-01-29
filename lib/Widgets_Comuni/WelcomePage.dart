@@ -61,16 +61,18 @@ class WelcomePageState extends State<WelcomePage> {
               children: <Widget>[
                 Container(
                   alignment: Alignment.centerRight,
-                  child: OutlineButton(
+
+                  child: RaisedButton(
                     onPressed: () {
                           Route route = MaterialPageRoute(
                           builder: (context) => LoginScreen());
                            Navigator.push(context, route);
                     },
+                    color: Color(0xFFfc6a26),
                     child: Text(
                       'Salta',
                       style: TextStyle(
-                        color: Color(0xFFfc6a26),
+                        color: Color(0xFFFFFFFF),
                         fontSize: 20.0,
                       ),
                     ),
@@ -101,10 +103,16 @@ class WelcomePageState extends State<WelcomePage> {
                                 width: 300.0,
                               ),
                             ),
-                            SizedBox(height: 30.0),
-                            Text(
+                            Center(
+                            child: Text(
+
                               "Benevenuto nel mondo HelpYourWorkout",
-                              style: kTitleStyle,
+                              style: TextStyle(
+                                fontFamily: 'DancingScript',
+                                color: Colors.white,
+                                fontSize: 30.0,
+                              ),
+                            ),
                             ),
                           ],
                         ),
@@ -218,21 +226,7 @@ class WelcomePageState extends State<WelcomePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Text(
-                            'Avanti',
-                            style: TextStyle(
-                              color: Color(0xFFfc6a26),
-                              fontSize: 22.0,
-                            ),
-                          ),
-                          SizedBox(width: 10.0),
-                          Icon(
-                            Icons.arrow_forward,
-                            color: Color(0xFFfc6a26),
-                            size: 30.0,
-                          ),
-                        ],
+
                       ),
                     ),
                   ),

@@ -1,4 +1,4 @@
-#Fri Jan 29 11:52:25 CET 2021
+#Fri Jan 29 15:13:56 CET 2021
 base.2=D\:\\ProfiloUtente\\Desktop\\Social_Fitness_App\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes2.dex
 base.1=D\:\\ProfiloUtente\\Desktop\\Social_Fitness_App\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
 base.0=D\:\\ProfiloUtente\\Desktop\\Social_Fitness_App\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
