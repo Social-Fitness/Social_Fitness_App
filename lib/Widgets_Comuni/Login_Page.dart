@@ -271,14 +271,18 @@ class _LoginScreenState extends State<LoginScreen> {
               pw=decryptAESCryptoJS(passwordDB, "password");
               if(pw.compareTo(_passwordController.text)==0) {
                 if(categoriaDB.compareTo("Sportivo")==0) {
-                  Route route = MaterialPageRoute(
-                      builder: (context) => homePageSP(utente: utente));
-                  Navigator.push(context, route);
+                  //Route route = MaterialPageRoute(
+                      //builder: (context) => homePageSP(utente: utente));
+                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                      homePageSP(utente: utente)), (Route<dynamic> route) => false);
+                  //Navigator.push(context, route);
                 }
                 else {
-                  Route route = MaterialPageRoute(
-                      builder: (context) => homePagePT(utente: utente));
-                  Navigator.push(context, route);
+                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                      homePagePT(utente: utente)), (Route<dynamic> route) => false);
+                  //Route route = MaterialPageRoute(
+                      //builder: (context) => homePagePT(utente: utente));
+                  //Navigator.push(context, route);
                 }
               }
               else {

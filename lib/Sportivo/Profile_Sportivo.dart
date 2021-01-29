@@ -127,9 +127,11 @@ class ProfileSPState extends State<ProfileSP> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          Route route = MaterialPageRoute(
-              builder: (context) => LoginScreen());
-          Navigator.push(context, route);
+          //Route route = MaterialPageRoute(
+             // builder: (context) => LoginScreen());
+
+          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+              LoginScreen()), (Route<dynamic> route) => false)     ;     //Navigator.push(context, route);
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
