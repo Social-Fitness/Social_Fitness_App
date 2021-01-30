@@ -4,7 +4,7 @@ import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/PersonalTrainer/Profilo_PT.dart';
 import 'package:social_fitness_app/PersonalTrainer/Richiesta_schede.dart';
 import 'package:social_fitness_app/PersonalTrainer/SearchPT.dart';
-import 'package:social_fitness_app/Widgets_Comuni/Search_Bar.dart';
+import 'Crea_Scheda_SenzaRichiesta.dart';
 import 'DashBoardPT.dart';
 
 
@@ -18,7 +18,7 @@ class homePagePT extends StatefulWidget {
 
 class homePageStatePT extends State<homePagePT> {
   int _currentIndex = 0;
-  final List<Widget> _children = [ DashBoardPT(), null,RichiestaSchedePage(), SearchBar()];
+  final List<Widget> _children = [ DashBoardPT(), null, AllenamentoCor_crea_Screen(), RichiestaSchedePage()];
 
   final Utente utente;
   homePageStatePT({Key key, this.utente});
@@ -66,12 +66,6 @@ class homePageStatePT extends State<homePagePT> {
               showSearch(context: context, delegate: SearchPT(pt));
             },
           ),
-          IconButton(
-            icon: Icon(Icons.favorite),
-            onPressed: () {
-                _showPopupMenu();
-            },
-          ),
         ],
       ),
      body: _children[_currentIndex],
@@ -96,41 +90,16 @@ class homePageStatePT extends State<homePagePT> {
            title: new Text("Schede"),
          ),
          new BottomNavigationBarItem(
-           icon: new Icon(Icons.add_alert),
-           title: new Text("Richieste"),
+           icon: new Icon(Icons.add),
+           title: new Text("Crea"),
          ),
          new BottomNavigationBarItem(
-           icon: new Icon(Icons.search),
-           title: new Text("Cerca"),
-
+           icon: new Icon(Icons.add_alert),
+           title: new Text("Notifiche"),
          ),
        ],
      ),
     );
   }
-
-_showPopupMenu() {
-  showMenu<String>(
-    context: context,
-    position: RelativeRect.fromLTRB(25.0, 25.0, 0.0, 0.0),
-    color: Colors.white,
-    items: [
-      PopupMenuItem<String>(
-          child: const Text('Visualizza In Ordine Crescente'), value: '1', textStyle: TextStyle(fontSize: 14, color: Color(0xFF01579B))),
-      PopupMenuItem<String>(
-          child: const Text('Visualizza In Ordine Decrescente'), value: '2', textStyle: TextStyle(fontSize: 14, color: Color(0xFF01579B))),
-    ],
-    elevation: 8.0,
-  )
-      .then<void>((String itemSelected) {
-    if (itemSelected == null) return;
-
-    if (itemSelected == "1") {
-      //code here
-    } else if (itemSelected == "2") {
-      //code here
-    }
-  });
-}
 
 }

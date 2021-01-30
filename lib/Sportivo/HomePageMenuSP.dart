@@ -37,15 +37,14 @@ class homePageStateSP extends State<homePageSP> {
   }
 
   int _currentIndex = 0;
+  final List<Widget> _children = [DashBoardSportivo(),FollowingPage(),DashBoard_SchedePreferite(), NotifichePage()];
   final Utente utente;
-  List<Widget> _children () => [DashBoardSportivo(utente:utente),FollowingPage(utente:utente),DashBoard_SchedePreferite(), NotifichePage()];
   homePageStateSP({Key key, this.utente});
 
 
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> children = _children( );
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -66,7 +65,10 @@ class homePageStateSP extends State<homePageSP> {
           IconButton(
             icon: Icon(Icons.filter_alt),
             onPressed: () {
-              _openFilterDialog();
+              showDialog(
+                context: context,
+                builder: (BuildContext context) => _buildPopupDialog(context),
+              );
             },
           ),
           IconButton(
@@ -78,7 +80,7 @@ class homePageStateSP extends State<homePageSP> {
           ),
         ],
       ),
-      body: children[_currentIndex],
+      body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         onTap: (value) {
@@ -113,37 +115,28 @@ class homePageStateSP extends State<homePageSP> {
   }
 
 
-  List<String> countList = [
-    "Corsa/Camminata",
-    "Ciclismo",
-    "Yoga/Pilates",
-    "Corpo Libero",
-    "Personal Trainer",
-    "06:00 - 09:00",
-    "09:00 - 12:00",
-    "12:00 - 15:00",
-    "15:00 - 18:00",
-    "18:00 - 21:00",
-    "21:00 - 00:00",
-  ];
-  List<String> selectedCountList = [];
 
-  void _openFilterDialog() async {
-    await FilterListDialog.display(
-        context,
-        allTextList: countList,
-        height: 500,
-        borderRadius: 20,
-        headlineText: "FILTRA GLI ALLENAMENTI",
-        searchFieldHintText: "Cerca",
-        selectedTextList: selectedCountList,
-        onApplyButtonClick: (list) {
-          if (list != null) {
-            setState(() {
-              selectedCountList = List.from(list);
-            });
-          }
-          Navigator.pop(context);
-        });
+  Widget _buildPopupDialog(BuildContext context) {
+    return new AlertDialog(
+      title: const Text('Filtraggio Schede'),
+      content: new Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text("In questo momento le uniche schede disponibili sono quelle per gli allenamenti di corsa!"),
+          Text("\n"),
+          Text("Ciclismo - COMING SOON"),
+        ],
+      ),
+      actions: <Widget>[
+        new FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          textColor: Theme.of(context).primaryColor,
+          child: const Text('Chiudi'),
+        ),
+      ],
+    );
   }
 }

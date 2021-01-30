@@ -31,10 +31,10 @@ class RichiestaSchedePageState extends State<RichiestaSchedePage> {
                         backgroundColor: Colors.transparent,
                       ),
                     new Text("Utente ${index+1} Ha richiesto una scheda scheda \n " + "Ciclismo"), //Far uscire nome Pt al posto di PT+numero
-                GestureDetector(
-                  onTap:() {
-                    print("CLICK SU SCHEDA");
-                    _showMyDialog();
+                    GestureDetector(
+                      onTap:() {
+                      print("CLICK SU SCHEDA");
+                      _showMyDialog();
                   },
                     child: Image.asset("assets/image/create_scheda.png",height: 35.0,),
                 ),

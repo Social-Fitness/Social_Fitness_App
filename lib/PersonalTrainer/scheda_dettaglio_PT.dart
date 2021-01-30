@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/PersonalTrainer/PersonalTrainer_model.dart';
 import '../PersonalTrainer/Lista_Schede_PT.dart';
+import 'HomePageMenuPT.dart';
 
 class SchedaDettaglioPT extends StatefulWidget {
   final PersonalTrainerModel detail;
@@ -29,6 +30,21 @@ class _VideoDetailState extends State<SchedaDettaglioPT> {
     }
 
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(
+            color: Color(0xFF01579B),
+            size: 30,
+          ),
+          leading: IconButton(
+            icon:Icon(Icons.arrow_back),
+            onPressed: () {
+              Route route = MaterialPageRoute(
+                  builder: (context) => homePagePT() );
+              Navigator.push(context, route); },
+          ),
+          title: Text("HelpYourWorkout",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
+        ),
         body: Column(
           children: <Widget>[
             _buildVideoPlayer(context),
@@ -61,26 +77,15 @@ class _VideoDetailState extends State<SchedaDettaglioPT> {
           title: Text(widget.detail.titolo),
           subtitle: Text(widget.detail.salva),
         ),
-        Container(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              _buildButtonColumn(Icons.share, "Condividi"),
-              _buildButtonColumn(Icons.cloud_download, "Download"),
-
             ],
-          ),
-        )
-      ],
-    );
+          );
   }
 
   Widget _buildButtonColumn(IconData icon, String text) {
     return Column(
       children: <Widget>[
         Container(
-          padding: const EdgeInsets.only(bottom: 8.0),
+          padding: const EdgeInsets.only(bottom: 5.0),
           child: Icon(
             icon,
             color: Colors.grey[700],

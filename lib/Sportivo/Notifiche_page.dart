@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/Sportivo/scheda_dettaglio_Sportivo.dart';
 
 class NotifichePage extends StatefulWidget {
   @override
@@ -29,8 +30,19 @@ class NotifichePageState extends State<NotifichePage> {
                       backgroundImage: AssetImage("assets/image/pt1.jpg"),
                       backgroundColor: Colors.transparent,
                     ),
-                    new Text("PT${index+1} Ha aggiunto una nuova scheda"), //Far uscire nome Pt al posto di PT+numero
-                    new Image.asset("assets/image/Scheda1.jpg",height: 50.0,),
+                    new Text("PT${index+1} Ha aggiunto una nuova scheda"),
+                    ClipOval(
+                      child: Material(
+                        color: Colors.white, // button color
+                        child: InkWell(
+                          splashColor: Color(0xFFfc6a26), // inkwell color
+                          child: SizedBox(width: 56, height: 56, child: Icon(Icons.airplay)),
+                          onTap: () {
+                            //Quando si fa il backand collegare scheda visualizzata con il dettaglip preciso
+                          },
+                        ),
+                      ),
+                    )//Far uscire nome Pt al posto di PT+numero
                   ],
                 ));
           }),

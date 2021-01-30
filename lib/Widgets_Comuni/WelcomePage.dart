@@ -62,7 +62,7 @@ class WelcomePageState extends State<WelcomePage> {
                 Container(
                   alignment: Alignment.centerRight,
                   child: RaisedButton(
-                    color: Colors.black,
+                    color: Color(0xFFfc6a26),
                     onPressed: () {
                           Route route = MaterialPageRoute(
                           builder: (context) => LoginScreen());
@@ -71,14 +71,12 @@ class WelcomePageState extends State<WelcomePage> {
                     child: Text(
                       'Salta',
                       style: TextStyle(
-                          color: Color(0xFFfc6a26),
-                          fontSize: 30.0,
-                          fontFamily: 'Indies'
-                      ),
+                        color: Colors.white,
+                        fontSize: 20.0,
                       ),
                     ),
                   ),
-
+                ),
                 Container(
                   height: 600.0,
                   child: PageView(
@@ -106,13 +104,8 @@ class WelcomePageState extends State<WelcomePage> {
                             ),
                             SizedBox(height: 30.0),
                             Text(
-                              "Benevenuto nel mondo Social Fitness",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 30.0,
-                                  fontFamily: 'Indies'
-                              ),
+                              "Benevenuto nel mondo HelpYourWorkout",
+                              style: kTitleStyle,
                             ),
                           ],
                         ),
@@ -235,6 +228,11 @@ class WelcomePageState extends State<WelcomePage> {
                             ),
                           ),
                           SizedBox(width: 10.0),
+                          Icon(
+                            Icons.arrow_forward,
+                            color: Color(0xFFfc6a26),
+                            size: 30.0,
+                          ),
                         ],
                       ),
                     ),

@@ -116,36 +116,36 @@ class RichiestaCorsaState extends State<RichiestaCorsa> {
     return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
-    Text(
-    'Disponibilità settimanale (num. giorni)',
-    style: kLabelStyle,
-    ),
-    SizedBox(height: 10.0),
-    Container(
-    alignment: Alignment.centerLeft,
-    decoration: kBoxDecorationStyle,
-    height: 60.0,
-    child: TextField(
-    controller: _DisponibilitaController,
-    keyboardType: TextInputType.number,
-    style: TextStyle(
-    color: Colors.white,
-    fontFamily: 'OpenSans',
-    ),
-    decoration: InputDecoration(
-    border: InputBorder.none,
-    contentPadding: EdgeInsets.only(top: 14.0),
-    prefixIcon: Icon(
-    Icons.calendar_today,
-    color: Color(0xFFfc6a26),
-    ),
-    hintText: 'Inserisci la disponibilità',
-    errorText: _validateDisponibilita ? 'Il campo non può essere vuoto' : null,
-    hintStyle: kHintTextStyle,
-    ),
-    ),
-    ),
-    ],
+      Text(
+        'Disponibilità settimanale (Numero di giorni)',
+          style: kLabelStyle,
+          ),
+        SizedBox(height: 10.0),
+        Container(
+            alignment: Alignment.centerLeft,
+            decoration: kBoxDecorationStyle,
+            height: 60.0,
+        child: TextField(
+                controller: _DisponibilitaController,
+                keyboardType: TextInputType.number,
+                style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'OpenSans',
+        ),
+                decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+          Icons.calendar_today,
+          color: Color(0xFFfc6a26),
+          ),
+          hintText: 'Inserisci la disponibilità',
+          errorText: _validateDisponibilita ? 'Il campo non può essere vuoto' : null,
+          hintStyle: kHintTextStyle,
+          ),
+          ),
+        ),
+        ],
     );
   }
 

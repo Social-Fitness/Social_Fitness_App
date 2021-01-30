@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/Sportivo/Sportivo_model.dart';
 
+import 'HomePageMenuSP.dart';
 import 'Lista_Schede_Sportivo.dart';
 
 
@@ -31,6 +32,21 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
     }
 
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(
+            color: Color(0xFF01579B),
+            size: 30,
+          ),
+          leading: IconButton(
+            icon:Icon(Icons.arrow_back),
+            onPressed: () {
+              Route route = MaterialPageRoute(
+                  builder: (context) => homePageSP() );
+              Navigator.push(context, route); },
+          ),
+          title: Text("HelpYourWorkout",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
+        ),
         body: Column(
           children: <Widget>[
             _buildVideoPlayer(context),
@@ -63,17 +79,6 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
           title: Text(widget.detail.title),
           subtitle: Text(widget.detail.viewCount),
         ),
-        Container(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              _buildButtonColumn(Icons.share, "Condividi"),
-              _buildButtonColumn(Icons.cloud_download, "Download"),
-              _buildButtonColumn(Icons.favorite, "Salva"),
-            ],
-          ),
-        )
       ],
     );
   }

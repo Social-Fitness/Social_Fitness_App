@@ -87,7 +87,7 @@ class ListaSchedaPt extends StatelessWidget {
           title: Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
             child: Text(listData[index].titolo, style: new TextStyle(
-              fontSize: 20,
+              fontSize: 16,
             ), ),
           ),
           subtitle: Text(

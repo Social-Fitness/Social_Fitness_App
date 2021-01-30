@@ -203,34 +203,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
 
-  Widget _buildRememberMeCheckbox() {
-    return Container(
-      height: 20.0,
-      child: Row(
-        children: <Widget>[
-          Theme(
-            data: ThemeData(unselectedWidgetColor: Colors.white),
-            child: Checkbox(
-              value: _rememberMe,
-              checkColor: Colors.green,
-              activeColor: Colors.white,
-              onChanged: (value) {
-                setState(() {
-                  _rememberMe = value;
-                });
-              },
-            ),
-          ),
-          Text(
-            'Ricordami',
-            style: kLabelStyle,
-
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildLoginBtn() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
@@ -270,13 +242,14 @@ class _LoginScreenState extends State<LoginScreen> {
               pw=decryptAESCryptoJS(passwordDB, "password");
               if(pw.compareTo(_passwordController.text)==0) {
                 if(categoriaDB.compareTo("Sportivo")==0) {
-                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                      homePageSP(utente: utente)), (Route<dynamic> route) => false);
-
+                  Route route = MaterialPageRoute(
+                      builder: (context) => homePageSP(utente: utente));
+                  Navigator.push(context, route);
                 }
                 else {
-                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                      homePagePT(utente: utente)), (Route<dynamic> route) => false);
+                  Route route = MaterialPageRoute(
+                      builder: (context) => homePagePT(utente: utente));
+                  Navigator.push(context, route);
                 }
               }
               else {
@@ -393,7 +366,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       _buildPasswordTF(),
                       _buildForgotPasswordBtn(),
-                      _buildRememberMeCheckbox(),
                       SizedBox(
                         height: 50.0,
                       ),

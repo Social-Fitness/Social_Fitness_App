@@ -4,6 +4,8 @@ import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Widgets_Comuni/CambioPW.dart';
 import 'package:social_fitness_app/Widgets_Comuni/Login_Page.dart';
 
+import 'HomePageMenuPT.dart';
+
 
 class ProfilePT extends StatefulWidget {
   final Utente utente;
@@ -104,6 +106,7 @@ class ProfilePTState extends State<ProfilePT> {
                               infoChild(
                                   _width, Icons.phone, utente.cellulare),
                               _buildCambiaPasswordBtn(),
+                              _buildHomeBtn(),
                               _buildLogoutBtn(),
                             ],
                           ),
@@ -123,13 +126,14 @@ class ProfilePTState extends State<ProfilePT> {
 
   Widget _buildLogoutBtn() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25.0),
+      padding: EdgeInsets.symmetric(vertical: 10.0),
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-              LoginScreen()), (Route<dynamic> route) => false);
+          Route route = MaterialPageRoute(
+              builder: (context) => LoginScreen());
+          Navigator.push(context, route);
 
         },
         padding: EdgeInsets.all(15.0),
@@ -153,7 +157,7 @@ class ProfilePTState extends State<ProfilePT> {
 
   Widget _buildCambiaPasswordBtn() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25.0),
+      padding: EdgeInsets.symmetric(vertical: 10.0),
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
@@ -169,6 +173,35 @@ class ProfilePTState extends State<ProfilePT> {
         color: Color(0xFF01579B) ,
         child: Text(
           'CAMBIA PASSWORD',
+          style: TextStyle(
+            color: Colors.white,
+            letterSpacing: 1.5,
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OpenSans',
+          ),
+        ),
+      ),
+    );
+  }
+  Widget _buildHomeBtn() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 10.0),
+      width: double.infinity,
+      child: RaisedButton(
+        elevation: 5.0,
+        onPressed: () {
+          Route route = MaterialPageRoute(
+              builder: (context) => homePagePT() );
+          Navigator.push(context, route);
+        },
+        padding: EdgeInsets.all(15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        color: Color(0xFF01579B) ,
+        child: Text(
+          'HOME',
           style: TextStyle(
             color: Colors.white,
             letterSpacing: 1.5,

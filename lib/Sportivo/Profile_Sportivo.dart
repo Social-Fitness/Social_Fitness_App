@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Widgets_Comuni/CambioPW.dart';
 
 import '../Widgets_Comuni/Login_Page.dart';
+import 'HomePageMenuSP.dart';
 
 class ProfileSP extends StatefulWidget {
   final Utente utente;
@@ -20,8 +22,6 @@ class ProfileSPState extends State<ProfileSP> {
   Widget build(BuildContext context) {
     final _width = MediaQuery.of(context).size.width;
     final _height = MediaQuery.of(context).size.height;
-
-
     return new Container(
       child: new Stack(
         children: <Widget>[
@@ -103,6 +103,7 @@ class ProfileSPState extends State<ProfileSP> {
                               infoChild(
                                   _width, Icons.phone, utente.cellulare),
                               _buildCambiaPasswordBtn(),
+                              _buildHomeBtn(),
                               _buildLogoutBtn(),
                             ],
                           ),
@@ -122,13 +123,14 @@ class ProfileSPState extends State<ProfileSP> {
 
   Widget _buildLogoutBtn() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25.0),
+      padding: EdgeInsets.symmetric(vertical: 10.0),
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-              LoginScreen()), (Route<dynamic> route) => false);
+          Route route = MaterialPageRoute(
+              builder: (context) => LoginScreen());
+          Navigator.push(context, route);
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -151,7 +153,7 @@ class ProfileSPState extends State<ProfileSP> {
 
   Widget _buildCambiaPasswordBtn() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25.0),
+      padding: EdgeInsets.symmetric(vertical: 10.0),
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
@@ -167,6 +169,36 @@ class ProfileSPState extends State<ProfileSP> {
         color: Color(0xFF01579B) ,
         child: Text(
           'CAMBIA PASSWORD',
+          style: TextStyle(
+            color: Colors.white,
+            letterSpacing: 1.5,
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OpenSans',
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHomeBtn() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 10.0),
+      width: double.infinity,
+      child: RaisedButton(
+        elevation: 5.0,
+        onPressed: () {
+          Route route = MaterialPageRoute(
+              builder: (context) => homePageSP() );
+          Navigator.push(context, route);
+        },
+        padding: EdgeInsets.all(15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        color: Color(0xFF01579B) ,
+        child: Text(
+          'HOME',
           style: TextStyle(
             color: Colors.white,
             letterSpacing: 1.5,

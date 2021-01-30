@@ -4,8 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Sportivo/Richiesta_Schede_Corsa.dart';
 
-import 'Richiesta_SChede_Ciclismo.dart';
-
 
 class SelezioneSportScreen extends StatefulWidget {
   String email;
@@ -47,41 +45,6 @@ class SelezioneSportScreenState extends State<SelezioneSportScreen> {
             fontWeight: FontWeight.bold,
             fontFamily: 'OpenSans',
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildCiclismoBtn() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 20.0),
-      width: double.infinity,
-      child: RaisedButton(
-        elevation: 5.0,
-        onPressed: () {
-          sport="Ciclismo";
-          Route route = MaterialPageRoute(
-              builder: (context) =>RichiestaCiclismo(email:email, utente:utente));
-          Navigator.push(context, route);
-        },
-        padding: EdgeInsets.all(15.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50.0),
-        ),
-        color: Colors.white,
-        child: Stack(
-            children: <Widget>[
-              Text(
-                'CICLISMO',
-                style: TextStyle(
-                  color: Color(0xFFfc6a26),
-                  letterSpacing: 1.5,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'OpenSans',
-                ),
-              ),
-            ]
         ),
       ),
     );
@@ -144,7 +107,6 @@ class SelezioneSportScreenState extends State<SelezioneSportScreen> {
                             height: 200.0,
                             width: 200.0,
                           ),
-                          _buildCiclismoBtn()
 
                         ]
                     ),
