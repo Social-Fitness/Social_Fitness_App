@@ -284,7 +284,7 @@ class CambioPWState extends State<CambioPW> {
     doc.update({"Password": encrypted});
     utente.setPW(encrypted);
     }
-  }
+
 
   @override
   Widget build(BuildContext context) {

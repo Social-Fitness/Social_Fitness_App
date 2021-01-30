@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/PersonalTrainer/Profilo_PT.dart';
 import 'package:social_fitness_app/PersonalTrainer/Richiesta_schede.dart';
-import 'package:social_fitness_app/Widgets_Comuni/Search.dart';
+import 'package:social_fitness_app/PersonalTrainer/SearchPT.dart';
 import 'package:social_fitness_app/Widgets_Comuni/Search_Bar.dart';
 import 'DashBoardPT.dart';
 
@@ -63,7 +63,7 @@ class homePageStatePT extends State<homePagePT> {
             icon: Icon(Icons.search),
             onPressed: () {
               messagesStream();
-              showSearch(context: context, delegate: Search(pt));
+              showSearch(context: context, delegate: SearchPT(pt));
             },
           ),
           IconButton(

@@ -1,40 +1,41 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
+import 'package:social_fitness_app/PersonalTrainer/HomePageMenuPT.dart';
 import 'package:social_fitness_app/PersonalTrainer/SchedePublic.dart';
-import 'package:social_fitness_app/Sportivo/HomePageMenuSP.dart';
-import 'package:social_fitness_app/Sportivo/Selezione%20Sport.dart';
 
-class PublicProfilePage extends StatefulWidget {
- String nome;
- Utente utente;
-  PublicProfilePage({Key key, this.nome, this.utente}): super(key:key);
+class PublicProfilePTPage extends StatefulWidget {
+  String nome;
+  Utente utente;
+  PublicProfilePTPage({Key key, this.nome, this.utente}): super(key:key);
   @override
-  PublicProfilePageState createState() => new PublicProfilePageState(nome: nome, utente:utente);
+  PublicProfilePTPageState createState() => new PublicProfilePTPageState(nome: nome, utente:utente);
 }
 
-class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerProviderStateMixin {
+class PublicProfilePTPageState extends State<PublicProfilePTPage> with SingleTickerProviderStateMixin {
   TabController tabController;
   String nome;
   Utente utente;
-  PublicProfilePageState ({Key key, this.nome, this.utente});
+
+  PublicProfilePTPageState({Key key, this.nome, this.utente});
+
   var _fireStore = FirebaseFirestore.instance;
-  String cognome="";
-  String cellulare="";
-  String email="";
-  String img_profilo="";
+  String cognome = "";
+  String cellulare = "";
+  String email = "";
+  String img_profilo = "";
 
   void messagesStream() async {
     await for (var snapshot in _fireStore.collection("users").snapshots()) {
       for (var message in snapshot.docs) {
         //print(message.data());
-        String s=message["Nome"] +" "+ message["Cognome"];
-        if(s.compareTo(nome)==0){
-          email=message["Email"];
-          cellulare=message["Cellulare"];
-          img_profilo=message["ImgProfilo"];
-          nome=message["Nome"];
-          cognome=message["Cognome"];
+        String s = message["Nome"] + " " + message["Cognome"];
+        if (s.compareTo(nome) == 0) {
+          email = message["Email"];
+          cellulare = message["Cellulare"];
+          img_profilo = message["ImgProfilo"];
+          nome = message["Nome"];
+          cognome = message["Cognome"];
         }
       }
     }
@@ -44,7 +45,7 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
   void initState() {
     // TODO: implement initState
     super.initState();
-    tabController =TabController(length: 2, vsync: this);
+    tabController = TabController(length: 2, vsync: this);
     messagesStream();
   }
 
@@ -56,12 +57,15 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
           centerTitle: true,
           elevation: 0,
           backgroundColor: Colors.white,
-          title: Text('Profilo Personal Trainer', style: TextStyle(color: Colors.black, fontWeight: FontWeight.w200),),
-          leading: IconButton(icon: Icon(Icons.arrow_back_ios, color: Colors.black,), onPressed: (){
-            Route route = MaterialPageRoute(
-                builder: (context) =>homePageSP(utente: utente));
-            Navigator.push(context, route);
-          }),
+          title: Text('Profilo Personal Trainer', style: TextStyle(
+              color: Colors.black, fontWeight: FontWeight.w200),),
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios, color: Colors.black,),
+              onPressed: () {
+                Route route = MaterialPageRoute(
+                    builder: (context) => homePagePT(utente: utente));
+                Navigator.push(context, route);
+              }),
         ),
         body: ListView(
 
@@ -79,7 +83,8 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
                         width: 100,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
-                            image: DecorationImage(image: AssetImage('assets/image/profile.png'),
+                            image: DecorationImage(image: AssetImage(
+                                'assets/image/profile.png'),
                                 fit: BoxFit.cover
 
                             )
@@ -105,7 +110,7 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
                       color: Color(0xFF01579B),
                     ),
                   ),
-                  SizedBox(height: 10,child: Container(
+                  SizedBox(height: 10, child: Container(
                     color: Colors.white,
                   ),),
                   Row(
@@ -123,7 +128,7 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
                 ],
               ),
             ),
-            SizedBox(height: 15,child: Container(
+            SizedBox(height: 15, child: Container(
               color: Colors.white,
             ),),
             Container(
@@ -153,29 +158,32 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
                         Column(
                           children: <Widget>[
                             Text('112 k',
-                              style: TextStyle(fontSize: 14, color: Colors.black),),
+                              style: TextStyle(fontSize: 14,
+                                  color: Colors.black),),
                             SizedBox(height: 5,),
-                            Text('Followers', style: TextStyle( fontSize: 14, color: Colors.black.withOpacity(0.5)),)
+                            Text('Followers', style: TextStyle(fontSize: 14,
+                                color: Colors.black.withOpacity(0.5)),)
                           ],
                         ),
                         Column(
                           children: <Widget>[
                             Text('1500',
-                              style: TextStyle(fontSize: 14, color: Colors.black),),
+                              style: TextStyle(fontSize: 14,
+                                  color: Colors.black),),
                             SizedBox(height: 5,),
-                            Text('Schede', style: TextStyle( fontSize: 14, color: Colors.black.withOpacity(0.5)),)
+                            Text('Schede', style: TextStyle(fontSize: 14,
+                                color: Colors.black.withOpacity(0.5)),)
                           ],
                         ),
                       ],
                     ),
                   ),
-                  _buildRichiediSchedaBtn(),
-                  _buildSeguiBtn(),
+
                 ],
               ),
             ),
             SizedBox(height: 5,),
-            SizedBox(height: 20,child: Container(
+            SizedBox(height: 20, child: Container(
               color: Color(0xFF01579B).withOpacity(0.2),
             ),),
             Container(
@@ -199,7 +207,10 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
             ),
             SizedBox(height: 10,),
             Container(
-              height: MediaQuery.of(context).size.height -450.0,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height - 450.0,
               child: TabBarView(
                 controller: tabController,
                 children: <Widget>[
@@ -214,60 +225,4 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
     );
   }
 
-  Widget _buildRichiediSchedaBtn() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 10.0),
-      width: double.infinity,
-      child: RaisedButton(
-        elevation: 5.0,
-        onPressed: () {
-          Route route = MaterialPageRoute(
-              builder: (context) =>SelezioneSportScreen(email:email, utente: utente));
-          Navigator.push(context, route);
-        },
-        padding: EdgeInsets.all(15.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-        color: Color(0xFF01579B) ,
-        child: Text(
-          'Richiedi Scheda',
-          style: TextStyle(
-            color: Colors.white,
-            letterSpacing: 1.5,
-            fontSize: 15.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSeguiBtn() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 10.0),
-      width: double.infinity,
-      child: RaisedButton(
-        elevation: 5.0,
-        onPressed: () {
-        },
-        padding: EdgeInsets.all(15.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-        color: Color(0xFF01579B) ,
-        child: Text(
-          'Segui',
-          style: TextStyle(
-            color: Colors.white,
-            letterSpacing: 1.5,
-            fontSize: 15.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
-          ),
-        ),
-      ),
-    );
-  }
 }

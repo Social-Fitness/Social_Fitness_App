@@ -6,8 +6,7 @@ import 'package:social_fitness_app/Sportivo/Dashboard_SchedePreferite.dart';
 import 'package:social_fitness_app/Sportivo/Following_Page.dart';
 import 'package:social_fitness_app/Sportivo/Notifiche_page.dart';
 import 'package:social_fitness_app/Sportivo/Profile_Sportivo.dart';
-import 'package:social_fitness_app/Widgets_Comuni/Search.dart';
-
+import 'package:social_fitness_app/Sportivo/SearchSP.dart';
 import '../Bean/Utente.dart';
 
 
@@ -73,7 +72,7 @@ class homePageStateSP extends State<homePageSP> {
             icon: Icon(Icons.search),
             onPressed: () {
               messagesStream();
-              showSearch(context: context, delegate: Search(pt, utente:utente));
+              showSearch(context: context, delegate: SearchSP(pt, utente:utente));
             },
           ),
         ],
