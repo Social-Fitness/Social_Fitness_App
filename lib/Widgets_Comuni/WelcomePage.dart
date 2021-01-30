@@ -104,8 +104,13 @@ class WelcomePageState extends State<WelcomePage> {
                             ),
                             SizedBox(height: 30.0),
                             Text(
-                              "Benevenuto nel mondo HelpYourWorkout",
-                              style: kTitleStyle,
+                              "Benevenuto nel mondo Social Fitness",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 30.0,
+                                  fontFamily: 'Indies'
+                              ),
                             ),
                           ],
                         ),

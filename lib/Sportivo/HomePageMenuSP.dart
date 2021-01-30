@@ -37,14 +37,15 @@ class homePageStateSP extends State<homePageSP> {
   }
 
   int _currentIndex = 0;
-  final List<Widget> _children = [DashBoardSportivo(),FollowingPage(),DashBoard_SchedePreferite(), NotifichePage()];
   final Utente utente;
+  List<Widget> _children () => [DashBoardSportivo(utente:utente),FollowingPage(utente:utente),DashBoard_SchedePreferite(), NotifichePage()];
   homePageStateSP({Key key, this.utente});
 
 
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> children = _children( );
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -80,7 +81,7 @@ class homePageStateSP extends State<homePageSP> {
           ),
         ],
       ),
-      body: _children[_currentIndex],
+      body: children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         onTap: (value) {

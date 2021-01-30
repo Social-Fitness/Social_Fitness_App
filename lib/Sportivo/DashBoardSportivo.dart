@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:social_fitness_app/PersonalTrainer/home_pt.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Sportivo/home_sportivo.dart';
 
 
 class DashBoardSportivo extends StatefulWidget {
+  Utente utente;
+  DashBoardSportivo({Key key, this.utente}): super(key:key);
+
   @override
-  DashBoardState createState() => DashBoardState();
-}
+   DashBoardState createState() => DashBoardState(utente:utente);
+	}
 
 class DashBoardState extends State<DashBoardSportivo> {
+  Utente utente;
+  DashBoardState({Key key, this.utente});
   int _currentIndex = 0;
 
   _onTapped(int index) {

@@ -18,7 +18,7 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
   String nome;
   Utente utente;
   PublicProfilePageState ({Key key, this.nome, this.utente});
-  var _fireStore = FirebaseFirestore.instance;
+  final _fireStore = FirebaseFirestore.instance;
   String cognome="";
   String cellulare="";
   String email="";
@@ -251,6 +251,7 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
+          _insertToDb();
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -269,5 +270,17 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
         ),
       ),
     );
+  }
+
+  _insertToDb() {
+    _fireStore.collection("notify").add(
+        {
+          "Mittente": utente.email,
+          "Azione": "segue",
+          "Destinatario": email,
+
+        }).then((value){
+      print(value.id);
+    });
   }
 }
