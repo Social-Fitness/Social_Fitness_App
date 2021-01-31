@@ -40,7 +40,7 @@ class SearchSP extends SearchDelegate {
 
   final List<String> listExample;
   SearchSP(this.listExample,{this.utente});
-  final List<String> recentList=["Text1", "Text2", "Text3"];
+  final List<String> recentList=[];
 
   @override
   Widget buildSuggestions(BuildContext context) {

@@ -20,17 +20,17 @@ class SportivoModel {
 List<SportivoModel> sportivoData = [
   SportivoModel(
     title:
-    "Allenamento addominali",
+    "Allenamento sterrato",
     thumbNail:
     "assets/image/Scheda1.jpg",
     publishedTime: "2 settimane fa",
-    channelTitle: "Pietro Grimaldi",
+    channelTitle: "Pietro Nardi",
     channelAvatar:
     "assets/image/pt1.jpg",
     viewCount: "50M salvataggi",
   ),
   SportivoModel(
-    title: "Allenamento dorsali",
+    title: "Allenamento 2.0",
     thumbNail:
     "assets/image/Scheda2.jpg",
     publishedTime: "16 ore fa",
@@ -40,7 +40,7 @@ List<SportivoModel> sportivoData = [
     viewCount: "917K salvataggi",
   ),
   SportivoModel(
-    title: "Allenamento bicipiti",
+    title: "Allenamento 800m",
     thumbNail:
     "assets/image/Scheda6.jpg",
     publishedTime: "6 giorni fa",

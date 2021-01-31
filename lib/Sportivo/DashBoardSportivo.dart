@@ -25,7 +25,7 @@ class DashBoardState extends State<DashBoardSportivo> {
   @override
   Widget build(BuildContext context) {
     List<Widget> _screens = [
-      HomeScreenSportivo(),
+      HomeScreenSportivo(utente:utente),
       Center(child: Text("Subscriptions")),
     ];
 
@@ -61,7 +61,7 @@ class DashBoardState extends State<DashBoardSportivo> {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: <Widget>[
-                story('assets/image/pt1.jpg','Pietro Grimaldi'),
+                story('assets/image/pt1.jpg','Pietro Nardi'),
                 story('assets/image/pt2.jpg','Salvatore Amideo'),
                 story('assets/image/pt4.jpg','Ivan Di Pietro'),
                 story('assets/image/pt3.jpg','Anna Vanoni'),

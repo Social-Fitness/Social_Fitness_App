@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Sportivo/Sportivo_model.dart';
 
 import 'package:social_fitness_app/Sportivo/scheda_dettaglio_Sportivo.dart';
@@ -7,9 +8,10 @@ class ListaSchedaSportivo extends StatelessWidget {
   final List<SportivoModel> listData;
   final bool isMiniList;
   final bool isHorizontalList;
+  Utente utente;
 
-  const ListaSchedaSportivo(
-      {this.listData, this.isMiniList = false, this.isHorizontalList = false});
+  ListaSchedaSportivo(
+      {this.listData, this.isMiniList = false, this.isHorizontalList = false, Utente utente});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class ListaSchedaSportivo extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => SchedaDettaglioSportivo(
-                  detail: listData[index],
+                  detail: listData[index], utente:utente
                 ),
               ));
             },
@@ -43,6 +45,7 @@ class ListaSchedaSportivo extends StatelessWidget {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => SchedaDettaglioSportivo(
                     detail: listData[index],
+                      utente:utente
                   ),
                 ));
               },
@@ -54,6 +57,7 @@ class ListaSchedaSportivo extends StatelessWidget {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => SchedaDettaglioSportivo(
                     detail: listData[index],
+                      utente:utente
                   ),
                 ));
               },

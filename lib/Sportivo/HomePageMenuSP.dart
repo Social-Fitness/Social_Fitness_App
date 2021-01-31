@@ -8,6 +8,9 @@ import 'package:social_fitness_app/Sportivo/Notifiche_page.dart';
 import 'package:social_fitness_app/Sportivo/Profile_Sportivo.dart';
 import 'package:social_fitness_app/Sportivo/SearchSP.dart';
 import '../Bean/Utente.dart';
+import 'Profilo_Public.dart';
+import 'scheda_dettaglio_Sportivo.dart';
+
 
 
 class homePageSP extends StatefulWidget {
@@ -38,7 +41,7 @@ class homePageStateSP extends State<homePageSP> {
 
   int _currentIndex = 0;
   final Utente utente;
-  List<Widget> _children () => [DashBoardSportivo(utente:utente),FollowingPage(utente:utente),DashBoard_SchedePreferite(), NotifichePage()];
+  List<Widget> _children () => [DashBoardSportivo(utente:utente),FollowingPage(utente:utente),DashBoard_SchedePreferite(), NotifichePage(),PublicProfilePage(utente:utente)];
   homePageStateSP({Key key, this.utente});
 
 

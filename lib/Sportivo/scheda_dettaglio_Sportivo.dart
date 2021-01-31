@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Sportivo/Sportivo_model.dart';
 
 import 'HomePageMenuSP.dart';
 import 'Lista_Schede_Sportivo.dart';
+import 'Profilo_Public.dart';
 
 
 class SchedaDettaglioSportivo extends StatefulWidget {
   final SportivoModel detail;
+  Utente utente;
 
-  const SchedaDettaglioSportivo({Key key, @required this.detail}) : super(key: key);
+  SchedaDettaglioSportivo({Key key, @required this.detail, Utente utente}) : super(key: key);
+  
 
   @override
   _VideoDetailState createState() => _VideoDetailState();
 }
 
 class _VideoDetailState extends State<SchedaDettaglioSportivo> {
+  Utente utente;
   @override
   Widget build(BuildContext context) {
     List<Widget> _layouts = [
@@ -112,19 +117,36 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
       child: Row(
         children: <Widget>[
           Expanded(
+            child: RaisedButton(
+          onPressed: () {
+              Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => PublicProfilePage(nome: widget.detail.channelTitle,utente:utente),
+              ),//fare
+              );
+              },
             child: ListTile(
               leading: CircleAvatar(
                 backgroundImage: AssetImage(widget.detail.channelAvatar),
               ),
-              title: Text(
+              title:  Text(
                 widget.detail.channelTitle,
                 overflow: TextOverflow.ellipsis,
               ),
+
               subtitle: Text("15.000 follower"),
+
+
             ),
+            ),
+
+
           ),
+
           FlatButton.icon(
-              onPressed: () {},
+              onPressed: () {
+
+              },
               icon: Icon(
                 Icons.people_rounded,
                 color: Color(0xFFfc6a26),
@@ -152,3 +174,4 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
     );
   }
 }
+
