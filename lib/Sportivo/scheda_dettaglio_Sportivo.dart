@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Sportivo/Sportivo_model.dart';
@@ -11,6 +12,7 @@ class SchedaDettaglioSportivo extends StatefulWidget {
   final SportivoModel detail;
   Utente utente;
 
+
   SchedaDettaglioSportivo({Key key, @required this.detail, Utente utente}) : super(key: key);
   
 
@@ -19,7 +21,24 @@ class SchedaDettaglioSportivo extends StatefulWidget {
 }
 
 class _VideoDetailState extends State<SchedaDettaglioSportivo> {
+  bool push=false;
   Utente utente;
+  String follow="Segui";
+
+  void changeworld(bool push){
+    if(push==false) {
+      setState(() {
+        push = true;
+        follow = "Segui già";
+      });
+    }
+    else{
+      setState(() {
+        push=false;
+        follow="Segui";
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
     List<Widget> _layouts = [
@@ -36,7 +55,9 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
       _layouts.clear();
     }
 
+
     return Scaffold(
+
         appBar: AppBar(
           backgroundColor: Colors.white,
           iconTheme: IconThemeData(
@@ -143,16 +164,16 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
 
           ),
 
-          FlatButton.icon(
+          RaisedButton.icon(
               onPressed: () {
-
-              },
+                  changeworld(push);
+                },
               icon: Icon(
                 Icons.people_rounded,
                 color: Color(0xFFfc6a26),
               ),
               label: Text(
-                "SEGUI",
+                "$follow",
                 style: TextStyle(color: Color(0xFFfc6a26)),
               ))
         ],

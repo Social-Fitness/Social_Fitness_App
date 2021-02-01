@@ -233,11 +233,7 @@ class WelcomePageState extends State<WelcomePage> {
                             ),
                           ),
                           SizedBox(width: 10.0),
-                          Icon(
-                            Icons.arrow_forward,
-                            color: Color(0xFFfc6a26),
-                            size: 30.0,
-                          ),
+
                         ],
                       ),
                     ),

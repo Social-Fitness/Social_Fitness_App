@@ -18,6 +18,7 @@ class ProfileSPState extends State<ProfileSP> {
   final Utente utente;
   ProfileSPState({Key key, this.utente});
 
+
   @override
   Widget build(BuildContext context) {
     final _width = MediaQuery.of(context).size.width;
@@ -103,7 +104,6 @@ class ProfileSPState extends State<ProfileSP> {
                               infoChild(
                                   _width, Icons.phone, utente.cellulare),
                               _buildCambiaPasswordBtn(),
-                              _buildHomeBtn(),
                               _buildLogoutBtn(),
                             ],
                           ),
