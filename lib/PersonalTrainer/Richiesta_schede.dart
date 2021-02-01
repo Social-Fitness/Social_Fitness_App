@@ -35,7 +35,7 @@ class RichiestaSchedePageState extends State<RichiestaSchedePage> {
                         backgroundImage: AssetImage("assets/image/pt1.jpg"),
                         backgroundColor: Colors.transparent,
                       ),
-                    new Text("Utente ${index+1} Ha richiesto una scheda scheda \n " + "Ciclismo"), //Far uscire nome Pt al posto di PT+numero
+                    new Text("Utente ${index+1} Ha richiesto una scheda scheda \n " + "Corsa"), //Far uscire nome Pt al posto di PT+numero
                     GestureDetector(
                       onTap:() {
                       print("CLICK SU SCHEDA");
