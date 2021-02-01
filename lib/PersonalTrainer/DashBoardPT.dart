@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/PersonalTrainer/home_pt.dart';
 
 
 class DashBoardPT extends StatefulWidget {
+  final Utente utente;
+  DashBoardPT({Key key, this.utente}) : super(key: key);
   @override
   DashBoardState createState() => DashBoardState();
 }
 
 class DashBoardState extends State<DashBoardPT> {
+  final Utente utente;
+  DashBoardState({Key key, this.utente});
   int _currentIndex = 0;
 
   _onTapped(int index) {

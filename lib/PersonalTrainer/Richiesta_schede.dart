@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/PersonalTrainer/allenamento_corsa.dart';
 
 class RichiestaSchedePage extends StatefulWidget {
+  final Utente utente;
+  RichiestaSchedePage({Key key, this.utente}) : super(key: key);
   @override
   RichiestaSchedePageState createState() => RichiestaSchedePageState();
 }
 
 class RichiestaSchedePageState extends State<RichiestaSchedePage> {
+  final Utente utente;
+  RichiestaSchedePageState({Key key, this.utente});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

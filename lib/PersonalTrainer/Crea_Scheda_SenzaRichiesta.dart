@@ -3,15 +3,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/PersonalTrainer/HomePageMenuPT.dart';
+import 'package:social_fitness_app/PersonalTrainer/feedbackSchedaInviata.dart';
 import 'package:social_fitness_app/utils/constants.dart';
 
 class AllenamentoCor_crea_Screen extends StatefulWidget {
+  Utente utente;
+  AllenamentoCor_crea_Screen({Key key, this.utente}): super(key:key);
   @override
-  AllenamentoCor_crea_ScreenScreenState createState() => AllenamentoCor_crea_ScreenScreenState();
+  AllenamentoCor_crea_ScreenScreenState createState() => AllenamentoCor_crea_ScreenScreenState(utente: utente);
 }
 
 class AllenamentoCor_crea_ScreenScreenState extends State<AllenamentoCor_crea_Screen> {
+  Utente utente;
+  AllenamentoCor_crea_ScreenScreenState({Key key, this.utente});
   final firestoreInstance = FirebaseFirestore.instance;
   TextEditingController _BPMController = new TextEditingController();
   TextEditingController _kmController = new TextEditingController();
@@ -150,7 +156,8 @@ class AllenamentoCor_crea_ScreenScreenState extends State<AllenamentoCor_crea_Sc
           height: 60.0,
           child: DropdownButton(
             icon: Icon(Icons.assistant_photo,color: Colors.white,),
-            hint: Text('Seleziona l\'obiettivo'), // Not necessary for Option 1
+            hint: Text('Seleziona l\'obiettivo', style: TextStyle(
+                color: Colors.white)), // Not necessary for Option 1
             value: _obiettivoController,
             onChanged: (newValue) {
               setState(() {
@@ -159,7 +166,9 @@ class AllenamentoCor_crea_ScreenScreenState extends State<AllenamentoCor_crea_Sc
             },
             items: obiettivi.map((location) {
               return DropdownMenuItem(
-                child: new Text(location),
+
+                child: new Text(location,textAlign: TextAlign.center),
+
                 value: location,
               );
             }).toList(),
@@ -193,12 +202,13 @@ class AllenamentoCor_crea_ScreenScreenState extends State<AllenamentoCor_crea_Sc
             else
               i++;
 
-
-
-            if(i==3)
-              _buildPopupTF(context);
-
           });
+          Route route = MaterialPageRoute(
+              builder: (context) => feedback(utente: utente,) );
+          Navigator.push(context, route);
+
+
+
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -219,6 +229,7 @@ class AllenamentoCor_crea_ScreenScreenState extends State<AllenamentoCor_crea_Sc
     );
   }
 
+  /*
   _buildPopupTF(context) {
     return Alert(
         context: context,
@@ -238,6 +249,7 @@ class AllenamentoCor_crea_ScreenScreenState extends State<AllenamentoCor_crea_Sc
         )
     ).show();
   }
+*/
 
   _insertToDb() {
     firestoreInstance.collection("SchedaCorsa").add(
@@ -292,7 +304,9 @@ class AllenamentoCor_crea_ScreenScreenState extends State<AllenamentoCor_crea_Sc
                     children: <Widget>[
                       Text(
                         'CREA UNA NUOVA SCHEDA',
+                    textAlign: TextAlign.center,
                         style: TextStyle(
+
                           color: Colors.white,
                           fontFamily: "Montserrat",
                           fontSize: 30.0,

@@ -32,7 +32,7 @@ class DashBoardState extends State<DashBoardSportivo> {
     return Scaffold(
       body: ListView(
         children: <Widget>[
-          HomeScreenSportivo(),
+          HomeScreenSportivo(utente: utente),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
             child: Row(

@@ -17,11 +17,12 @@ class homePagePT extends StatefulWidget {
 }
 
 class homePageStatePT extends State<homePagePT> {
-  int _currentIndex = 0;
-  final List<Widget> _children = [ DashBoardPT(), null, AllenamentoCor_crea_Screen(), RichiestaSchedePage()];
-
   final Utente utente;
   homePageStatePT({Key key, this.utente});
+  int _currentIndex = 0;
+  List<Widget> _children() => [ DashBoardPT(utente:utente), null, AllenamentoCor_crea_Screen(utente:utente), RichiestaSchedePage(utente:utente)];
+
+
 
   var _fireStore = FirebaseFirestore.instance;
   List<String> pt= [];
@@ -42,6 +43,7 @@ class homePageStatePT extends State<homePagePT> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> children= _children();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -68,7 +70,7 @@ class homePageStatePT extends State<homePagePT> {
           ),
         ],
       ),
-     body: _children[_currentIndex],
+     body: children[_currentIndex],
      bottomNavigationBar: BottomNavigationBar(
        type: BottomNavigationBarType.fixed,
        onTap: (value) {

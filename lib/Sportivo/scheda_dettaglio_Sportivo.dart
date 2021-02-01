@@ -17,12 +17,13 @@ class SchedaDettaglioSportivo extends StatefulWidget {
   
 
   @override
-  _VideoDetailState createState() => _VideoDetailState();
+  _VideoDetailState createState() => _VideoDetailState(utente:utente);
 }
 
 class _VideoDetailState extends State<SchedaDettaglioSportivo> {
-  bool push=false;
   Utente utente;
+  _VideoDetailState({Key key, this.utente});
+  bool push=false;
   String follow="Segui";
 
   void changeworld(bool push){
@@ -46,7 +47,7 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
       _channelInfo(),
       _moreInfo(),
       ListaSchedaSportivo(
-        listData: sportivoData,
+        listData: sportivoData, utente: utente,
         isMiniList: true,
       ),
     ];
@@ -68,7 +69,7 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
             icon:Icon(Icons.arrow_back),
             onPressed: () {
               Route route = MaterialPageRoute(
-                  builder: (context) => homePageSP() );
+                  builder: (context) => homePageSP(utente: utente,) );
               Navigator.push(context, route); },
           ),
           title: Text("HelpYourWorkout",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),

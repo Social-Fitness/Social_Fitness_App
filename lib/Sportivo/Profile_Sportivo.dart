@@ -34,6 +34,17 @@ class ProfileSPState extends State<ProfileSP> {
                 ], begin: Alignment.topCenter, end: Alignment.center)),
           ),
           new Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              elevation: 0,
+              backgroundColor: Colors.white,
+              title: Text('Profilo Utente', style: TextStyle(color: Colors.black),),
+              leading: IconButton(icon: Icon(Icons.arrow_back_ios, color: Colors.black,), onPressed: (){
+                Route route = MaterialPageRoute(
+                    builder: (context) =>homePageSP(utente: utente));
+                Navigator.push(context, route);
+              }),
+            ),
             backgroundColor: Colors.transparent,
             body: new Container(
               child: new Stack(

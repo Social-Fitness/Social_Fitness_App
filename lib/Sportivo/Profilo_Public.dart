@@ -49,8 +49,10 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
   }
 
 
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
