@@ -35,6 +35,17 @@ class ProfilePTState extends State<ProfilePT> {
                 ], begin: Alignment.topCenter, end: Alignment.center)),
           ),
           new Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              elevation: 0,
+              backgroundColor: Colors.white,
+              title: Text('Profilo Utente', style: TextStyle(color: Colors.black),),
+              leading: IconButton(icon: Icon(Icons.arrow_back_ios, color: Colors.black,), onPressed: (){
+                Route route = MaterialPageRoute(
+                    builder: (context) =>homePagePT(utente: utente));
+                Navigator.push(context, route);
+              }),
+            ),
             backgroundColor: Colors.transparent,
             body: new Container(
               child: new Stack(
@@ -106,7 +117,6 @@ class ProfilePTState extends State<ProfilePT> {
                               infoChild(
                                   _width, Icons.phone, utente.cellulare),
                               _buildCambiaPasswordBtn(),
-                              _buildHomeBtn(),
                               _buildLogoutBtn(),
                             ],
                           ),
@@ -170,35 +180,6 @@ class ProfilePTState extends State<ProfilePT> {
         color: Color(0xFF01579B) ,
         child: Text(
           'CAMBIA PASSWORD',
-          style: TextStyle(
-            color: Colors.white,
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
-          ),
-        ),
-      ),
-    );
-  }
-  Widget _buildHomeBtn() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 10.0),
-      width: double.infinity,
-      child: RaisedButton(
-        elevation: 5.0,
-        onPressed: () {
-          Route route = MaterialPageRoute(
-              builder: (context) => homePagePT() );
-          Navigator.push(context, route);
-        },
-        padding: EdgeInsets.all(15.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-        color: Color(0xFF01579B) ,
-        child: Text(
-          'HOME',
           style: TextStyle(
             color: Colors.white,
             letterSpacing: 1.5,
