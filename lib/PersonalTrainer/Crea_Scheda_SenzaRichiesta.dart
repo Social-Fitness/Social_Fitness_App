@@ -268,6 +268,17 @@ class AllenamentoCor_crea_ScreenScreenState extends State<AllenamentoCor_crea_Sc
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: Text('Crea Scheda', style: TextStyle(color: Colors.black),),
+        leading: IconButton(icon: Icon(Icons.arrow_back_ios, color: Colors.black,), onPressed: (){
+          Route route = MaterialPageRoute(
+              builder: (context) =>homePagePT(utente: utente));
+          Navigator.push(context, route);
+        }),
+      ),
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(

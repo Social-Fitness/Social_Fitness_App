@@ -214,8 +214,8 @@ class PublicProfilePTPageState extends State<PublicProfilePTPage> with SingleTic
               child: TabBarView(
                 controller: tabController,
                 children: <Widget>[
-                  new SchedePublic(),
-                  new SchedePublic(),
+                  new SchedePublic(utente:utente),
+                  new SchedePublic(utente:utente),
                 ],
               ),
             ),

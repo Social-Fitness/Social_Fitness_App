@@ -40,7 +40,6 @@ class FollowingPageState extends State<FollowingPage> {
   @override
   void initState() {
     // TODO: implement initState
-    messagesStream();
     super.initState();
   }
 
@@ -50,7 +49,6 @@ class FollowingPageState extends State<FollowingPage> {
       child: new ListView.builder(
           itemCount: following.length,
           itemBuilder: (BuildContext context, int index) {
-           for(Seguiti s in following) {
             return new Container(
                 margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
                 child: new Row(
@@ -61,7 +59,7 @@ class FollowingPageState extends State<FollowingPage> {
                       backgroundImage: AssetImage("assets/image/pt2.jpg"),
                       backgroundColor: Colors.transparent,
                     ),
-                    new Text(s.destinatario), //Inserire nome personal trainer
+                    new Text(destinatario), //Inserire nome personal trainer
                     new OutlineButton(
                       onPressed: () {},
                       child: new Text("Segui Già"),
@@ -69,7 +67,7 @@ class FollowingPageState extends State<FollowingPage> {
                   ],
                 ));
            }
-          }//fine for
+          //fine for
       ),
     );
   }

@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 
 
 class SchedePublic extends StatefulWidget {
+  final Utente utente;
+  SchedePublic({Key key, this.utente}) : super(key: key);
   @override
-  SchedePublicState createState() => SchedePublicState();
+  SchedePublicState createState() => SchedePublicState(utente:utente);
 }
 
 class SchedePublicState extends State<SchedePublic> {
+  Utente utente;
+  SchedePublicState({Key key, this.utente});
   @override
   Widget build(BuildContext context) {
     return GridView.count(

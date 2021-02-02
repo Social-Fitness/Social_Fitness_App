@@ -4,8 +4,10 @@ import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/PersonalTrainer/Profilo_PT.dart';
 import 'package:social_fitness_app/PersonalTrainer/Richiesta_schede.dart';
 import 'package:social_fitness_app/PersonalTrainer/SearchPT.dart';
+import 'package:social_fitness_app/Sportivo/Selezione%20Sport.dart';
 import 'Crea_Scheda_SenzaRichiesta.dart';
 import 'DashBoardPT.dart';
+import 'SelezioneSportPT.dart';
 
 
 class homePagePT extends StatefulWidget {
@@ -20,7 +22,7 @@ class homePageStatePT extends State<homePagePT> {
   final Utente utente;
   homePageStatePT({Key key, this.utente});
   int _currentIndex = 0;
-  List<Widget> _children() => [ DashBoardPT(utente:utente), null, AllenamentoCor_crea_Screen(utente:utente), RichiestaSchedePage(utente:utente)];
+  List<Widget> _children() => [ DashBoardPT(utente:utente), null, SelezioneSportScreenPT(utente:utente), RichiestaSchedePage(utente:utente)];
 
 
 
@@ -58,14 +60,14 @@ class homePageStatePT extends State<homePagePT> {
                 builder: (context) => ProfilePT(utente: utente) );
             Navigator.push(context, route); },
         ),
-        title: Text("HelpYourWorkout",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
+        title: Text("Social Fitness",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
         actions: <Widget>[
 
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
               messagesStream();
-              showSearch(context: context, delegate: SearchPT(pt));
+              showSearch(context: context, delegate: SearchPT(pt,utente: utente));
             },
           ),
         ],

@@ -26,16 +26,14 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
   bool push=false;
   String follow="Segui";
 
-  void changeworld(bool push){
-    if(push==false) {
+  void changeworld(){
+    if(follow=="Segui") {
       setState(() {
-        push = true;
         follow = "Segui già";
       });
     }
     else{
       setState(() {
-        push=false;
         follow="Segui";
       });
     }
@@ -167,7 +165,7 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
 
           RaisedButton.icon(
               onPressed: () {
-                  changeworld(push);
+                  changeworld();
                 },
               icon: Icon(
                 Icons.people_rounded,

@@ -21,11 +21,7 @@ class feedbackState extends State<feedback> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(
-          color: Color(0xFF01579B),
-          size: 30,
-        ),
-        title: Text("HelpYourWorkout",
+        title: Text("Social Fitness",
             style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
       ),
       body: Stack(
@@ -86,7 +82,7 @@ class feedbackState extends State<feedback> {
           elevation: 5.0,
           onPressed: () {
             Route route = MaterialPageRoute(
-                builder: (context) => homePagePT());
+                builder: (context) => homePagePT(utente: utente,));
             Navigator.push(context, route);
           },
           padding: EdgeInsets.all(15.0),
