@@ -3,15 +3,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/PersonalTrainer/HomePageMenuPT.dart';
 import 'package:social_fitness_app/utils/constants.dart';
 
+import 'feedbackSchedaInviata.dart';
+
 class AllenamentoCorScreen extends StatefulWidget {
+  final Utente utente;
+  AllenamentoCorScreen({Key key, this.utente}) : super(key: key);
+
   @override
-  AllenamentoCorScreenState createState() => AllenamentoCorScreenState();
+  AllenamentoCorScreenState createState() => AllenamentoCorScreenState(utente:utente);
 }
 
 class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
+  Utente utente;
+  AllenamentoCorScreenState({Key key, this.utente});
   final firestoreInstance = FirebaseFirestore.instance;
   TextEditingController _BPMController = new TextEditingController();
   TextEditingController _kmController = new TextEditingController();
@@ -194,11 +202,11 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
               i++;
 
 
-
-            if(i==3)
-              _buildPopupTF(context);
-
           });
+
+            Route route = MaterialPageRoute(
+                builder: (context) => feedback(utente: utente,) );
+                Navigator.push(context, route);
   },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -256,6 +264,17 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: Text('Crea Scheda', style: TextStyle(color: Colors.black),),
+        leading: IconButton(icon: Icon(Icons.arrow_back_ios, color: Colors.black,), onPressed: (){
+          Route route = MaterialPageRoute(
+              builder: (context) =>homePagePT(utente: utente));
+          Navigator.push(context, route);
+        }),
+      ),
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(

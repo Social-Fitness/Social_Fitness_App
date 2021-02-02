@@ -6,11 +6,11 @@ class RichiestaSchedePage extends StatefulWidget {
   final Utente utente;
   RichiestaSchedePage({Key key, this.utente}) : super(key: key);
   @override
-  RichiestaSchedePageState createState() => RichiestaSchedePageState();
+  RichiestaSchedePageState createState() => RichiestaSchedePageState(utente: utente);
 }
 
 class RichiestaSchedePageState extends State<RichiestaSchedePage> {
-  final Utente utente;
+  Utente utente;
   RichiestaSchedePageState({Key key, this.utente});
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class RichiestaSchedePageState extends State<RichiestaSchedePage> {
                         backgroundImage: AssetImage("assets/image/pt1.jpg"),
                         backgroundColor: Colors.transparent,
                       ),
-                    new Text("Utente ${index+1} Ha richiesto una scheda scheda \n " + "Corsa"), //Far uscire nome Pt al posto di PT+numero
+                    new Text("Utente ${index+1} Ha richiesto una scheda per la \n " + "Corsa"), //Far uscire nome Pt al posto di PT+numero
                     GestureDetector(
                       onTap:() {
                       print("CLICK SU SCHEDA");
@@ -95,7 +95,7 @@ class RichiestaSchedePageState extends State<RichiestaSchedePage> {
               onPressed: () {
                 //if è stato richiesto corsa o ciclismo apri form corretto
                Route route = MaterialPageRoute(
-                    builder: (context) => AllenamentoCorScreen());
+                    builder: (context) => AllenamentoCorScreen(utente:utente));
                 Navigator.push(context, route);
               },
             ),
