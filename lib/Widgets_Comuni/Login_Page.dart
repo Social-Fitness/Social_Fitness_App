@@ -33,9 +33,11 @@ class _LoginScreenState extends State<LoginScreen> {
   String cellulare="";
   String email="";
   String img_profilo=null;
-
+  DocumentReference reference;
 
   void messagesStream() async {
+    CollectionReference _users = _fireStore.collection('users');
+    reference = _users.doc();
     await for (var snapshot in _fireStore.collection(_collection).snapshots()) {
       for (var message in snapshot.docs) {
         if(message["Email"] == _emailController.text){
@@ -238,6 +240,7 @@ class _LoginScreenState extends State<LoginScreen> {
             messagesStream();
 
             if (i == 2) {
+              print("DOCUMENTO UTENTTEEEEE " + reference.toString());
               Utente utente=new Utente(nome, cognome, email, cellulare, dataNascita, categoriaDB, passwordDB, img_profilo);
               pw=decryptAESCryptoJS(passwordDB, "password");
               if(pw.compareTo(_passwordController.text)==0) {
