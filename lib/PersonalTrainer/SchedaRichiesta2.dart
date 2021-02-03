@@ -300,7 +300,7 @@ class SchedaRichiesta2State extends State<SchedaRichiesta2> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'RICHIESTA SCHEDA',
+                    'COMPILA SCHEDA',
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: "Montserrat",
