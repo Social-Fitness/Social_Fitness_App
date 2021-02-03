@@ -374,6 +374,17 @@ class RichiestaCorsaState extends State<RichiestaCorsa> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: Text('Richiesta Scheda', style: TextStyle(color: Colors.black),),
+        leading: IconButton(icon: Icon(Icons.arrow_back_ios, color: Colors.black,), onPressed: (){
+          Route route = MaterialPageRoute(
+              builder: (context) =>homePageSP(utente: utente));
+          Navigator.push(context, route);
+        }),
+      ),
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(

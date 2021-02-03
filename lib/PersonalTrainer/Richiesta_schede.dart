@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
+import 'package:social_fitness_app/PersonalTrainer/SchedaRichiesta2.dart';
 import 'package:social_fitness_app/PersonalTrainer/allenamento_corsa.dart';
 
 class RichiestaSchedePage extends StatefulWidget {
@@ -39,7 +40,9 @@ class RichiestaSchedePageState extends State<RichiestaSchedePage> {
                     GestureDetector(
                       onTap:() {
                       print("CLICK SU SCHEDA");
-                      _showMyDialog();
+                      Route route = MaterialPageRoute(
+                          builder: (context) => SchedaRichiesta2(utente:utente));
+                      Navigator.push(context, route);
                   },
                     child: Image.asset("assets/image/create_scheda.png",height: 35.0,),
                 ),
@@ -47,62 +50,6 @@ class RichiestaSchedePageState extends State<RichiestaSchedePage> {
                 ),
             );
           }),
-    );
-  }
-
-
-  Future<void> _showMyDialog() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title:  Text(
-            "NOME UTENTE",
-            style: TextStyle(
-              color: Color(0xFFfc6a26),
-              letterSpacing: 1.5,
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'OpenSans',
-            ),
-          ),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text(
-                  "DATI INSERITI DALL'UTENTE",
-                  style: TextStyle(
-                    color: Colors.black,
-                    letterSpacing: 1.5,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'OpenSans',
-                  ),
-                ),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text('CANCEL'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: Text('CREA'),
-              onPressed: () {
-                //if è stato richiesto corsa o ciclismo apri form corretto
-               Route route = MaterialPageRoute(
-                    builder: (context) => AllenamentoCorScreen(utente:utente));
-                Navigator.push(context, route);
-              },
-            ),
-
-          ],
-        );
-      },
     );
   }
 }
