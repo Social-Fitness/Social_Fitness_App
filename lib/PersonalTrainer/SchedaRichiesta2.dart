@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/Bean/RichiestaScheda.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
-import 'package:social_fitness_app/utils/constants.dart';
-
 import 'HomePageMenuPT.dart';
 
+
+/*DEVE ESSERE PRESO IN INPUT L'EMAIL DALLA PAGINA PRECEDENTE DOPO CHE LA COLLEGHIAMO*/
 class SchedaRichiesta2 extends StatefulWidget {
   final Utente utente;
   SchedaRichiesta2({Key key, this.utente}) : super(key: key);
@@ -13,43 +14,45 @@ class SchedaRichiesta2 extends StatefulWidget {
   SchedaRichiesta2State createState() => SchedaRichiesta2State(utente: utente);
 }
 
+
 class SchedaRichiesta2State extends State<SchedaRichiesta2> {
   Utente utente;
 
   SchedaRichiesta2State({Key key, this.utente});
 
-  final firestoreInstance = FirebaseFirestore.instance;
+  final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
+  RichiestaScheda _richiestaScheda;
+
+  void messagesStream() async {
+    await for (var snapshot in _fireStore.collection("richiesta_scheda").snapshots()) {
+      for (var message in snapshot.docs) {
+        if(message["Personal_Trainer"] == utente.email && message["Utente"]=="alicevid99@gmail.com"){
+          _richiestaScheda.bpm = message["BPM"];
+          _richiestaScheda.altezza= message["Altezza"];
+          _richiestaScheda.disponibilita_settimanale=message["Disponibilita_settimanale"];
+          _richiestaScheda.obiettivo=message["Obiettivo"];
+          _richiestaScheda.pt=message["Personal_Trainer"];
+          _richiestaScheda.peso=message["Peso "];
+          _richiestaScheda.sport=message["Sport"];
+          _richiestaScheda.richiedente=message["Utente"];
+          _richiestaScheda.velocita_sostenuta=message["Velocita_Sostenuta"];
+        }
+      }
+    }
+  }
 
   Widget _buildBPMTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'BPM',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextFormField(
-            readOnly: true,
-            keyboardType: TextInputType.number,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.favorite,
-                color: Color(0xFFfc6a26),
-              ),
-            ),
+          'BPM ' + _richiestaScheda.bpm,
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'OpenSans',
           ),
         ),
+        SizedBox(height: 10.0),
       ],
     );
   }
@@ -59,31 +62,13 @@ class SchedaRichiesta2State extends State<SchedaRichiesta2> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Velocità Sostenuta (Km/h)',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextFormField(
-            readOnly: true,
-            keyboardType: TextInputType.number,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.directions_run,
-                color: Color(0xFFfc6a26),
-              ),
-            ),
+          'Velocità sostenuta: ' + _richiestaScheda.velocita_sostenuta,
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'OpenSans',
           ),
         ),
+        SizedBox(height: 10.0),
       ],
     );
   }
@@ -93,31 +78,13 @@ class SchedaRichiesta2State extends State<SchedaRichiesta2> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Disponibilità settimanale (Numero di giorni)',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextFormField(
-            readOnly: true,
-            keyboardType: TextInputType.number,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.calendar_today,
-                color: Color(0xFFfc6a26),
-              ),
-            ),
+          'Disponibilità settimanale: ' + _richiestaScheda.disponibilita_settimanale,
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'OpenSans',
           ),
         ),
+        SizedBox(height: 10.0),
       ],
     );
   }
@@ -127,31 +94,13 @@ class SchedaRichiesta2State extends State<SchedaRichiesta2> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Altezza in cm',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextFormField(
-            readOnly: true,
-            keyboardType: TextInputType.number,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.accessibility,
-                color: Color(0xFFfc6a26),
-              ),
-            ),
+          'Altezza: ' + _richiestaScheda.altezza + ' cm',
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'OpenSans',
           ),
         ),
+        SizedBox(height: 10.0),
       ],
     );
   }
@@ -162,31 +111,13 @@ class SchedaRichiesta2State extends State<SchedaRichiesta2> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Peso',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextFormField(
-            readOnly: true,
-            keyboardType: TextInputType.number,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.accessibility,
-                color: Color(0xFFfc6a26),
-              ),
-            ),
+          'Peso: ' + _richiestaScheda.peso + ' Kg',
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'OpenSans',
           ),
         ),
+        SizedBox(height: 10.0),
       ],
     );
   }
@@ -196,32 +127,18 @@ class SchedaRichiesta2State extends State<SchedaRichiesta2> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Obiettivo',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0,),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextFormField(
-            readOnly: true,
-            keyboardType: TextInputType.number,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-            ),
+          'Obiettivo ' + _richiestaScheda.obiettivo,
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'OpenSans',
           ),
         ),
+        SizedBox(height: 10.0),
       ],
     );
   }
 
-
+/*FARE 2 BOTTONI COME HA DETTO PIETRO, UNO CHE TORNA ALLE RICHIESTE E UNO CHE VA AVANTI. IN QUELLO CHE VA AVANTI PASSARE SIA UTENTE CHE RICHIESTA CREATA SOPRA */
   Widget _buildRichiediBtn() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
@@ -230,8 +147,6 @@ class SchedaRichiesta2State extends State<SchedaRichiesta2> {
         elevation: 5.0,
         onPressed: () {
           setState(() {}
-
-
           );
         },
         padding: EdgeInsets.all(15.0),
@@ -240,7 +155,7 @@ class SchedaRichiesta2State extends State<SchedaRichiesta2> {
         ),
         color: Colors.white,
         child: Text(
-          'Richiedi Scheda',
+          'Compila Scheda',
           style: TextStyle(
             color: Color(0xFFfc6a26),
             letterSpacing: 1.5,
