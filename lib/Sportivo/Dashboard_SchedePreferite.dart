@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Sportivo/Schede_Preferite.dart';
 
 
 class DashBoard_SchedePreferite extends StatefulWidget {
+  Utente utente;
+  DashBoard_SchedePreferite({Key key, this.utente}) : super(key: key);
   @override
-  DashBoardState createState() => DashBoardState();
+  DashBoardState createState() => DashBoardState(utente:utente);
 }
 
 class DashBoardState extends State<DashBoard_SchedePreferite> {
+  Utente utente;
+  DashBoardState({Key key, this.utente});
+
   int _currentIndex = 0;
 
   _onTapped(int index) {
@@ -19,7 +25,7 @@ class DashBoardState extends State<DashBoard_SchedePreferite> {
   @override
   Widget build(BuildContext context) {
     List<Widget> _screens = [
-      ShedePreferite_Sportivo(),
+      ShedePreferite_Sportivo(utente:utente),
       Center(child: Text("Subscriptions")),
     ];
 

@@ -5,8 +5,10 @@ import 'package:social_fitness_app/PersonalTrainer/PersonalTrainer_model.dart';
 
 
 class HomeScreen extends StatelessWidget {
+  Utente utente;
+  HomeScreen({Key key, this.utente}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ListaSchedaPt(listData: personalTrainerData,);
+    return ListaSchedaPt(listData: personalTrainerData,utente: utente);
   }
 }

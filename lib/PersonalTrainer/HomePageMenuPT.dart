@@ -12,14 +12,14 @@ import 'SelezioneSportPT.dart';
 
 class homePagePT extends StatefulWidget {
 
-  final Utente utente;
+  Utente utente;
   homePagePT({Key key, this.utente}) : super(key: key);
   @override
   homePageStatePT createState() => homePageStatePT(utente: utente);
 }
 
 class homePageStatePT extends State<homePagePT> {
-  final Utente utente;
+  Utente utente;
   homePageStatePT({Key key, this.utente});
   int _currentIndex = 0;
   List<Widget> _children() => [ DashBoardPT(utente:utente), null, SelezioneSportScreenPT(utente:utente), RichiestaSchedePage(utente:utente)];

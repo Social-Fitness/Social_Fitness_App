@@ -41,7 +41,7 @@ class homePageStateSP extends State<homePageSP> {
 
   int _currentIndex = 0;
   final Utente utente;
-  List<Widget> _children () => [DashBoardSportivo(utente:utente),FollowingPage(utente:utente),DashBoard_SchedePreferite(), NotifichePage(),PublicProfilePage(utente:utente)];
+  List<Widget> _children () => [DashBoardSportivo(utente:utente),FollowingPage(utente:utente),DashBoard_SchedePreferite(utente: utente,), NotifichePage(utente:utente),PublicProfilePage(utente:utente)];
   homePageStateSP({Key key, this.utente});
 
 
@@ -63,7 +63,7 @@ class homePageStateSP extends State<homePageSP> {
                 builder: (context) => ProfileSP(utente:utente));
             Navigator.push(context, route); },
         ),
-        title: Text("HelpYourWorkout",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
+        title: Text("Social Fitness",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
         actions: <Widget>[
 
           IconButton(

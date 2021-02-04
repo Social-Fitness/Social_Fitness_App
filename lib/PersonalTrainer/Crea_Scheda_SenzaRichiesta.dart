@@ -203,6 +203,8 @@ class AllenamentoCor_crea_ScreenScreenState extends State<AllenamentoCor_crea_Sc
               i++;
 
           });
+
+          _insertToDb();
           Route route = MaterialPageRoute(
               builder: (context) => feedback(utente: utente,) );
           Navigator.push(context, route);
@@ -228,28 +230,6 @@ class AllenamentoCor_crea_ScreenScreenState extends State<AllenamentoCor_crea_Sc
       ),
     );
   }
-
-  /*
-  _buildPopupTF(context) {
-    return Alert(
-        context: context,
-        title: "NUOVA SCHEDA CREATA!",
-        content:
-        DialogButton(
-          onPressed: () {
-            _insertToDb();
-            Route route = MaterialPageRoute(
-                builder: (context) => homePagePT());
-            Navigator.push(context, route);
-          },
-          child: Text(
-            "OK!",
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          ),
-        )
-    ).show();
-  }
-*/
 
   _insertToDb() {
     firestoreInstance.collection("SchedaCorsa").add(

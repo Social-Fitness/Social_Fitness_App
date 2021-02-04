@@ -8,9 +8,9 @@ class ListaSchedaPt extends StatelessWidget {
   final List<PersonalTrainerModel> listData;
   final bool isMiniList;
   final bool isHorizontalList;
-  final Utente utente;
+  Utente utente;
 
-  const ListaSchedaPt(
+  ListaSchedaPt(
       {this.listData, this.isMiniList = false, this.isHorizontalList = false, this.utente});
 
 
@@ -27,7 +27,7 @@ class ListaSchedaPt extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => SchedaDettaglioPT(
-                  detail: listData[index],
+                  detail: listData[index], utente:utente,
                 ),
               ));
             },
@@ -45,7 +45,7 @@ class ListaSchedaPt extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => SchedaDettaglioPT(
-                        detail: listData[index],
+                        detail: listData[index], utente:utente
                       ),
                 ));
               },
@@ -56,7 +56,7 @@ class ListaSchedaPt extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => SchedaDettaglioPT(
-                        detail: listData[index],
+                        detail: listData[index], utente: utente,
                       ),
                 ));
               },

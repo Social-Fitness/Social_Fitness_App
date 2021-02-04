@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Sportivo/Sportivo_model.dart';
 
 import 'package:social_fitness_app/Sportivo/scheda_dettaglio_Sportivo.dart';
@@ -7,9 +8,10 @@ class ShedePreferite_Sportivo extends StatelessWidget {
   final List<SportivoModel> listData;
   final bool isMiniList;
   final bool isHorizontalList;
+  Utente utente;
 
-  const ShedePreferite_Sportivo(
-      {this.listData, this.isMiniList = false, this.isHorizontalList = false});
+  ShedePreferite_Sportivo(
+      {this.listData, this.isMiniList = false, this.isHorizontalList = false,this.utente});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class ShedePreferite_Sportivo extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => SchedaDettaglioSportivo(
-                  detail: listData[index],
+                  detail: listData[index], utente: utente,
                 ),
               ));
             },
@@ -42,7 +44,7 @@ class ShedePreferite_Sportivo extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => SchedaDettaglioSportivo(
-                    detail: listData[index],
+                    detail: listData[index], utente: utente,
                   ),
                 ));
               },
@@ -53,7 +55,7 @@ class ShedePreferite_Sportivo extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => SchedaDettaglioSportivo(
-                    detail: listData[index],
+                    detail: listData[index], utente: utente,
                   ),
                 ));
               },

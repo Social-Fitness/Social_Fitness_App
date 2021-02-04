@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Sportivo/scheda_dettaglio_Sportivo.dart';
 
 class NotifichePage extends StatefulWidget {
+  final Utente utente;
+  NotifichePage({Key key, this.utente}) : super(key: key);
+
+
   @override
-  NotifichePageState createState() => NotifichePageState();
+  NotifichePageState createState() => NotifichePageState(utente:utente);
 }
 
 class NotifichePageState extends State<NotifichePage> {
+  Utente utente;
+  NotifichePageState({Key key, this.utente});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

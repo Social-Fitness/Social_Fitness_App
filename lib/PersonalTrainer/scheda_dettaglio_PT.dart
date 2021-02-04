@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/PersonalTrainer/PersonalTrainer_model.dart';
 import '../PersonalTrainer/Lista_Schede_PT.dart';
 import 'HomePageMenuPT.dart';
 
 class SchedaDettaglioPT extends StatefulWidget {
-  final PersonalTrainerModel detail;
+  PersonalTrainerModel detail;
+  Utente utente;
 
-  const SchedaDettaglioPT({Key key, @required this.detail}) : super(key: key);
+  SchedaDettaglioPT({Key key, this.detail, this.utente}) : super(key: key);
 
   @override
-  _VideoDetailState createState() => _VideoDetailState();
+  _VideoDetailState createState() => _VideoDetailState(utente:utente);
 }
 
 class _VideoDetailState extends State<SchedaDettaglioPT> {
+  Utente utente;
+  _VideoDetailState({Key key, this.utente});
   @override
   Widget build(BuildContext context) {
     List<Widget> _layouts = [
       _videoInfo(),
       _channelInfo(),
       _moreInfo(),
-      ListaSchedaPt(
-        listData: personalTrainerData,
-        isMiniList: true,
-      ),
+      ListaSchedaPt(listData: personalTrainerData, isMiniList: true,utente: utente,),
     ];
 
     if (MediaQuery.of(context).orientation == Orientation.landscape) {
@@ -40,7 +41,7 @@ class _VideoDetailState extends State<SchedaDettaglioPT> {
             icon:Icon(Icons.arrow_back),
             onPressed: () {
               Route route = MaterialPageRoute(
-                  builder: (context) => homePagePT() );
+                  builder: (context) => homePagePT(utente: utente) );
               Navigator.push(context, route); },
           ),
           title: Text("Social Fitness",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),

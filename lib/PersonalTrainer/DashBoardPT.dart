@@ -8,7 +8,7 @@ class DashBoardPT extends StatefulWidget {
   final Utente utente;
   DashBoardPT({Key key, this.utente}) : super(key: key);
   @override
-  DashBoardState createState() => DashBoardState();
+  DashBoardState createState() => DashBoardState(utente:utente);
 }
 
 class DashBoardState extends State<DashBoardPT> {
@@ -25,14 +25,14 @@ class DashBoardState extends State<DashBoardPT> {
   @override
   Widget build(BuildContext context) {
     List<Widget> _screens = [
-      HomeScreen(),
+      HomeScreen(utente:utente),
       Center(child: Text("Subscriptions")),
     ];
 
     return Scaffold(
       body: ListView(
         children: <Widget>[
-          HomeScreen(),
+          HomeScreen(utente: utente,),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
             child: Row(

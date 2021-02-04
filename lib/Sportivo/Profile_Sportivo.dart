@@ -198,7 +198,7 @@ class ProfileSPState extends State<ProfileSP> {
         elevation: 5.0,
         onPressed: () {
           Route route = MaterialPageRoute(
-              builder: (context) => homePageSP() );
+              builder: (context) => homePageSP(utente: utente,) );
           Navigator.push(context, route);
         },
         padding: EdgeInsets.all(15.0),

@@ -227,25 +227,6 @@ class AllenamentoCorScreenState extends State<AllenamentoCorScreen> {
     );
   }
 
-  _buildPopupTF(context) {
-    return Alert(
-        context: context,
-        title: "NUOVA SCHEDA INVIATA!",
-        content:
-        DialogButton(
-          onPressed: () {
-            _insertToDb();
-            Route route = MaterialPageRoute(
-                builder: (context) => homePagePT());
-            Navigator.push(context, route);
-          },
-          child: Text(
-            "OK!",
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          ),
-        )
-    ).show();
-  }
 
   _insertToDb() {
     firestoreInstance.collection("SchedaCorsa").add(

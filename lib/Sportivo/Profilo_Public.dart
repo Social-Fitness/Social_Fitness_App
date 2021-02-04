@@ -6,8 +6,8 @@ import 'package:social_fitness_app/Sportivo/HomePageMenuSP.dart';
 import 'package:social_fitness_app/Sportivo/Selezione%20Sport.dart';
 
 class PublicProfilePage extends StatefulWidget {
- String nome;
- Utente utente;
+  String nome;
+  Utente utente;
   PublicProfilePage({Key key, this.nome, this.utente}): super(key:key);
   @override
   PublicProfilePageState createState() => new PublicProfilePageState(nome: nome, utente:utente);
@@ -15,7 +15,8 @@ class PublicProfilePage extends StatefulWidget {
 
 class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerProviderStateMixin {
   TabController tabController;
-  String follow = "Segui";
+  String follow=" ";
+  bool exist;
   String nome;
   Utente utente;
 
@@ -43,12 +44,32 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
     }
   }
 
+  void controlInDB() async {
+    await for (var snapshot in _fireStore.collection("notify").snapshots()) {
+      for (var message in snapshot.docs) {
+        //print(message.data());
+        if (message["Mittente"] == utente.email &&
+            message["Destinatario"] == email) {
+          exist = true;
+          follow = "Segui già";
+          print("ciao alice funziono");
+        }
+        else {
+          exist = false;
+          follow = "Segui";
+        }
+      }
+    }
+  }
+
   @override
   void initState() {
+    controlInDB();
     // TODO: implement initState
     super.initState();
     tabController = TabController(length: 2, vsync: this);
     messagesStream();
+
   }
 
 
@@ -292,18 +313,7 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
     );
   }
 
-  void changeworld() {
-    if (follow == "Segui") {
-      setState(() {
-        follow = "Segui già";
-      });
-    }
-    else {
-      setState(() {
-        follow = "Segui";
-      });
-    }
-  }
+
 
   _deleteseguiToDb() {
     FirebaseFirestore.instance
@@ -319,6 +329,19 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
         });
       });
     });
+  }
+
+  void changeworld() {
+    if (follow == "Segui") {
+      setState(() {
+        follow = "Segui già";
+      });
+    }
+    else {
+      setState(() {
+        follow = "Segui";
+      });
+    }
   }
 
 
