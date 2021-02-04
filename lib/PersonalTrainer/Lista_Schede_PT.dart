@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
+import 'package:social_fitness_app/PersonalTrainer/ModificaButton.dart';
 import 'package:social_fitness_app/PersonalTrainer/PersonalTrainer_model.dart';
 import 'package:social_fitness_app/PersonalTrainer/scheda_dettaglio_PT.dart';
 
@@ -6,9 +8,11 @@ class ListaSchedaPt extends StatelessWidget {
   final List<PersonalTrainerModel> listData;
   final bool isMiniList;
   final bool isHorizontalList;
+  final Utente utente;
 
   const ListaSchedaPt(
-      {this.listData, this.isMiniList = false, this.isHorizontalList = false});
+      {this.listData, this.isMiniList = false, this.isHorizontalList = false, this.utente});
+
 
   @override
   Widget build(BuildContext context) {
@@ -104,6 +108,9 @@ class ListaSchedaPt extends StatelessWidget {
               child: RaisedButton(
                 onPressed: () {
                   print("Button modifica premuto");
+                  Route route = MaterialPageRoute(
+                      builder: (context) => modificaButton(utente: utente) );
+                  Navigator.push(context, route);
                 },
                 color: Color(0xFFfc6a26),
                 child: Text(
@@ -214,3 +221,4 @@ class ListaSchedaPt extends StatelessWidget {
     );
   }
 }
+

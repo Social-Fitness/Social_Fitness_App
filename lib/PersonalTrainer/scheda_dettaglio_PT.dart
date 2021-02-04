@@ -43,7 +43,7 @@ class _VideoDetailState extends State<SchedaDettaglioPT> {
                   builder: (context) => homePagePT() );
               Navigator.push(context, route); },
           ),
-          title: Text("HelpYourWorkout",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
+          title: Text("Social Fitness",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
         ),
         body: Column(
           children: <Widget>[
@@ -118,7 +118,7 @@ class _VideoDetailState extends State<SchedaDettaglioPT> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
 
-          Expanded(child: Text("Altre schede...")),
+          Expanded(child: Text("Schede che ti possono interessare...")),
 
         ],
       ),
