@@ -240,7 +240,6 @@ class _LoginScreenState extends State<LoginScreen> {
             messagesStream();
 
             if (i == 2) {
-              print("DOCUMENTO UTENTTEEEEE " + reference.toString());
               Utente utente=new Utente(nome, cognome, email, cellulare, dataNascita, categoriaDB, passwordDB, img_profilo);
               pw=decryptAESCryptoJS(passwordDB, "password");
               if(pw.compareTo(_passwordController.text)==0) {

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
@@ -21,10 +22,40 @@ class SchedaDettaglioSportivo extends StatefulWidget {
 }
 
 class _VideoDetailState extends State<SchedaDettaglioSportivo> {
+  final _fireStore = FirebaseFirestore.instance;
   Utente utente;
+  Utente personalTrainer;
   _VideoDetailState({Key key, this.utente});
-  bool push=false;
   String follow="Segui";
+  String cognome = "";
+  String cellulare = "";
+  String email = "";
+  String img_profilo = "";
+  String nome = "";
+  String dataNascita = "";
+  String categoria = "";
+  String password = "";
+
+
+  void messagesStream() async {
+    await for (var snapshot in _fireStore.collection("users").snapshots()) {
+      for (var message in snapshot.docs) {
+        //print(message.data());
+        String s = message["Nome"] + " " + message["Cognome"];
+        if (s.compareTo(widget.detail.channelTitle) == 0) {
+          email = message["Email"];
+          cellulare = message["Cellulare"];
+          img_profilo = message["ImgProfilo"];
+          nome = message["Nome"];
+          cognome = message["Cognome"];
+          dataNascita = message["Data_Di_Nascita"];
+          categoria = message["Categoria"];
+          password = message["Password"];
+        }
+      }
+    }
+    personalTrainer = new Utente(nome, cognome, email, cellulare, dataNascita, categoria, password, img_profilo);
+  }
 
   void changeworld(){
     if(follow=="Segui") {
@@ -70,7 +101,7 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
                   builder: (context) => homePageSP(utente: utente,) );
               Navigator.push(context, route); },
           ),
-          title: Text("HelpYourWorkout",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
+          title: Text("Social Fitness",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
         ),
         body: Column(
           children: <Widget>[
@@ -166,6 +197,11 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
           RaisedButton.icon(
               onPressed: () {
                   changeworld();
+                  if(follow == "Segui"){
+                    _deleteseguiToDb();
+                  }
+                  else
+                    _insertToDb();
                 },
               icon: Icon(
                 Icons.people_rounded,
@@ -192,6 +228,36 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
         ],
       ),
     );
+  }
+
+
+  _deleteseguiToDb() {
+    FirebaseFirestore.instance
+        .collection("notify")
+        .where("Mittente", isEqualTo: utente.email)
+        .where("Destinatario", isEqualTo: email)
+        .get().then((value) {
+      value.docs.forEach((element) {
+        FirebaseFirestore.instance.collection("notify").doc(element.id)
+            .delete()
+            .then((value) {
+          print("Notify Success!");
+        });
+      });
+    });
+  }
+
+
+  _insertToDb() {
+    _fireStore.collection("notify").add(
+        {
+          "Mittente": utente.email,
+          "Azione": "segue",
+          "Destinatario": email,
+
+        }).then((value) {
+      print(value.id);
+    });
   }
 }
 

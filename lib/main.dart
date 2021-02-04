@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'PersonalTrainer/SchedaRichiesta2.dart';
 import 'PersonalTrainer/feedbackSchedaInviata.dart';
 import 'Widgets_Comuni/WelcomePage.dart';
 
@@ -31,3 +32,15 @@ class MyApp extends StatelessWidget {
             );
           }
         }
+
+
+        /* FirebaseFirestore.instance
+                  .collection("users")
+                  .where("Cognome", isEqualTo : "Nardi")
+                  .get().then((value){
+                value.docs.forEach((element) {
+                  FirebaseFirestore.instance.collection("users").doc(element.id).delete().then((value){
+                    print("Success!");
+                  });
+                });
+              });*/

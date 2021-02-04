@@ -15,26 +15,29 @@ class PublicProfilePage extends StatefulWidget {
 
 class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerProviderStateMixin {
   TabController tabController;
+  String follow = "Segui";
   String nome;
   Utente utente;
-  PublicProfilePageState ({Key key, this.nome, this.utente});
+
+  PublicProfilePageState({Key key, this.nome, this.utente});
+
   final _fireStore = FirebaseFirestore.instance;
-  String cognome="";
-  String cellulare="";
-  String email="";
-  String img_profilo="";
+  String cognome = "";
+  String cellulare = "";
+  String email = "";
+  String img_profilo = "";
 
   void messagesStream() async {
     await for (var snapshot in _fireStore.collection("users").snapshots()) {
       for (var message in snapshot.docs) {
         //print(message.data());
-        String s=message["Nome"] +" "+ message["Cognome"];
-        if(s.compareTo(nome)==0){
-          email=message["Email"];
-          cellulare=message["Cellulare"];
-          img_profilo=message["ImgProfilo"];
-          nome=message["Nome"];
-          cognome=message["Cognome"];
+        String s = message["Nome"] + " " + message["Cognome"];
+        if (s.compareTo(nome) == 0) {
+          email = message["Email"];
+          cellulare = message["Cellulare"];
+          img_profilo = message["ImgProfilo"];
+          nome = message["Nome"];
+          cognome = message["Cognome"];
         }
       }
     }
@@ -44,26 +47,27 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
   void initState() {
     // TODO: implement initState
     super.initState();
-    tabController =TabController(length: 2, vsync: this);
+    tabController = TabController(length: 2, vsync: this);
     messagesStream();
   }
 
 
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
           elevation: 0,
           backgroundColor: Colors.white,
-          title: Text('Profilo Personal Trainer', style: TextStyle(color: Colors.black, fontWeight: FontWeight.w200),),
-          leading: IconButton(icon: Icon(Icons.arrow_back_ios, color: Colors.black,), onPressed: (){
-            Route route = MaterialPageRoute(
-                builder: (context) =>homePageSP(utente: utente));
-            Navigator.push(context, route);
-          }),
+          title: Text('Profilo Personal Trainer', style: TextStyle(
+              color: Colors.black, fontWeight: FontWeight.w200),),
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios, color: Colors.black,),
+              onPressed: () {
+                Route route = MaterialPageRoute(
+                    builder: (context) => homePageSP(utente: utente));
+                Navigator.push(context, route);
+              }),
         ),
         body: ListView(
 
@@ -81,7 +85,8 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
                         width: 100,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
-                            image: DecorationImage(image: AssetImage('assets/image/profile.png'),
+                            image: DecorationImage(image: AssetImage(
+                                'assets/image/profile.png'),
                                 fit: BoxFit.cover
 
                             )
@@ -107,7 +112,7 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
                       color: Color(0xFF01579B),
                     ),
                   ),
-                  SizedBox(height: 10,child: Container(
+                  SizedBox(height: 10, child: Container(
                     color: Colors.white,
                   ),),
                   Row(
@@ -125,7 +130,7 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
                 ],
               ),
             ),
-            SizedBox(height: 15,child: Container(
+            SizedBox(height: 15, child: Container(
               color: Colors.white,
             ),),
             Container(
@@ -155,17 +160,21 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
                         Column(
                           children: <Widget>[
                             Text('112 k',
-                              style: TextStyle(fontSize: 14, color: Colors.black),),
+                              style: TextStyle(fontSize: 14,
+                                  color: Colors.black),),
                             SizedBox(height: 5,),
-                            Text('Followers', style: TextStyle( fontSize: 14, color: Colors.black.withOpacity(0.5)),)
+                            Text('Followers', style: TextStyle(fontSize: 14,
+                                color: Colors.black.withOpacity(0.5)),)
                           ],
                         ),
                         Column(
                           children: <Widget>[
                             Text('1500',
-                              style: TextStyle(fontSize: 14, color: Colors.black),),
+                              style: TextStyle(fontSize: 14,
+                                  color: Colors.black),),
                             SizedBox(height: 5,),
-                            Text('Schede', style: TextStyle( fontSize: 14, color: Colors.black.withOpacity(0.5)),)
+                            Text('Schede', style: TextStyle(fontSize: 14,
+                                color: Colors.black.withOpacity(0.5)),)
                           ],
                         ),
                       ],
@@ -177,7 +186,7 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
               ),
             ),
             SizedBox(height: 5,),
-            SizedBox(height: 20,child: Container(
+            SizedBox(height: 20, child: Container(
               color: Color(0xFF01579B).withOpacity(0.2),
             ),),
             Container(
@@ -201,7 +210,10 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
             ),
             SizedBox(height: 10,),
             Container(
-              height: MediaQuery.of(context).size.height -450.0,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height - 450.0,
               child: TabBarView(
                 controller: tabController,
                 children: <Widget>[
@@ -224,14 +236,15 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
         elevation: 5.0,
         onPressed: () {
           Route route = MaterialPageRoute(
-              builder: (context) =>SelezioneSportScreen(email:email, utente: utente));
+              builder: (context) =>
+                  SelezioneSportScreen(email: email, utente: utente));
           Navigator.push(context, route);
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
-        color: Color(0xFF01579B) ,
+        color: Color(0xFF01579B),
         child: Text(
           'Richiedi Scheda',
           style: TextStyle(
@@ -253,15 +266,20 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          _insertToDb();
+          changeworld();
+          if (follow == "Segui") {
+            _deleteseguiToDb();
+          }
+          else
+            _insertToDb();
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
-        color: Color(0xFF01579B) ,
+        color: Color(0xFF01579B),
         child: Text(
-          'Segui',
+          follow,
           style: TextStyle(
             color: Colors.white,
             letterSpacing: 1.5,
@@ -274,6 +292,36 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
     );
   }
 
+  void changeworld() {
+    if (follow == "Segui") {
+      setState(() {
+        follow = "Segui già";
+      });
+    }
+    else {
+      setState(() {
+        follow = "Segui";
+      });
+    }
+  }
+
+  _deleteseguiToDb() {
+    FirebaseFirestore.instance
+        .collection("notify")
+        .where("Mittente", isEqualTo: utente.email)
+        .where("Destinatario", isEqualTo: email)
+        .get().then((value) {
+      value.docs.forEach((element) {
+        FirebaseFirestore.instance.collection("notify").doc(element.id)
+            .delete()
+            .then((value) {
+          print("Notify Success!");
+        });
+      });
+    });
+  }
+
+
   _insertToDb() {
     _fireStore.collection("notify").add(
         {
@@ -281,8 +329,9 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
           "Azione": "segue",
           "Destinatario": email,
 
-        }).then((value){
+        }).then((value) {
       print(value.id);
     });
   }
+
 }

@@ -279,8 +279,16 @@ class CambioPWState extends State<CambioPW> {
 
   _updateToDB() async {
     var encrypted = encryptAESCryptoJS(_passwordController.text, "password");
-    CollectionReference cr=firestoreInstance.collection("users");
-    cr.doc(utente.email).updateData({"Password": encrypted});
+    FirebaseFirestore.instance
+        .collection("users")
+        .where("Email", isEqualTo : utente.email)
+        .get().then((value){
+      value.docs.forEach((element) {
+        FirebaseFirestore.instance.collection("users").doc(element.id).update({"Password": encrypted}).then((value){
+          print("Update Password Success!");
+        });
+      });
+    });
     utente.setPW(encrypted);
     }
 
