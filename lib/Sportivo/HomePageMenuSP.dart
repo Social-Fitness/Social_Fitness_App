@@ -41,7 +41,7 @@ class homePageStateSP extends State<homePageSP> {
 
   int _currentIndex = 0;
   final Utente utente;
-  List<Widget> _children () => [DashBoardSportivo(utente:utente),FollowingPage(utente:utente),DashBoard_SchedePreferite(utente: utente,), NotifichePage(utente:utente),PublicProfilePage(utente:utente)];
+  List<Widget> _children () => [DashBoardSportivo(utente:utente),FollowingPage(utente:utente),DashBoard_SchedePreferite(utente: utente,), NotifichePage(utente:utente)];
   homePageStateSP({Key key, this.utente});
 
 
