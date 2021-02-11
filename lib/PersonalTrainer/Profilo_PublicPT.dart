@@ -165,16 +165,6 @@ class PublicProfilePTPageState extends State<PublicProfilePTPage> with SingleTic
                                 color: Colors.black.withOpacity(0.5)),)
                           ],
                         ),
-                        Column(
-                          children: <Widget>[
-                            Text('1500',
-                              style: TextStyle(fontSize: 14,
-                                  color: Colors.black),),
-                            SizedBox(height: 5,),
-                            Text('Schede', style: TextStyle(fontSize: 14,
-                                color: Colors.black.withOpacity(0.5)),)
-                          ],
-                        ),
                       ],
                     ),
                   ),

@@ -7,6 +7,7 @@ import 'package:social_fitness_app/PersonalTrainer/SearchPT.dart';
 import 'package:social_fitness_app/Sportivo/Selezione%20Sport.dart';
 import 'Crea_Scheda_SenzaRichiesta.dart';
 import 'DashBoardPT.dart';
+import 'Notifiche_Salva_Follow.dart';
 import 'SelezioneSportPT.dart';
 
 
@@ -22,7 +23,7 @@ class homePageStatePT extends State<homePagePT> {
   Utente utente;
   homePageStatePT({Key key, this.utente});
   int _currentIndex = 0;
-  List<Widget> _children() => [ DashBoardPT(utente:utente), null, SelezioneSportScreenPT(utente:utente), RichiestaSchedePage(utente:utente)];
+  List<Widget> _children() => [ DashBoardPT(utente:utente), Notifiche_salva_follow_Page(utente:utente), SelezioneSportScreenPT(utente:utente), RichiestaSchedePage(utente:utente)];
 
 
 

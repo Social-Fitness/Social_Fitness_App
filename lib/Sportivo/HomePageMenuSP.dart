@@ -2,13 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:filter_list/filter_list.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/Sportivo/DashBoardSportivo.dart';
-import 'package:social_fitness_app/Sportivo/Dashboard_SchedePreferite.dart';
 import 'package:social_fitness_app/Sportivo/Following_Page.dart';
 import 'package:social_fitness_app/Sportivo/Notifiche_page.dart';
 import 'package:social_fitness_app/Sportivo/Profile_Sportivo.dart';
 import 'package:social_fitness_app/Sportivo/SearchSP.dart';
 import '../Bean/Utente.dart';
 import 'Profilo_Public.dart';
+import 'Schede_Preferite.dart';
 import 'scheda_dettaglio_Sportivo.dart';
 
 
@@ -41,7 +41,7 @@ class homePageStateSP extends State<homePageSP> {
 
   int _currentIndex = 0;
   final Utente utente;
-  List<Widget> _children () => [DashBoardSportivo(utente:utente),FollowingPage(utente:utente),DashBoard_SchedePreferite(utente: utente,), NotifichePage(utente:utente)];
+  List<Widget> _children () => [DashBoardSportivo(utente:utente),FollowingPage(utente:utente),Schede_PreferitePage(utente:utente), NotifichePage(utente:utente)];
   homePageStateSP({Key key, this.utente});
 
 

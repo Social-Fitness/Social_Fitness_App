@@ -4,17 +4,17 @@ import 'package:social_fitness_app/Bean/Seguiti.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
 
 
-class Schede_PreferitePage extends StatefulWidget {
+class Notifiche_salva_follow_Page extends StatefulWidget {
   Utente utente;
-  Schede_PreferitePage({Key key, this.utente}): super(key:key);
+  Notifiche_salva_follow_Page({Key key, this.utente}): super(key:key);
   @override
-  Schede_PreferitePageState createState() => Schede_PreferitePageState(utente: utente);
+  Notifiche_salva_follow_PageState createState() => Notifiche_salva_follow_PageState(utente: utente);
 }
 
-class Schede_PreferitePageState extends State<Schede_PreferitePage> {
+class Notifiche_salva_follow_PageState extends State<Notifiche_salva_follow_Page> {
   Utente utente;
 
-  Schede_PreferitePageState({Key key, this.utente});
+  Notifiche_salva_follow_PageState({Key key, this.utente});
 
   final _fireStore = FirebaseFirestore.instance;
   List<Seguiti> following = [];
@@ -52,7 +52,7 @@ class Schede_PreferitePageState extends State<Schede_PreferitePage> {
   Widget _body() {
     return new Container(
       margin: EdgeInsets.only(left: 5.0,right: 5.0),
-      child: new ListView.builder(
+       child: new ListView.builder(
           itemCount: 20,
           itemBuilder: (BuildContext context, int index) {
             return new Container(
@@ -65,7 +65,7 @@ class Schede_PreferitePageState extends State<Schede_PreferitePage> {
                       backgroundImage: AssetImage("assets/image/icon.png"),
                       backgroundColor: Colors.transparent,
                     ),
-                    new Text("Scheda Salvata ${index+1}"),
+                    new Text("Lo sportivo ha salvato la scheda ${index+1} "),
                     ClipOval(
                       child: Material(
                         color: Colors.white, // button color

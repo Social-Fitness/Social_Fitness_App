@@ -103,7 +103,6 @@ class ProfilePTState extends State<ProfilePT> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   headerChild('Follower', 360),
-                                  headerChild('Schede', 10),
                                 ]),
                           ),
                         ),

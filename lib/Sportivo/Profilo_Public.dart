@@ -1,10 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
+import 'package:social_fitness_app/Chat/login.dart';
 import 'package:social_fitness_app/PersonalTrainer/SchedePublic.dart';
 import 'package:social_fitness_app/Sportivo/HomePageMenuSP.dart';
 import 'package:social_fitness_app/Sportivo/Selezione%20Sport.dart';
 
+
+//IN QUESTA CLASSE APPARE IL PERSONAL TRAINER QUANDO LO SI RICERCA DALLA BARRA DELLO SPORTIVO
 class PublicProfilePage extends StatefulWidget {
   String nome;
   Utente utente;
@@ -188,16 +191,6 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
                                 color: Colors.black.withOpacity(0.5)),)
                           ],
                         ),
-                        Column(
-                          children: <Widget>[
-                            Text('1500',
-                              style: TextStyle(fontSize: 14,
-                                  color: Colors.black),),
-                            SizedBox(height: 5,),
-                            Text('Schede', style: TextStyle(fontSize: 14,
-                                color: Colors.black.withOpacity(0.5)),)
-                          ],
-                        ),
                       ],
                     ),
                   ),
@@ -258,7 +251,8 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
         onPressed: () {
           Route route = MaterialPageRoute(
               builder: (context) =>
-                  SelezioneSportScreen(email: email, utente: utente));
+                  LoginScreen(title: 'CHAT'));
+                  //SelezioneSportScreen(email: email, utente: utente));
           Navigator.push(context, route);
         },
         padding: EdgeInsets.all(15.0),
@@ -267,7 +261,7 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
         ),
         color: Color(0xFF01579B),
         child: Text(
-          'Richiedi Scheda',
+          'Avvia Chat',
           style: TextStyle(
             color: Colors.white,
             letterSpacing: 1.5,
