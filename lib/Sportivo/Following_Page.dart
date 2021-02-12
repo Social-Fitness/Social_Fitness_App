@@ -34,10 +34,12 @@ class FollowingPageState extends State<FollowingPage> {
         }
       }
     }
+
   }
 
   @override
   void initState() {
+   // messagesStream();
     // TODO: implement initState
     super.initState();
   }
@@ -54,35 +56,39 @@ class FollowingPageState extends State<FollowingPage> {
     return new Container(
       margin: EdgeInsets.only(left: 5.0,right: 5.0),
       child: new ListView.builder(
-          itemCount: 20,
+          itemCount: following.length,
           itemBuilder: (BuildContext context, int index) {
-            return new Container(
-                margin: EdgeInsets.only(top:10.0,bottom: 10.0),
-                child: new Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    CircleAvatar(
-                      radius: 30.0,
-                      backgroundImage: AssetImage("assets/image/icon.png"),
-                      backgroundColor: Colors.transparent,
-                    ),
-                    new Text("PT${index+1}"),
-                    ClipOval(
-                      child: Material(
-                        color: Colors.white, // button color
-                        child: InkWell(
-                          splashColor: Color(0xFFfc6a26), // inkwell color
-                          child: SizedBox(width: 56, height: 56, child: Icon(Icons.airplay)),
-                          onTap: () {
-                            //Quando si fa il backand collegare scheda visualizzata con il dettaglip preciso
-                          },
-                        ),
-                      ),
-                    )//Far uscire nome Pt al posto di PT+numero
-                  ],
-                ));
+            return WidgetItem();
           }),
     );
+  }
+
+  Widget WidgetItem() {
+    new Container(
+        margin: EdgeInsets.only(top:10.0,bottom: 10.0),
+        child: new Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            CircleAvatar(
+              radius: 30.0,
+              backgroundImage: AssetImage("assets/image/icon.png"),
+              backgroundColor: Colors.transparent,
+            ),
+            new Text("PT"),
+            ClipOval(
+              child: Material(
+                color: Colors.white, // button color
+                child: InkWell(
+                  splashColor: Color(0xFFfc6a26), // inkwell color
+                  child: SizedBox(width: 56, height: 56, child: Icon(Icons.airplay)),
+                  onTap: () {
+                    //Quando si fa il backand collegare scheda visualizzata con il dettaglip preciso
+                  },
+                ),
+              ),
+            )//Far uscire nome Pt al posto di PT+numero
+          ],
+        ));
   }
 }
 

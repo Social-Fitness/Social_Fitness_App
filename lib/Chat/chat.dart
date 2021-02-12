@@ -126,7 +126,7 @@ class ChatScreenState extends State<ChatScreen> {
     }
 
     FirebaseFirestore.instance
-        .collection('users')
+        .collection('users_chat')
         .doc(id)
         .update({'chattingWith': peerId});
 
@@ -461,7 +461,7 @@ class ChatScreenState extends State<ChatScreen> {
       });
     } else {
       FirebaseFirestore.instance
-          .collection('users')
+          .collection('users_chat')
           .doc(id)
           .update({'chattingWith': null});
       Navigator.pop(context);

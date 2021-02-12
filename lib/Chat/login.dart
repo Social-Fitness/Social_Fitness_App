@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Chat/const.dart';
 import 'package:social_fitness_app/Chat/home.dart';
 import 'package:social_fitness_app/Chat/widget/loading.dart';
@@ -12,15 +13,20 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({Key key, this.title}) : super(key: key);
+  LoginScreen({Key key, this.utente}) : super(key: key);
 
-  final String title;
+  Utente utente;
 
   @override
-  LoginScreenState createState() => LoginScreenState();
+  LoginScreenState createState() => LoginScreenState(utente:utente);
 }
 
 class LoginScreenState extends State<LoginScreen> {
+
+  Utente utente;
+  LoginScreenState({Key key, this.utente});
+
+
   final GoogleSignIn googleSignIn = GoogleSignIn();
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   SharedPreferences prefs;
@@ -48,7 +54,7 @@ class LoginScreenState extends State<LoginScreen> {
         context,
         MaterialPageRoute(
             builder: (context) =>
-                HomeScreen(currentUserId: prefs.getString('id'))),
+                HomeScreen(currentUserId: prefs.getString('id'), utente:utente)),
       );
     }
 
@@ -78,14 +84,14 @@ class LoginScreenState extends State<LoginScreen> {
     if (firebaseUser != null) {
       // Check is already sign up
       final QuerySnapshot result = await FirebaseFirestore.instance
-          .collection('users')
+          .collection('users_chat')
           .where('id', isEqualTo: firebaseUser.uid)
           .get();
       final List<DocumentSnapshot> documents = result.docs;
       if (documents.length == 0) {
         // Update data to server if new user
         FirebaseFirestore.instance
-            .collection('users')
+            .collection('users_chat')
             .doc(firebaseUser.uid)
             .set({
           'nickname': firebaseUser.displayName,
@@ -116,7 +122,7 @@ class LoginScreenState extends State<LoginScreen> {
           context,
           MaterialPageRoute(
               builder: (context) =>
-                  HomeScreen(currentUserId: firebaseUser.uid)));
+                  HomeScreen(currentUserId: firebaseUser.uid,utente: utente))); //QUI VADO NELLA HOME DELLA CHAT
     } else {
       Fluttertoast.showToast(msg: "Sign in fail");
       this.setState(() {
@@ -128,13 +134,6 @@ class LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            widget.title,
-            style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
-          ),
-          centerTitle: true,
-        ),
         body: ListView(
           children: <Widget>[
             Padding(
@@ -153,7 +152,7 @@ class LoginScreenState extends State<LoginScreen> {
                   ),
                   SizedBox(height: 30.0),
                   Text(
-                    "PER INIZIARE UNA CHAT CON IL PERSONAL TRAINER DEVI AUTENTICARTI UTILIZZANDO UN\'ACCOUNT GOOGLE",
+                    "PER INIZIARE UNA CHAT ACCEDI CON UN\'ACCOUNT GOOGLE",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.black,

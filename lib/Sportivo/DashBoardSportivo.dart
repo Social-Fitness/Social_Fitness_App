@@ -32,14 +32,13 @@ class DashBoardState extends State<DashBoardSportivo> {
     return Scaffold(
       body: ListView(
         children: <Widget>[
-          HomeScreenSportivo(utente: utente),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  'Schede In Evidenza',
+                  'Personal Trainer In Evidenza',
                   style: TextStyle(
                       color: Colors.black.withOpacity(.8),
                       fontWeight: FontWeight.w600,
@@ -68,6 +67,42 @@ class DashBoardState extends State<DashBoardSportivo> {
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  'Schede In Evidenza',
+                  style: TextStyle(
+                      color: Colors.black.withOpacity(.8),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 19),
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                Row(
+                  children: <Widget>[
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 15),
+            height: 250,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                story('assets/image/10Km.jpg','10Km In 2 Week'),
+                story('assets/image/20Km.jpg','20Km '),
+                story('assets/image/MaratonaNewYork.jpg','Maratona New York'),
+                story('assets/image/5km.jpg','5Km For 5 Weeks'),
+              ],
+            ),
+          ),
+          HomeScreenSportivo(utente: utente),
         ],
       ),
     );

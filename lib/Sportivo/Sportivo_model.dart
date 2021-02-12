@@ -5,6 +5,7 @@ class SportivoModel {
   final String channelTitle;
   final String channelAvatar;
   final String viewCount;
+  final String contenuto;
 
 
   SportivoModel(
@@ -14,6 +15,7 @@ class SportivoModel {
         this.channelTitle,
         this.channelAvatar,
         this.viewCount,
+        this.contenuto
 });
 }
 
@@ -28,6 +30,7 @@ List<SportivoModel> sportivoData = [
     channelAvatar:
     "assets/image/pt1.jpg",
     viewCount: "50M salvataggi",
+    contenuto: "Dettagli: BPM:120, Velocita:15km/h, Pendenza: 10%, Disponibilita:2Giorni, Obiettivo:30KM"
   ),
   SportivoModel(
     title: "Allenamento 2.0",
@@ -38,6 +41,7 @@ List<SportivoModel> sportivoData = [
     channelAvatar:
     "assets/image/pt2.jpg",
     viewCount: "917K salvataggi",
+      contenuto: "Dettagli: BPM:80, Velocita:11km/h, Pendenza: 5%, Disponibilita:5Giorni, Obiettivo:10KM"
   ),
   SportivoModel(
     title: "Allenamento 800m",
@@ -48,5 +52,6 @@ List<SportivoModel> sportivoData = [
     channelAvatar:
     "assets/image/pt3.jpg",
     viewCount: "53M salvataggi",
+      contenuto: "Dettagli: BPM:75, Velocita:9km/h, Pendenza: 2%, Disponibilita:4Giorni, Obiettivo:20KM"
   ),
 ];

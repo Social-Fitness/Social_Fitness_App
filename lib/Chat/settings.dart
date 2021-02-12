@@ -95,7 +95,7 @@ class SettingsScreenState extends State<SettingsScreen> {
         storageTaskSnapshot = value;
         storageTaskSnapshot.ref.getDownloadURL().then((downloadUrl) {
           photoUrl = downloadUrl;
-          FirebaseFirestore.instance.collection('users').doc(id).update({
+          FirebaseFirestore.instance.collection('users_chat').doc(id).update({
             'nickname': nickname,
             'aboutMe': aboutMe,
             'photoUrl': photoUrl
@@ -139,7 +139,7 @@ class SettingsScreenState extends State<SettingsScreen> {
       isLoading = true;
     });
 
-    FirebaseFirestore.instance.collection('users').doc(id).update({
+    FirebaseFirestore.instance.collection('users_chat').doc(id).update({
       'nickname': nickname,
       'aboutMe': aboutMe,
       'photoUrl': photoUrl

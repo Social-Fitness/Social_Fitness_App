@@ -194,7 +194,6 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
                       ],
                     ),
                   ),
-                  _buildRichiediSchedaBtn(),
                   _buildSeguiBtn(),
                 ],
               ),
@@ -242,37 +241,6 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
     );
   }
 
-  Widget _buildRichiediSchedaBtn() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 10.0),
-      width: double.infinity,
-      child: RaisedButton(
-        elevation: 5.0,
-        onPressed: () {
-          Route route = MaterialPageRoute(
-              builder: (context) =>
-                  LoginScreen(title: 'CHAT'));
-                  //SelezioneSportScreen(email: email, utente: utente));
-          Navigator.push(context, route);
-        },
-        padding: EdgeInsets.all(15.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-        color: Color(0xFF01579B),
-        child: Text(
-          'Avvia Chat',
-          style: TextStyle(
-            color: Colors.white,
-            letterSpacing: 1.5,
-            fontSize: 15.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
-          ),
-        ),
-      ),
-    );
-  }
 
   Widget _buildSeguiBtn() {
     return Container(

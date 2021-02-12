@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
+import 'package:social_fitness_app/Chat/login.dart';
 import 'package:social_fitness_app/PersonalTrainer/Profilo_PT.dart';
 import 'package:social_fitness_app/PersonalTrainer/Richiesta_schede.dart';
 import 'package:social_fitness_app/PersonalTrainer/SearchPT.dart';
@@ -23,7 +24,7 @@ class homePageStatePT extends State<homePagePT> {
   Utente utente;
   homePageStatePT({Key key, this.utente});
   int _currentIndex = 0;
-  List<Widget> _children() => [ DashBoardPT(utente:utente), Notifiche_salva_follow_Page(utente:utente), SelezioneSportScreenPT(utente:utente), RichiestaSchedePage(utente:utente)];
+  List<Widget> _children() => [ DashBoardPT(utente:utente),LoginScreen(utente: utente), SelezioneSportScreenPT(utente:utente),Notifiche_salva_follow_Page(utente:utente)];
 
 
 
@@ -91,15 +92,15 @@ class homePageStatePT extends State<homePagePT> {
            title: new Text("Home"),
          ),
          new BottomNavigationBarItem(
-           icon: new Icon(Icons.favorite),
-           title: new Text("Schede"),
+           icon: new Icon(Icons.chat),
+           title: new Text("Chat"),
          ),
          new BottomNavigationBarItem(
            icon: new Icon(Icons.add),
            title: new Text("Crea"),
          ),
          new BottomNavigationBarItem(
-           icon: new Icon(Icons.add_alert),
+           icon: new Icon(Icons.notification_important),
            title: new Text("Notifiche"),
          ),
        ],

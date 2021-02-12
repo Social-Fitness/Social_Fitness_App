@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:like_button/like_button.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Sportivo/Sportivo_model.dart';
 
@@ -98,9 +99,6 @@ class ListaSchedaSportivo extends StatelessWidget {
           ),
           subtitle: Text(
               "${listData[index].channelTitle} . ${listData[index].viewCount} . ${listData[index].publishedTime}"),
-          trailing: Container(
-              margin: const EdgeInsets.only(bottom: 20.0),
-              child: Icon(Icons.favorite_border)),
         ),
       ],
     );

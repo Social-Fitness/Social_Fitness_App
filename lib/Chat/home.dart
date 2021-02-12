@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Chat/chat.dart';
 import 'package:social_fitness_app/Chat/const.dart';
 import 'package:social_fitness_app/Chat/settings.dart';
@@ -14,22 +15,27 @@ import 'package:social_fitness_app/Chat/widget/loading.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:social_fitness_app/PersonalTrainer/HomePageMenuPT.dart';
 import 'package:social_fitness_app/Sportivo/HomePageMenuSP.dart';
 import 'package:social_fitness_app/main.dart';
 
 class HomeScreen extends StatefulWidget {
   final String currentUserId;
+  Utente utente;
 
-  HomeScreen({Key key, @required this.currentUserId}) : super(key: key);
+  HomeScreen({Key key, @required this.currentUserId, this.utente}) : super(key: key);
 
   @override
-  State createState() => HomeScreenState(currentUserId: currentUserId);
+  State createState() => HomeScreenState(currentUserId: currentUserId, utente:utente);
 }
 
 class HomeScreenState extends State<HomeScreen> {
-  HomeScreenState({Key key, @required this.currentUserId});
+
+
+  HomeScreenState({Key key, @required this.currentUserId, this.utente});
 
   final String currentUserId;
+  Utente utente;
   final FirebaseMessaging firebaseMessaging = FirebaseMessaging();
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
@@ -67,7 +73,7 @@ class HomeScreenState extends State<HomeScreen> {
     firebaseMessaging.getToken().then((token) {
       print('token: $token');
       FirebaseFirestore.instance
-          .collection('users')
+          .collection('users_chat')
           .doc(currentUserId)
           .update({'pushToken': token});
     }).catchError((err) {
@@ -185,9 +191,16 @@ class HomeScreenState extends State<HomeScreen> {
               ),
               SimpleDialogOption(
                 onPressed: () {
+                  if(utente.categoria == "Personal Trainer"){
                   Route route = MaterialPageRoute(
-                  builder: (context) => homePageSP()); //BISOGNA PASSARE L'UTENTE
-                  Navigator.push(context, route); },
+                  builder: (context) => homePagePT(utente:utente));
+                  Navigator.push(context, route);}
+                  else {
+                    Route route = MaterialPageRoute(
+                        builder: (context) => homePageSP(utente: utente)); //BISOGNA PASSARE L'UTENTE E CONTROLLARE SE è PT SI RITORNA ALLA HOME PT ALTRIMENTI SPORTIVO
+                    Navigator.push(context, route);
+                  }
+                  },
                   //Navigator.pop(context, 1);
                 child: Row(
                   children: <Widget>[
@@ -278,7 +291,7 @@ class HomeScreenState extends State<HomeScreen> {
             Container(
               child: StreamBuilder(
                 stream:
-                    FirebaseFirestore.instance.collection('users').snapshots(),
+                    FirebaseFirestore.instance.collection('users_chat').snapshots(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
                     return Center(
