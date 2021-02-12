@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:social_fitness_app/Bean/Schede.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
+import 'package:social_fitness_app/Sportivo/Sportivo_model.dart';
 
 import 'HomePageMenuSP.dart';
 import 'Lista_Schede_Sportivo.dart';
@@ -10,24 +10,22 @@ import 'Profilo_Public.dart';
 
 
 class SchedaDettaglioSportivo extends StatefulWidget {
-  Schede detail;
+  final SportivoModel detail;
   Utente utente;
-  List<Schede> schede = [];
 
 
-  SchedaDettaglioSportivo({Key key, @required this.detail, Utente utente, this.schede}) : super(key: key);
+  SchedaDettaglioSportivo({Key key, @required this.detail, Utente utente}) : super(key: key);
   
 
   @override
-  _VideoDetailState createState() => _VideoDetailState(utente:utente, schede:schede);
+  _VideoDetailState createState() => _VideoDetailState(utente:utente);
 }
 
 class _VideoDetailState extends State<SchedaDettaglioSportivo> {
   final _fireStore = FirebaseFirestore.instance;
-  List<Schede> schede = [];
   Utente utente;
   Utente personalTrainer;
-  _VideoDetailState({Key key, this.utente, this.schede});
+  _VideoDetailState({Key key, this.utente});
   String follow="Segui";
   String cognome = "";
   String cellulare = "";
@@ -78,7 +76,7 @@ class _VideoDetailState extends State<SchedaDettaglioSportivo> {
       _channelInfo(),
       _moreInfo(),
       ListaSchedaSportivo(
-        schede: schede, utente: utente,
+        listData: sportivoData, utente: utente,
         isMiniList: true,
       ),
     ];
