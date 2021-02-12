@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:like_button/like_button.dart';
+import 'package:social_fitness_app/Bean/Schede.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Sportivo/Sportivo_model.dart';
 
 import 'package:social_fitness_app/Sportivo/scheda_dettaglio_Sportivo.dart';
 
 class ListaSchedaSportivo extends StatelessWidget {
-  final List<SportivoModel> listData;
+   List<Schede> schede;
   final bool isMiniList;
   final bool isHorizontalList;
   Utente utente;
 
   ListaSchedaSportivo(
-      {this.listData, this.isMiniList = false, this.isHorizontalList = false, Utente utente});
+      {this.schede, this.isMiniList = false, this.isHorizontalList = false, Utente utente});
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +21,13 @@ class ListaSchedaSportivo extends StatelessWidget {
       return ListView.builder(
         padding: const EdgeInsets.all(8.0),
         scrollDirection: Axis.horizontal,
-        itemCount: listData.length,
+        itemCount: schede.length,
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => SchedaDettaglioSportivo(
-                  detail: listData[index], utente:utente
+                  detail: schede[index], utente:utente,schede:schede
                 ),
               ));
             },
@@ -45,8 +45,8 @@ class ListaSchedaSportivo extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => SchedaDettaglioSportivo(
-                    detail: listData[index],
-                      utente:utente
+                    detail: schede[index],
+                      utente:utente, schede:schede
                   ),
                 ));
               },
@@ -57,8 +57,8 @@ class ListaSchedaSportivo extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => SchedaDettaglioSportivo(
-                    detail: listData[index],
-                      utente:utente
+                    detail: schede[index],
+                      utente:utente, schede:schede
                   ),
                 ));
               },
@@ -70,7 +70,7 @@ class ListaSchedaSportivo extends StatelessWidget {
           height: 1.0,
           color: Colors.grey,
         ),
-        itemCount: listData.length,
+        itemCount: schede.length,
       );
     }
   }
@@ -83,7 +83,7 @@ class ListaSchedaSportivo extends StatelessWidget {
           height: 200.0,
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(listData[index].thumbNail),
+                image: AssetImage(schede[index].thumbNail),
                 fit: BoxFit.cover),
           ),
         ),
@@ -91,14 +91,14 @@ class ListaSchedaSportivo extends StatelessWidget {
           contentPadding: const EdgeInsets.all(8.0),
           dense: true,
           leading: CircleAvatar(
-            backgroundImage: AssetImage(listData[index].channelAvatar),
+            backgroundImage: AssetImage(schede[index].channelAvatar),
           ),
           title: Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
-            child: Text(listData[index].title),
+            child: Text(schede[index].title),
           ),
           subtitle: Text(
-              "${listData[index].channelTitle} . ${listData[index].viewCount} . ${listData[index].publishedTime}"),
+              "${schede[index].channelTitle} . ${schede[index].viewCount} . ${schede[index].publishedTime}"),
         ),
       ],
     );
@@ -117,7 +117,7 @@ class ListaSchedaSportivo extends StatelessWidget {
             height: isMiniList ? 100.0 : 188.0 / 1.5,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage(listData[index].thumbNail) ,
+                  image: AssetImage(schede[index].thumbNail) ,
                   fit: BoxFit.cover),
             ),
           ),
@@ -130,13 +130,13 @@ class ListaSchedaSportivo extends StatelessWidget {
                   dense: isMiniList ? true : false,
                   title: Padding(
                     padding: const EdgeInsets.only(bottom: 4.0),
-                    child: Text(listData[index].title) ,
+                    child: Text(schede[index].title) ,
                   ),
                   subtitle: !isMiniList
                       ? Text(
-                      "${listData[index].channelTitle} . ${listData[index].viewCount} . ${listData[index].publishedTime}")
+                      "${schede[index].channelTitle} . ${schede[index].viewCount} . ${schede[index].publishedTime}")
                       : Text(
-                      "${listData[index].channelTitle} . ${listData[index].viewCount}"),
+                      "${schede[index].channelTitle} . ${schede[index].viewCount}"),
                   trailing: Container(
                       margin: const EdgeInsets.only(bottom: 30.0),
                       child: Icon(Icons.more_vert)),
@@ -146,7 +146,7 @@ class ListaSchedaSportivo extends StatelessWidget {
                   child: !isMiniList
                       ? CircleAvatar(
                     backgroundImage:
-                    AssetImage(listData[index].channelAvatar),
+                    AssetImage(schede[index].channelAvatar),
                   )
                       : SizedBox(),
                 ),
@@ -171,7 +171,7 @@ class ListaSchedaSportivo extends StatelessWidget {
             height: 188 / 2.2,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(listData[index].thumbNail),
+                image: AssetImage(schede[index].thumbNail),
               ),
             ),
           ),
@@ -185,14 +185,14 @@ class ListaSchedaSportivo extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.only(bottom: 4.0),
                       child: Text(
-                        listData[index].title,
+                        schede[index].title,
                         style: TextStyle(fontSize: 12.0),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     Text(
-                      listData[index].channelTitle,
+                      schede[index].channelTitle,
                       style: TextStyle(
                         fontSize: 12.0,
                         color: Colors.grey[600],
