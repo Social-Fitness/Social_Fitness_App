@@ -74,6 +74,125 @@ class ListaSchedaSportivo extends StatelessWidget {
     }
   }
 
+  Widget _buildPopupDialog1(BuildContext context) {
+    return new AlertDialog(
+      title: const Text('Filtraggio Schede'),
+      content: new Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text("In questo momento le uniche schede disponibili sono quelle per gli allenamenti di corsa!"),
+          Text("\n"),
+          Text("Ciclismo - COMING SOON"),
+        ],
+      ),
+      actions: <Widget>[
+        new FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          textColor: Theme.of(context).primaryColor,
+          child: const Text('Chiudi'),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPopupDialog4(BuildContext context) {
+    return new AlertDialog(
+      title: const Text('Filtraggio Schede'),
+      content: new Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text("In questo momento le uniche schede disponibili sono quelle per gli allenamenti di corsa!"),
+          Text("\n"),
+          Text("Ciclismo - COMING SOON"),
+        ],
+      ),
+      actions: <Widget>[
+        new FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          textColor: Theme.of(context).primaryColor,
+          child: const Text('Chiudi'),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPopupDialog3(BuildContext context) {
+    return new AlertDialog(
+      title: const Text('Filtraggio Schede'),
+      content: new Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text("In questo momento le uniche schede disponibili sono quelle per gli allenamenti di corsa!"),
+          Text("\n"),
+          Text("Ciclismo - COMING SOON"),
+        ],
+      ),
+      actions: <Widget>[
+        new FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          textColor: Theme.of(context).primaryColor,
+          child: const Text('Chiudi'),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPopupDialog2(BuildContext context) {
+    return new AlertDialog(
+      title: const Text('Filtraggio Schede'),
+      content: new Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text("In questo momento le uniche schede disponibili sono quelle per gli allenamenti di corsa!"),
+          Text("\n"),
+          Text("Ciclismo - COMING SOON"),
+        ],
+      ),
+      actions: <Widget>[
+        new FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          textColor: Theme.of(context).primaryColor,
+          child: const Text('Chiudi'),
+        ),
+      ],
+    );
+  }
+  Widget _buildPopupDialog5(BuildContext context) {
+    return new AlertDialog(
+      title: const Text('Filtraggio Schede'),
+      content: new Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text("In questo momento le uniche schede disponibili sono quelle per gli allenamenti di corsa!"),
+          Text("\n"),
+          Text("Ciclismo - COMING SOON"),
+        ],
+      ),
+      actions: <Widget>[
+        new FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          textColor: Theme.of(context).primaryColor,
+          child: const Text('Chiudi'),
+        ),
+      ],
+    );
+  }
+
   Widget _buildPortraitList(BuildContext context, int index) {
     return Column(
       children: <Widget>[
