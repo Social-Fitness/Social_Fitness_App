@@ -3,50 +3,32 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/Bean/RichiestaScheda.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
+import 'package:social_fitness_app/PersonalTrainer/SelezioneSportPT.dart';
 import 'HomePageMenuPT.dart';
 
 
 /*DEVE ESSERE PRESO IN INPUT L'EMAIL DALLA PAGINA PRECEDENTE DOPO CHE LA COLLEGHIAMO*/
-class SchedaRichiesta2 extends StatefulWidget {
-  final Utente utente;
-  SchedaRichiesta2({Key key, this.utente}) : super(key: key);
+class ResocontoPage extends StatefulWidget {
+
+  ResocontoPage({Key key}) : super(key: key);
   @override
-  SchedaRichiesta2State createState() => SchedaRichiesta2State(utente: utente);
+  ResocontoPageState createState() => ResocontoPageState();
 }
 
 
-class SchedaRichiesta2State extends State<SchedaRichiesta2> {
+class ResocontoPageState extends State<ResocontoPage> {
   Utente utente;
 
-  SchedaRichiesta2State({Key key, this.utente});
+  ResocontoPageState({Key key});
 
-  final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
-  RichiestaScheda _richiestaScheda;
 
-  void messagesStream() async {
-    await for (var snapshot in _fireStore.collection("richiesta_scheda").snapshots()) {
-      for (var message in snapshot.docs) {
-        if(message["Personal_Trainer"] == utente.email && message["Utente"]=="alicevid99@gmail.com"){
-          _richiestaScheda.bpm = message["BPM"];
-          _richiestaScheda.altezza= message["Altezza"];
-          _richiestaScheda.disponibilita_settimanale=message["Disponibilita_settimanale"];
-          _richiestaScheda.obiettivo=message["Obiettivo"];
-          _richiestaScheda.pt=message["Personal_Trainer"];
-          _richiestaScheda.peso=message["Peso "];
-          _richiestaScheda.sport=message["Sport"];
-          _richiestaScheda.richiedente=message["Utente"];
-          _richiestaScheda.velocita_sostenuta=message["Velocita_Sostenuta"];
-        }
-      }
-    }
-  }
 
   Widget _buildBPMTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'BPM ' + _richiestaScheda.bpm,
+          'BPM ' +  "120",
           style: TextStyle(
             color: Colors.white,
             fontFamily: 'OpenSans',
@@ -62,7 +44,7 @@ class SchedaRichiesta2State extends State<SchedaRichiesta2> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Velocità sostenuta: ' + _richiestaScheda.velocita_sostenuta,
+          'Velocità sostenuta: ' + "9",
           style: TextStyle(
             color: Colors.white,
             fontFamily: 'OpenSans',
@@ -78,7 +60,7 @@ class SchedaRichiesta2State extends State<SchedaRichiesta2> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Disponibilità settimanale: ' + _richiestaScheda.disponibilita_settimanale,
+          'Disponibilità settimanale: ' + "4",
           style: TextStyle(
             color: Colors.white,
             fontFamily: 'OpenSans',
@@ -94,7 +76,7 @@ class SchedaRichiesta2State extends State<SchedaRichiesta2> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Altezza: ' + _richiestaScheda.altezza + ' cm',
+          'Altezza: ' + "165" + ' cm',
           style: TextStyle(
             color: Colors.white,
             fontFamily: 'OpenSans',
@@ -111,7 +93,7 @@ class SchedaRichiesta2State extends State<SchedaRichiesta2> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Peso: ' + _richiestaScheda.peso + ' Kg',
+          'Peso: ' + "69" + ' Kg',
           style: TextStyle(
             color: Colors.white,
             fontFamily: 'OpenSans',
@@ -127,7 +109,7 @@ class SchedaRichiesta2State extends State<SchedaRichiesta2> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Obiettivo ' + _richiestaScheda.obiettivo,
+          'Obiettivo ' + "10KM",
           style: TextStyle(
             color: Colors.white,
             fontFamily: 'OpenSans',
@@ -146,8 +128,9 @@ class SchedaRichiesta2State extends State<SchedaRichiesta2> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          setState(() {}
-          );
+          Route route = MaterialPageRoute(
+              builder: (context) => SelezioneSportScreenPT(utente: utente));
+          Navigator.push(context, route);
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(

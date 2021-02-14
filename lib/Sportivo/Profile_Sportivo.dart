@@ -145,7 +145,7 @@ class ProfileSPState extends State<ProfileSP> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
-        color: Color(0xFF01579B) ,
+        color: Color(0xFFfc6a26),
         child: Text(
           'LOGOUT',
           style: TextStyle(
@@ -175,7 +175,7 @@ class ProfileSPState extends State<ProfileSP> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
-        color: Color(0xFF01579B) ,
+        color: Color(0xFFfc6a26),
         child: Text(
           'CAMBIA PASSWORD',
           style: TextStyle(
@@ -190,35 +190,6 @@ class ProfileSPState extends State<ProfileSP> {
     );
   }
 
-  Widget _buildHomeBtn() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 10.0),
-      width: double.infinity,
-      child: RaisedButton(
-        elevation: 5.0,
-        onPressed: () {
-          Route route = MaterialPageRoute(
-              builder: (context) => homePageSP(utente: utente,) );
-          Navigator.push(context, route);
-        },
-        padding: EdgeInsets.all(15.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-        color: Color(0xFF01579B) ,
-        child: Text(
-          'HOME',
-          style: TextStyle(
-            color: Colors.white,
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
-          ),
-        ),
-      ),
-    );
-  }
 
   Widget headerChild(String header, int value) => new Expanded(
       child: new Column(

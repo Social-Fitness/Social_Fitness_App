@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
+import 'package:social_fitness_app/Sportivo/Profilo_Public.dart';
 import 'package:social_fitness_app/Sportivo/home_sportivo.dart';
 
 

@@ -2,13 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Chat/login.dart';
+import 'package:social_fitness_app/PersonalTrainer/CuorePage.dart';
 import 'package:social_fitness_app/PersonalTrainer/Profilo_PT.dart';
-import 'package:social_fitness_app/PersonalTrainer/Richiesta_schede.dart';
 import 'package:social_fitness_app/PersonalTrainer/SearchPT.dart';
 import 'package:social_fitness_app/Sportivo/Selezione%20Sport.dart';
 import 'Crea_Scheda_SenzaRichiesta.dart';
 import 'DashBoardPT.dart';
-import 'Notifiche_Salva_Follow.dart';
+import 'NotificheFollow.dart';
 import 'SelezioneSportPT.dart';
 
 
@@ -24,7 +24,7 @@ class homePageStatePT extends State<homePagePT> {
   Utente utente;
   homePageStatePT({Key key, this.utente});
   int _currentIndex = 0;
-  List<Widget> _children() => [ DashBoardPT(utente:utente),LoginScreen(utente: utente), SelezioneSportScreenPT(utente:utente),Notifiche_salva_follow_Page(utente:utente)];
+  List<Widget> _children() => [ DashBoardPT(utente:utente),CuorePage(utente:utente),SelezioneSportScreenPT(utente:utente),Notifiche_salva_follow_Page(utente:utente)];
 
 
 
@@ -64,7 +64,14 @@ class homePageStatePT extends State<homePagePT> {
         ),
         title: Text("Social Fitness",  style: TextStyle(fontSize: 14, color: Color(0xFFfc6a26))),
         actions: <Widget>[
-
+          IconButton(
+            icon: Icon(Icons.chat),
+            onPressed: () {
+              print("CIAOOOO" + utente.categoria);
+              Route route = MaterialPageRoute(
+                  builder: (context) => LoginScreen(utente: utente));
+              Navigator.push(context, route); },
+          ),
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
@@ -92,8 +99,8 @@ class homePageStatePT extends State<homePagePT> {
            title: new Text("Home"),
          ),
          new BottomNavigationBarItem(
-           icon: new Icon(Icons.chat),
-           title: new Text("Chat"),
+           icon: new Icon(Icons.favorite),
+           title: new Text("Schede"),
          ),
          new BottomNavigationBarItem(
            icon: new Icon(Icons.add),

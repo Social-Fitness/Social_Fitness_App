@@ -65,7 +65,7 @@ class Notifiche_salva_follow_PageState extends State<Notifiche_salva_follow_Page
                       backgroundImage: AssetImage("assets/image/icon.png"),
                       backgroundColor: Colors.transparent,
                     ),
-                    new Text("Lo sportivo ha salvato la scheda ${index+1} "),
+                    new Text("Lo sportivo ha inziato a seguirti ${index+1} "),
                     ClipOval(
                       child: Material(
                         color: Colors.white, // button color

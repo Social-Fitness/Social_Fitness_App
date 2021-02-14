@@ -4,6 +4,7 @@ import 'package:social_fitness_app/Bean/Utente.dart';
 import 'package:social_fitness_app/Chat/login.dart';
 import 'package:social_fitness_app/PersonalTrainer/SchedePublic.dart';
 import 'package:social_fitness_app/Sportivo/HomePageMenuSP.dart';
+import 'package:social_fitness_app/Sportivo/Richiesta_Schede_Corsa.dart';
 import 'package:social_fitness_app/Sportivo/Selezione%20Sport.dart';
 
 
@@ -168,7 +169,7 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
                     padding: EdgeInsets.only(top: 15),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Color(0xFFfc6a26),
+                        color: Color(0xFF01579B),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey,
@@ -183,18 +184,20 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
                       children: <Widget>[
                         Column(
                           children: <Widget>[
-                            Text('112 k',
+                            Text('10',
                               style: TextStyle(fontSize: 14,
-                                  color: Colors.black),),
+                                  color: Colors.white),),
                             SizedBox(height: 5,),
                             Text('Followers', style: TextStyle(fontSize: 14,
-                                color: Colors.black.withOpacity(0.5)),)
+                                color: Colors.white)),
                           ],
                         ),
                       ],
                     ),
                   ),
+                  _buildChatBtn(),
                   _buildSeguiBtn(),
+                  _buildRichiesraBtn()
                 ],
               ),
             ),
@@ -242,6 +245,65 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
   }
 
 
+  Widget _buildRichiesraBtn() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 5.0),
+      width: double.infinity,
+      child: RaisedButton(
+        elevation: 5.0,
+        onPressed: () {
+          Route route = MaterialPageRoute(
+              builder: (context) => RichiestaCorsa(utente:utente));
+          Navigator.push(context, route);
+        },
+        padding: EdgeInsets.all(15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(100.0),
+        ),
+        color: Color(0xFFfc6a26),
+        child: Text("Richiedi Scheda",
+          style: TextStyle(
+            color: Colors.white,
+            letterSpacing: 1.5,
+            fontSize: 15.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OpenSans',
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildChatBtn() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 10.0),
+      width: double.infinity,
+      child: RaisedButton(
+        elevation: 5.0,
+        onPressed: () {
+          Route route = MaterialPageRoute(
+              builder: (context) => LoginScreen(utente:utente));
+          Navigator.push(context, route);
+        },
+        padding: EdgeInsets.all(15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        color: Color(0xFFfc6a26),
+        child: Text("Avvia Chat",
+          style: TextStyle(
+            color: Colors.white,
+            letterSpacing: 1.5,
+            fontSize: 15.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OpenSans',
+          ),
+        ),
+      ),
+    );
+  }
+
+
   Widget _buildSeguiBtn() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10.0),
@@ -260,7 +322,7 @@ class PublicProfilePageState extends State<PublicProfilePage> with SingleTickerP
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
-        color: Color(0xFF01579B),
+        color: Color(0xFFfc6a26),
         child: Text(
           follow,
           style: TextStyle(

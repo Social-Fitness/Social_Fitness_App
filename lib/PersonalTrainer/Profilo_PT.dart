@@ -146,7 +146,7 @@ class ProfilePTState extends State<ProfilePT> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
-        color: Color(0xFF01579B) ,
+        color: Color(0xFFfc6a26) ,
         child: Text(
           'LOGOUT',
           style: TextStyle(
@@ -176,7 +176,7 @@ class ProfilePTState extends State<ProfilePT> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
-        color: Color(0xFF01579B) ,
+        color: Color(0xFFfc6a26) ,
         child: Text(
           'CAMBIA PASSWORD',
           style: TextStyle(
